@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { MENU } from '../data/menu.js'
 import { ORDER_EMAIL, SOCIALS } from '../data/site.js'
 import { useCart } from '../context/CartContext.jsx'
+import logoImg from '../assets/stevens-logo.png'
 
 export function SocialIcon({ s }) {
   return (
@@ -15,13 +16,8 @@ export function SocialIcon({ s }) {
 export function Logo() {
   return (
     <Link to="/" className="logo">
-      <span className="logo-mark">
-        <svg viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M16 3C16 3 6 15 6 21a10 10 0 0 0 20 0C26 15 16 3 16 3Z" />
-        </svg>
-      </span>
-      <span className="logo-text">
-        STEVENS<em>Water Monitoring Systems</em>
+      <span className="logo-plate">
+        <img src={logoImg} alt="Stevens Water Monitoring Systems" />
       </span>
     </Link>
   )

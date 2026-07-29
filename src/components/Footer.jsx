@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { BRANDS, IMG, ORDER_EMAIL, SOCIALS } from '../data/site.js'
-import { Logo, SocialIcon } from './Header.jsx'
+import { SocialIcon } from './Header.jsx'
+import tagLogo from '../assets/stevens-logo-tagline.png'
 
 export default function Footer() {
   return (
@@ -28,7 +29,11 @@ export default function Footer() {
       </div>
       <div className="container footer-grid">
         <div className="footer-brand-col">
-          <Logo />
+          <Link to="/" className="logo footer-logo">
+            <span className="logo-plate">
+              <img src={tagLogo} alt="Stevens — Measurements to Mind" />
+            </span>
+          </Link>
           <p>Linking sensor measurements to mindful actions since 1911.</p>
           <div className="footer-socials">
             {SOCIALS.map((s) => <SocialIcon key={s.name} s={s} />)}
