@@ -123,43 +123,69 @@ a.topbar-item:hover { color: var(--cyan); }
 .main-nav { display: flex; align-items: center; gap: 4px; }
 .nav-item { position: relative; }
 .nav-link {
-  display: inline-flex; align-items: center; gap: 5px;
-  color: var(--navy); font-size: 0.92rem; font-weight: 600;
-  padding: 10px 13px; border-radius: 8px; cursor: pointer; transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--navy); font-size: 0.92rem; font-weight: 600; font-family: var(--font-body);
+  padding: 10px 14px; border-radius: 10px; cursor: pointer; transition: all 0.2s;
+  background: none; border: none;
 }
-.nav-link svg { width: 13px; height: 13px; transition: transform 0.25s; }
-.nav-item:hover .nav-link, .nav-link:hover, .nav-link.active { color: var(--teal); background: var(--bg-soft); }
-.nav-item:hover .nav-link svg { transform: rotate(180deg); }
+.nav-link svg { width: 12px; height: 12px; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.nav-item-open .nav-link, .nav-link:hover, .nav-link.active { color: var(--teal); background: var(--bg-soft); }
+.nav-item-open .nav-link svg { transform: rotate(180deg); }
 
-/* Mega menu */
+/* Mega menu — bridged gap so the pointer never leaves a hoverable area */
+.nav-item::after {
+  content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 14px;
+}
 .mega-panel {
-  position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(12px);
-  background: #fff; border-radius: 16px; box-shadow: 0 30px 80px rgba(6, 20, 36, 0.35);
+  position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(10px) scale(0.98);
+  background: #fff; border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(6, 20, 36, 0.06), 0 30px 60px -12px rgba(6, 20, 36, 0.28), 0 0 0 1px rgba(11, 37, 64, 0.05);
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  min-width: 480px; z-index: 60; overflow: hidden;
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+  min-width: 420px; z-index: 60; overflow: hidden;
+  transform-origin: top center;
 }
-.mega-panel::before {
-  content: ''; position: absolute; top: -9px; left: 50%; transform: translateX(-50%) rotate(45deg);
-  width: 16px; height: 16px; background: #fff; border-radius: 3px;
+.nav-item-open .mega-panel { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0) scale(1); }
+.mega-glow {
+  position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+  width: 340px; height: 160px; border-radius: 50%; filter: blur(50px);
+  background: radial-gradient(closest-side, rgba(34, 184, 207, 0.16), transparent);
+  pointer-events: none;
 }
-.nav-item:hover .mega-panel { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-.mega-wide { min-width: 1080px; }
-.mega-cols { display: flex; gap: 10px; padding: 28px 30px 22px; }
-.mega-col { flex: 1; min-width: 150px; }
+.mega-wide { min-width: min(96vw, 940px); }
+.mega-cols { position: relative; display: flex; gap: 4px; padding: 26px 12px 18px; }
+.mega-col {
+  flex: 1; min-width: 150px; padding: 0 14px;
+  opacity: 0; transform: translateY(6px); transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.nav-item-open .mega-col { opacity: 1; transform: none; }
+.mega-col:not(:last-child) { border-right: 1px solid var(--line); }
 .mega-col h5 {
-  font-family: var(--font-head); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
-  color: var(--teal); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-soft);
+  font-family: var(--font-head); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--teal); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
 }
+.mega-col h5::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 .mega-col a {
-  display: block; font-size: 0.83rem; color: var(--muted); padding: 4.5px 8px; margin-left: -8px;
-  border-radius: 7px; transition: all 0.15s;
+  display: flex; align-items: center; gap: 9px; font-size: 0.85rem; color: var(--muted);
+  padding: 7px 10px; margin: 0 -10px; border-radius: 9px; transition: all 0.15s;
 }
-.mega-col a:hover { color: var(--teal); background: var(--bg-soft); transform: translateX(3px); }
-.mega-foot { background: var(--bg-soft); padding: 14px 30px; border-top: 1px solid var(--line); }
-.mega-foot a { color: var(--teal); font-weight: 700; font-size: 0.9rem; display: inline-flex; gap: 7px; align-items: center; }
-.mega-foot a i { font-style: normal; transition: transform 0.2s; }
-.mega-foot a:hover i { transform: translateX(4px); }
+.mega-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--line); flex-shrink: 0; transition: all 0.15s; }
+.mega-col a:hover { color: var(--navy); background: var(--bg-soft); transform: translateX(2px); }
+.mega-col a:hover .mega-dot { background: var(--teal); transform: scale(1.6); }
+.mega-foot { position: relative; background: linear-gradient(135deg, rgba(14, 124, 134, 0.05), rgba(34, 184, 207, 0.08)); padding: 8px; border-top: 1px solid var(--line); }
+.mega-foot-link {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px 20px; border-radius: 14px; transition: background 0.2s;
+}
+.mega-foot-link:hover { background: rgba(255, 255, 255, 0.6); }
+.mega-foot-link strong { display: block; color: var(--navy); font-size: 0.92rem; font-family: var(--font-head); }
+.mega-foot-link em { font-style: normal; color: var(--muted); font-size: 0.78rem; }
+.mega-foot-link i {
+  font-style: normal; width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  background: var(--teal); color: #fff; display: flex; align-items: center; justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.mega-foot-link:hover i { transform: translateX(4px) rotate(0deg) scale(1.08); }
 
 .header-actions { display: flex; align-items: center; gap: 10px; }
 .cart-btn {

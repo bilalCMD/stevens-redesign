@@ -26,12 +26,14 @@ export function Logo() {
 function MegaPanel({ item, onNavigate }) {
   return (
     <div className={`mega-panel ${item.wide ? 'mega-wide' : ''}`}>
+      <div className="mega-glow" aria-hidden="true" />
       <div className="mega-cols">
-        {item.columns.map((col) => (
-          <div className="mega-col" key={col.heading}>
+        {item.columns.map((col, ci) => (
+          <div className="mega-col" key={col.heading} style={{ transitionDelay: `${ci * 35}ms` }}>
             <h5>{col.heading}</h5>
             {col.links.map((l) => (
               <Link key={l.slug} to={`/page/${l.slug}`} onClick={onNavigate}>
+                <span className="mega-dot" />
                 {l.title}
               </Link>
             ))}
@@ -40,8 +42,12 @@ function MegaPanel({ item, onNavigate }) {
       </div>
       {item.wide && (
         <div className="mega-foot">
-          <Link to="/shop" onClick={onNavigate}>
-            Shop all in-stock instruments with pricing <i>→</i>
+          <Link to="/shop" onClick={onNavigate} className="mega-foot-link">
+            <span>
+              <strong>Shop the full catalog</strong>
+              <em>102 in-stock instruments with live pricing</em>
+            </span>
+            <i>→</i>
           </Link>
         </div>
       )}
@@ -53,6 +59,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openSection, setOpenSection] = useState(null)
+  const [openDesktop, setOpenDesktop] = useState(null)
   const { count, flash } = useCart()
   const location = useLocation()
 
@@ -64,10 +71,24 @@ export default function Header() {
   useEffect(() => {
     setMobileOpen(false)
     setOpenSection(null)
+    setOpenDesktop(null)
   }, [location])
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
   }, [mobileOpen])
+  useEffect(() => {
+    if (!openDesktop) return
+    const onDocClick = (e) => {
+      if (!e.target.closest('.nav-item')) setOpenDesktop(null)
+    }
+    const onKey = (e) => e.key === 'Escape' && setOpenDesktop(null)
+    document.addEventListener('click', onDocClick)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('click', onDocClick)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [openDesktop])
 
   const close = () => setMobileOpen(false)
   const solid = scrolled || location.pathname !== '/'
@@ -103,12 +124,22 @@ export default function Header() {
                   {item.label}
                 </NavLink>
               ) : (
-                <div className="nav-item" key={item.label}>
-                  <span className="nav-link has-caret">
+                <div
+                  className={`nav-item ${openDesktop === item.label ? 'nav-item-open' : ''}`}
+                  key={item.label}
+                  onMouseEnter={() => setOpenDesktop(item.label)}
+                  onMouseLeave={() => setOpenDesktop((cur) => (cur === item.label ? null : cur))}
+                >
+                  <button
+                    type="button"
+                    className="nav-link has-caret"
+                    aria-expanded={openDesktop === item.label}
+                    onClick={() => setOpenDesktop((cur) => (cur === item.label ? null : item.label))}
+                  >
                     {item.label}
                     <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                  </span>
-                  <MegaPanel item={item} onNavigate={() => {}} />
+                  </button>
+                  <MegaPanel item={item} onNavigate={() => setOpenDesktop(null)} />
                 </div>
               ),
             )}
