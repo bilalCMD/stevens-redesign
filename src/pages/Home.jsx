@@ -69,6 +69,8 @@ const WHY = [
   },
 ]
 
+const WHY_IMG = 'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1100&q=75&auto=format&fit=crop'
+
 const TESTIMONIALS = [
   {
     quote: 'We replaced three vendors with one Stevens M2M stack. Install was days, not months — and the data just shows up.',
@@ -276,25 +278,36 @@ export default function Home() {
 
       {/* ===== WHY STEVENS ===== */}
       <section className="section why">
-        <div className="container">
-          <Reveal>
-            <div className="section-head center">
-              <span className="eyebrow">Why Stevens</span>
-              <h2>The oldest name in water monitoring.<br />The newest technology in the field.</h2>
+        <div className="container why-inner">
+          <Reveal className="why-media">
+            <div className="why-media-frame">
+              <img src={WHY_IMG} alt="Rows of irrigated crops monitored by Stevens instrumentation" loading="lazy" />
+              <div className="why-media-badge">
+                <strong><CountUp to={110} suffix="+" /></strong>
+                <span>years engineering field instruments</span>
+              </div>
             </div>
           </Reveal>
-          <div className="why-grid">
-            {WHY.map((w, i) => (
-              <Reveal delay={i * 100} key={w.title}>
-                <div className="why-card">
-                  <div className="why-icon">
-                    <svg viewBox="0 0 24 24"><path d={w.icon} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          <div className="why-copy">
+            <Reveal>
+              <span className="eyebrow">Why Stevens</span>
+              <h2>The oldest name in water monitoring. The newest technology in the field.</h2>
+            </Reveal>
+            <div className="why-list">
+              {WHY.map((w, i) => (
+                <Reveal delay={i * 90} key={w.title}>
+                  <div className="why-row">
+                    <div className="why-icon">
+                      <svg viewBox="0 0 24 24"><path d={w.icon} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </div>
+                    <div>
+                      <h3>{w.title}</h3>
+                      <p>{w.desc}</p>
+                    </div>
                   </div>
-                  <h3>{w.title}</h3>
-                  <p>{w.desc}</p>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
