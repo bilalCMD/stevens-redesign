@@ -149,6 +149,39 @@ function LiveCard() {
 
 const ROTATE = ['Soil.', 'Water.', 'Weather.']
 
+const ECOSYSTEM = [
+  {
+    name: 'M2M Connectivity',
+    desc: 'Cellular, satellite and radio telemetry that gets field data flowing reliably, anywhere.',
+    slug: 'm2m',
+    icon: 'M4 18V9m5 9V5m5 13v-7m5 7V3',
+  },
+  {
+    name: 'The Cloud™',
+    desc: 'Dashboards that turn raw sensor readings into decisions your team can act on today.',
+    slug: 'm2m',
+    icon: 'M6 18a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 16 8.5a4.5 4.5 0 0 1 .5 8.98',
+  },
+  {
+    name: 'Turfpro',
+    desc: 'Purpose-built soil moisture guidance for golf courses and sports turf managers.',
+    slug: 'products/pogo',
+    icon: 'M12 2v14m0-14 6 3-6 3M8 22c0-2 1.8-3 4-3s4 1 4 3',
+  },
+  {
+    name: 'Dyacon Live',
+    desc: 'Real-time weather station networks, from a single site to a regional grid.',
+    slug: 'products/dyacon-weather-stations',
+    icon: 'M12 3v2m0 14v2m9-9h-2M5 12H3m14.5-6.5-1.4 1.4M6.9 17.1l-1.4 1.4m0-13 1.4 1.4M17.1 17.1l1.4 1.4M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z',
+  },
+]
+
+const INSIGHTS = [
+  { title: 'Reading soil moisture data like a hydrologist', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=75&auto=format&fit=crop' },
+  { title: 'Choosing telemetry for remote field stations', img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=700&q=75&auto=format&fit=crop' },
+  { title: 'What 110 years of water data has taught us', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=75&auto=format&fit=crop' },
+]
+
 export default function Home() {
   const [word, setWord] = useState(0)
   useEffect(() => {
@@ -168,20 +201,20 @@ export default function Home() {
           <div className="hero-copy">
             <span className="badge">Trusted since 1911 · Portland, Oregon</span>
             <h1>
-              Precision Monitoring for
+              Turning Environmental Measurements
               <br />
-              <span className="grad" key={word}>{ROTATE[word]}</span>
+              into Meaningful <span className="grad" key={word}>Insight & Action</span>
             </h1>
             <p>
-              Stevens builds environmental data acquisition systems that link sensor
-              measurements to mindful action — from the root zone to the river to the sky.
+              For over a century, Stevens has built environmental data acquisition systems that
+              link sensor measurements to mindful action — from the root zone to the river to the sky.
             </p>
             <div className="hero-actions">
               <Link to="/shop" className="btn btn-primary btn-lg">
-                Shop Instruments
+                Explore Our Products
                 <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </Link>
-              <Link to="/contact" className="btn btn-ghost btn-lg">Talk to an Engineer</Link>
+              <Link to="/page/applications" className="btn btn-ghost btn-lg">View Applications</Link>
             </div>
             <ul className="hero-ticks">
               <li>Design &amp; assembly in USA</li>
@@ -227,10 +260,13 @@ export default function Home() {
       <section className="section categories">
         <div className="container">
           <Reveal>
-            <div className="section-head center">
-              <span className="eyebrow">Applications</span>
-              <h2>What do you need to measure?</h2>
-              <p>Three decades-deep application areas, one integrated M2M® platform.</p>
+            <div className="section-head split">
+              <div>
+                <span className="eyebrow">Applications</span>
+                <h2>Where Stevens Monitoring Insights Make an Impact</h2>
+                <p>From field to soil, water to weather — every environment tells a story, gathered by sensors and turned into insight.</p>
+              </div>
+              <Link to="/page/applications" className="btn btn-outline">Learn More</Link>
             </div>
           </Reveal>
           <div className="cat-grid">
@@ -247,6 +283,33 @@ export default function Home() {
                     <span className="cat-link">Explore application <i>→</i></span>
                   </div>
                 </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ECOSYSTEM (SkyView360 / Turfpro / M2M / Cloud) ===== */}
+      <section className="ecosystem">
+        <div className="container">
+          <Reveal>
+            <div className="section-head center">
+              <span className="eyebrow eyebrow-light">One Connected Platform</span>
+              <h2>SkyView360 and Turfpro — Connecting Sensors to Cloud Analytics, Algorithms and Action</h2>
+              <p>Whether you monitor one remote station or a distributed network, Stevens ties sensing, telemetry and cloud analytics into a single, integrated pipeline.</p>
+            </div>
+          </Reveal>
+          <div className="eco-grid">
+            {ECOSYSTEM.map((e, i) => (
+              <Reveal delay={i * 100} key={e.name}>
+                <div className="eco-card">
+                  <div className="eco-icon">
+                    <svg viewBox="0 0 24 24"><path d={e.icon} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  </div>
+                  <h3>{e.name}</h3>
+                  <p>{e.desc}</p>
+                  <Link to={`/page/${e.slug}`} className="eco-link">Learn About {e.name} <i>→</i></Link>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -360,6 +423,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== INSIGHTS ===== */}
+      <section className="section insights">
+        <div className="container">
+          <Reveal>
+            <div className="section-head center">
+              <span className="eyebrow">Resources</span>
+              <h2>The Latest Insights & Environmental Knowledge</h2>
+              <p>Field guides, application notes and updates from our team of hydrologists and soil scientists.</p>
+            </div>
+          </Reveal>
+          <div className="insight-grid">
+            {INSIGHTS.map((n, i) => (
+              <Reveal delay={i * 100} key={n.title}>
+                <Link to="/page/video-library" className="insight-card">
+                  <div className="insight-img"><img src={n.img} alt="" loading="lazy" /></div>
+                  <h3>{n.title}</h3>
+                  <span className="insight-link">Read more <i>→</i></span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== TESTIMONIALS ===== */}
       <section className="section testimonials">
         <div className="container">
@@ -401,7 +488,7 @@ export default function Home() {
           <Reveal delay={120}>
             <div>
               <span className="eyebrow">Our Story</span>
-              <h2>Instrumenting the natural world since 1911.</h2>
+              <h2>Over 110 Years of Environmental Innovation</h2>
               <p>
                 Stevens Water Monitoring Systems is the most senior water monitoring company in
                 the world. For over a century, we have combined deep expertise in hydrology,
