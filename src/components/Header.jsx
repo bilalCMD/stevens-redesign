@@ -145,6 +145,8 @@ export default function Header() {
             )}
           </nav>
 
+          <div className={`mega-scrim ${openDesktop ? 'mega-scrim-open' : ''}`} aria-hidden="true" />
+
           <div className="header-actions">
             <Link to="/cart" className="cart-btn" aria-label="Cart">
               <svg viewBox="0 0 24 24"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3 3h2l3.2 11.2A2 2 0 0 0 10.1 15.7h7.4a2 2 0 0 0 1.9-1.4L22 7H6" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" /></svg>
