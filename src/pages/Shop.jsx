@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import catalog from '../data/catalog.json'
 import ProductCard from '../components/ProductCard.jsx'
 import Reveal from '../components/Reveal.jsx'
@@ -6,9 +7,15 @@ import Reveal from '../components/Reveal.jsx'
 const CATS = ['All', ...new Set(catalog.map((p) => p.category))]
 
 export default function Shop() {
+  const [params, setParams] = useSearchParams()
   const [q, setQ] = useState('')
-  const [cat, setCat] = useState('All')
+  const [cat, setCat] = useState(CATS.includes(params.get('cat')) ? params.get('cat') : 'All')
   const [sort, setSort] = useState('featured')
+
+  const selectCat = (c) => {
+    setCat(c)
+    setParams(c === 'All' ? {} : { cat: c })
+  }
 
   const list = useMemo(() => {
     let l = catalog.filter(
@@ -47,7 +54,7 @@ export default function Shop() {
           </div>
           <div className="shop-cats">
             {CATS.map((c) => (
-              <button key={c} className={`chip ${cat === c ? 'active' : ''}`} onClick={() => setCat(c)}>
+              <button key={c} className={`chip ${cat === c ? 'active' : ''}`} onClick={() => selectCat(c)}>
                 {c}
                 <em>{c === 'All' ? catalog.length : catalog.filter((p) => p.category === c).length}</em>
               </button>
@@ -56,7 +63,7 @@ export default function Shop() {
           {list.length === 0 ? (
             <div className="shop-empty">
               <h3>No products match “{q}”</h3>
-              <p>Try a different search, or <button className="linklike" onClick={() => { setQ(''); setCat('All') }}>reset filters</button>.</p>
+              <p>Try a different search, or <button className="linklike" onClick={() => { setQ(''); selectCat('All') }}>reset filters</button>.</p>
             </div>
           ) : (
             <div className="product-grid">

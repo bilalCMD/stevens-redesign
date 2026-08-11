@@ -5,6 +5,8 @@ import { ORDER_EMAIL, SOCIALS } from '../data/site.js'
 import { useCart } from '../context/CartContext.jsx'
 import logoImg from '../assets/stevens-logo.png'
 
+const PRODUCTS_IMG = 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=700&q=75&auto=format&fit=crop'
+
 export function SocialIcon({ s }) {
   return (
     <a href="#" className="social-icon" aria-label={s.name} title={s.name}>
@@ -25,22 +27,31 @@ export function Logo() {
 
 function MegaPanel({ item, onNavigate }) {
   return (
-    <div className={`mega-panel ${item.wide ? 'mega-wide' : ''}`}>
+    <div className={`mega-panel ${item.wide ? 'mega-wide' : ''} ${item.hasImage ? 'mega-with-image' : ''}`}>
       <div className="mega-glow" aria-hidden="true" />
       <div className="mega-cols">
         {item.columns.map((col, ci) => (
           <div className="mega-col" key={col.heading} style={{ transitionDelay: `${ci * 35}ms` }}>
             <h5>{col.heading}</h5>
             {col.links.map((l) => (
-              <Link key={l.slug} to={`/page/${l.slug}`} onClick={onNavigate}>
+              <Link key={l.to || l.slug} to={l.to || `/page/${l.slug}`} onClick={onNavigate}>
                 <span className="mega-dot" />
                 {l.title}
               </Link>
             ))}
           </div>
         ))}
+        {item.hasImage && (
+          <Link to="/shop" onClick={onNavigate} className="mega-img-card">
+            <img src={PRODUCTS_IMG} alt="Stevens field instrument" loading="lazy" />
+            <span>
+              <strong>102 instruments in stock</strong>
+              <em>Browse the full catalog →</em>
+            </span>
+          </Link>
+        )}
       </div>
-      {item.wide && (
+      {item.wide && !item.hasImage && (
         <div className="mega-foot">
           <Link to="/shop" onClick={onNavigate} className="mega-foot-link">
             <span>
@@ -182,7 +193,7 @@ export default function Header() {
                     <div key={col.heading}>
                       <h5>{col.heading}</h5>
                       {col.links.map((l) => (
-                        <Link key={l.slug} to={`/page/${l.slug}`} onClick={close}>{l.title}</Link>
+                        <Link key={l.to || l.slug} to={l.to || `/page/${l.slug}`} onClick={close}>{l.title}</Link>
                       ))}
                     </div>
                   ))}
