@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { MENU } from '../data/menu.js'
-import { ORDER_EMAIL, SOCIALS } from '../data/site.js'
+import { SOCIALS } from '../data/site.js'
 import { useCart } from '../context/CartContext.jsx'
 import logoImg from '../assets/stevens-logo.png'
 
@@ -71,8 +71,17 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openSection, setOpenSection] = useState(null)
   const [openDesktop, setOpenDesktop] = useState(null)
+  const [searchQ, setSearchQ] = useState('')
   const { count, flash } = useCart()
   const location = useLocation()
+  const navigate = useNavigate()
+
+  const onSearch = (e) => {
+    e.preventDefault()
+    if (!searchQ.trim()) return
+    navigate(`/shop?q=${encodeURIComponent(searchQ.trim())}`)
+    setSearchQ('')
+  }
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 24)
@@ -106,24 +115,6 @@ export default function Header() {
 
   return (
     <header className={`site-header ${solid ? 'scrolled' : ''}`}>
-      <div className="topbar">
-        <div className="container topbar-inner">
-          <div className="topbar-left">
-            <span className="topbar-item">
-              <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" /></svg>
-              Portland, Oregon · Since 1911
-            </span>
-            <a className="topbar-item" href={`mailto:${ORDER_EMAIL}`}>
-              <svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm8 7.3L4.5 7v10.5h15V7L12 12.3ZM5.6 6.5 12 10.7l6.4-4.2H5.6Z" /></svg>
-              {ORDER_EMAIL}
-            </a>
-          </div>
-          <div className="topbar-right">
-            {SOCIALS.map((s) => <SocialIcon key={s.name} s={s} />)}
-          </div>
-        </div>
-      </div>
-
       <div className="header-main">
         <div className="container header-inner">
           <Logo />
@@ -159,11 +150,14 @@ export default function Header() {
           <div className={`mega-scrim ${openDesktop ? 'mega-scrim-open' : ''}`} aria-hidden="true" />
 
           <div className="header-actions">
+            <form className="header-search" onSubmit={onSearch}>
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" strokeWidth="2" /><path d="m20 20-3.5-3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+              <input placeholder="Search" value={searchQ} onChange={(e) => setSearchQ(e.target.value)} />
+            </form>
             <Link to="/cart" className="cart-btn" aria-label="Cart">
               <svg viewBox="0 0 24 24"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3 3h2l3.2 11.2A2 2 0 0 0 10.1 15.7h7.4a2 2 0 0 0 1.9-1.4L22 7H6" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" /></svg>
               {count > 0 && <span className="cart-badge" key={count}>{count}</span>}
             </Link>
-            <Link to="/contact" className="btn btn-primary btn-sm quote-btn">Request a Quote</Link>
             <button className={`nav-toggle ${mobileOpen ? 'open' : ''}`} aria-label="Menu" onClick={() => setMobileOpen(!mobileOpen)}>
               <span /><span /><span />
             </button>

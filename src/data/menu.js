@@ -4,6 +4,26 @@ const p = (title, slug) => ({ title, slug })
 
 export const MENU = [
   {
+    label: 'Products',
+    wide: true,
+    hasImage: true,
+    columns: [
+      {
+        heading: 'Shop by Category',
+        links: [
+          { title: 'Soil Monitoring', to: '/shop?cat=Soil%20Monitoring' },
+          { title: 'Water Level', to: '/shop?cat=Water%20Level' },
+          { title: 'Weather', to: '/shop?cat=Weather' },
+          { title: 'Telemetry', to: '/shop?cat=Telemetry' },
+          { title: 'Chart Recorders', to: '/shop?cat=Chart%20Recorders' },
+          { title: 'Power & Accessories', to: '/shop?cat=Power%20%26%20Accessories' },
+          { title: 'Accessories', to: '/shop?cat=Accessories' },
+          { title: 'View All Products', to: '/shop' },
+        ],
+      },
+    ],
+  },
+  {
     label: 'Applications',
     columns: [
       {
@@ -25,31 +45,24 @@ export const MENU = [
     ],
   },
   {
-    label: 'Products',
-    wide: true,
-    hasImage: true,
+    label: 'Company',
     columns: [
       {
-        heading: 'Shop by Category',
+        heading: 'Stevens',
         links: [
-          { title: 'Soil Monitoring', to: '/shop?cat=Soil%20Monitoring' },
-          { title: 'Water Level', to: '/shop?cat=Water%20Level' },
-          { title: 'Weather', to: '/shop?cat=Weather' },
-          { title: 'Telemetry', to: '/shop?cat=Telemetry' },
-          { title: 'Chart Recorders', to: '/shop?cat=Chart%20Recorders' },
-          { title: 'Power & Accessories', to: '/shop?cat=Power%20%26%20Accessories' },
-          { title: 'Accessories', to: '/shop?cat=Accessories' },
-          { title: 'View All Products', to: '/shop' },
+          p('About Us', 'about-us'),
+          p('Employment Opportunities', 'employment-opportunities'),
+          p('Privacy Policy', 'privacy-policy'),
         ],
+      },
+      {
+        heading: 'Get in Touch',
+        links: [p('Contact', 'contact')],
       },
     ],
   },
   {
-    label: 'Shop',
-    to: '/shop',
-  },
-  {
-    label: 'Resources',
+    label: 'News & Articles',
     columns: [
       {
         heading: 'Learn',
@@ -70,21 +83,8 @@ export const MENU = [
     ],
   },
   {
-    label: 'Company',
-    columns: [
-      {
-        heading: 'Stevens',
-        links: [
-          p('About Us', 'about-us'),
-          p('Employment Opportunities', 'employment-opportunities'),
-          p('Privacy Policy', 'privacy-policy'),
-        ],
-      },
-      {
-        heading: 'Get in Touch',
-        links: [p('Contact', 'contact')],
-      },
-    ],
+    label: 'Support',
+    to: '/contact',
   },
 ]
 

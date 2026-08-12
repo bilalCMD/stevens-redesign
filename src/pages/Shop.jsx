@@ -8,7 +8,7 @@ const CATS = ['All', ...new Set(catalog.map((p) => p.category))]
 
 export default function Shop() {
   const [params, setParams] = useSearchParams()
-  const [q, setQ] = useState('')
+  const [q, setQ] = useState(params.get('q') || '')
   const [cat, setCat] = useState(CATS.includes(params.get('cat')) ? params.get('cat') : 'All')
   const [sort, setSort] = useState('featured')
 

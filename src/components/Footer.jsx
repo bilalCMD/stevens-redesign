@@ -1,19 +1,60 @@
 import { Link } from 'react-router-dom'
-import { BRANDS, IMG, ORDER_EMAIL, SOCIALS } from '../data/site.js'
+import { SOCIALS, ORDER_EMAIL } from '../data/site.js'
 import { SocialIcon } from './Header.jsx'
 import tagLogo from '../assets/stevens-logo-tagline.png'
+
+const FOOTER_COLS = [
+  {
+    heading: 'Company',
+    links: [
+      { title: 'Home', to: '/' },
+      { title: 'About Us', to: '/page/about-us' },
+      { title: 'History', to: '/page/about-us' },
+      { title: 'Conferences & Events', to: '/page/conferences-events' },
+      { title: 'Distributors', to: '/page/distributors' },
+      { title: 'Join our Team', to: '/page/employment-opportunities' },
+      { title: 'Client Profiles', to: '/page/client-profiles' },
+      { title: 'Contact Us', to: '/contact' },
+      { title: 'Blogs / Articles', to: '/page/video-library' },
+    ],
+  },
+  {
+    heading: 'Applications',
+    links: [
+      { title: 'Soil Monitoring & Soil Hydrology', to: '/page/applications/soil-monitoring' },
+      { title: 'Water Monitoring & Management', to: '/page/applications/water-resource-management' },
+      { title: 'Weather & Microclimate Monitoring', to: '/page/applications/weather-monitoring' },
+      { title: 'Energy & Industrial Monitoring', to: '/page/applications' },
+    ],
+  },
+  {
+    heading: 'Products',
+    links: [
+      { title: 'Water Sensors', to: '/shop?cat=Water%20Level' },
+      { title: 'Soil Sensors & Measurements', to: '/shop?cat=Soil%20Monitoring' },
+      { title: 'Weather Sensors', to: '/shop?cat=Weather' },
+      { title: 'Data Management Software', to: '/page/m2m' },
+      { title: 'Staff Gage', to: '/shop?cat=Chart%20Recorders' },
+      { title: 'Power & Accessories', to: '/shop?cat=Power%20%26%20Accessories' },
+    ],
+  },
+]
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <svg className="footer-wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0,35 C240,70 480,0 720,30 C960,60 1200,10 1440,40 L1440,0 L0,0 Z" />
-      </svg>
-      <div className="footer-bg" style={{ backgroundImage: `url(${IMG.footer})` }} aria-hidden="true" />
-      <div className="container footer-cta">
-        <div>
-          <h3>Field notes, product news &amp; application stories.</h3>
-          <p>Join researchers, growers and hydrologists who read our occasional dispatch.</p>
+      <div className="container footer-top">
+        <div className="footer-brand-col">
+          <Link to="/" className="logo footer-logo">
+            <span className="logo-plate">
+              <img src={tagLogo} alt="Stevens — Measurements to Mind" />
+            </span>
+          </Link>
+          <p>
+            Built on over 110 years of environmental measurement expertise. Stevens continues
+            to deliver accurate instruments and dependable data solutions for soil, water, and
+            weather monitoring.
+          </p>
         </div>
         <form
           className="footer-form"
@@ -23,56 +64,44 @@ export default function Footer() {
             window.location.href = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent('Newsletter signup')}&body=${encodeURIComponent(`Please add ${email} to the mailing list.`)}`
           }}
         >
-          <input name="email" type="email" required placeholder="you@company.com" />
-          <button className="btn btn-primary" type="submit">Subscribe</button>
+          <span>Get daily updates</span>
+          <div className="footer-form-row">
+            <input name="email" type="email" required placeholder="Enter email address" />
+            <button className="btn btn-primary" type="submit">Submit</button>
+          </div>
         </form>
       </div>
+
       <div className="container footer-grid">
-        <div className="footer-brand-col">
-          <Link to="/" className="logo footer-logo">
-            <span className="logo-plate">
-              <img src={tagLogo} alt="Stevens — Measurements to Mind" />
-            </span>
-          </Link>
-          <p>Linking sensor measurements to mindful actions since 1911.</p>
-          <div className="footer-socials">
-            {SOCIALS.map((s) => <SocialIcon key={s.name} s={s} />)}
+        {FOOTER_COLS.map((col) => (
+          <div key={col.heading}>
+            <h4>{col.heading}</h4>
+            <ul>
+              {col.links.map((l) => (
+                <li key={l.title}><Link to={l.to}>{l.title}</Link></li>
+              ))}
+            </ul>
           </div>
-        </div>
+        ))}
         <div>
-          <h4>Visit</h4>
-          <p>
-            12067 NE Glenn Widing Drive<br />
-            Suite 106<br />
-            Portland, OR 97220 USA
-          </p>
-        </div>
-        <div>
-          <h4>Explore</h4>
-          <p>
-            <Link to="/page/applications/soil-monitoring">Soil Monitoring</Link><br />
-            <Link to="/page/applications/water-resource-management">Water Resources</Link><br />
-            <Link to="/shop">Shop Instruments</Link><br />
-            <Link to="/page/about-us">About Us</Link><br />
-            <Link to="/contact">Contact</Link>
-          </p>
-        </div>
-        <div>
-          <h4>Family of Brands</h4>
-          <p>
-            {BRANDS.map((b) => (
-              <span key={b.name}>
-                <a href={b.url} target="_blank" rel="noreferrer">{b.name.toLowerCase()}.com</a>
-                <br />
-              </span>
+          <h4>Follow Us</h4>
+          <ul className="footer-socials-list">
+            {SOCIALS.map((s) => (
+              <li key={s.name}>
+                <a href="#" className="footer-social-link">
+                  <SocialIcon s={s} />
+                  {s.name}
+                </a>
+              </li>
             ))}
-          </p>
+          </ul>
         </div>
       </div>
+
       <div className="footer-bottom-wrap">
         <div className="container footer-bottom">
-          <span>© {new Date().getFullYear()} Stevens Water Monitoring Systems, Inc.</span>
-          <span className="footer-note">Redesign concept — not the live site</span>
+          <span>© {new Date().getFullYear()} Stevens Water Monitoring Systems Inc. All Rights Reserved.</span>
+          <Link to="/page/privacy-policy">Privacy Policy</Link>
         </div>
       </div>
     </footer>
