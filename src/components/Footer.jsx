@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { SOCIALS, ORDER_EMAIL } from '../data/site.js'
 import { SocialIcon } from './Header.jsx'
-import tagLogo from '../assets/stevens-logo-tagline.png'
+import tagLogo from '../assets/figma/logo-footer.png'
 
 const FOOTER_COLS = [
   {
@@ -67,7 +67,7 @@ export default function Footer() {
           <span>Get daily updates</span>
           <div className="footer-form-row">
             <input name="email" type="email" required placeholder="Enter email address" />
-            <button className="btn btn-primary" type="submit">Submit</button>
+            <button className="btn btn-white" type="submit">Submit</button>
           </div>
         </form>
       </div>

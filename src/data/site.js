@@ -1,17 +1,22 @@
+import heroBg from '../assets/figma/hero-bg.jpg'
+import impactSoil from '../assets/figma/impact-soil.jpg'
+import impactWater from '../assets/figma/impact-water.jpg'
+import impactWeather from '../assets/figma/impact-weather.jpg'
+import impactEnergy from '../assets/figma/impact-energy.jpg'
+import statsBuilding from '../assets/figma/stats-building.jpg'
+import insightPlaceholder from '../assets/figma/insight-placeholder.jpg'
+
 export const ORDER_EMAIL = 'sales@stevenswater.com'
 
 export const IMG = {
-  hero: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1920&q=80&auto=format&fit=crop',
-  soil: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=900&q=75&auto=format&fit=crop',
-  water: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=75&auto=format&fit=crop',
-  weather: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=900&q=75&auto=format&fit=crop',
-  energy: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&q=75&auto=format&fit=crop',
-  insight: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=700&q=75&auto=format&fit=crop',
-  m2m: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=75&auto=format&fit=crop',
-  about: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1100&q=75&auto=format&fit=crop',
-  footer: 'https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?w=1920&q=60&auto=format&fit=crop',
+  hero: heroBg,
+  soil: impactSoil,
+  water: impactWater,
+  weather: impactWeather,
+  energy: impactEnergy,
+  insight: insightPlaceholder,
+  about: statsBuilding,
   field: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&q=75&auto=format&fit=crop',
-  cta: 'https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1600&q=70&auto=format&fit=crop',
 }
 
 export const BRANDS = [

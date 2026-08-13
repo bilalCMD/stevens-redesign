@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { MENU } from '../data/menu.js'
 import { SOCIALS } from '../data/site.js'
 import { useCart } from '../context/CartContext.jsx'
-import logoImg from '../assets/stevens-logo.png'
+import logoImg from '../assets/figma/logo-header.png'
 
 const PRODUCTS_IMG = 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=700&q=75&auto=format&fit=crop'
 

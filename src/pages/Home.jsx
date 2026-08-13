@@ -1,7 +1,22 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal.jsx'
+import ProductCard from '../components/ProductCard.jsx'
+import catalog from '../data/catalog.json'
 import { IMG } from '../data/site.js'
+import iconM2M from '../assets/figma/icon-m2m.svg'
+import iconCloud from '../assets/figma/icon-cloud.svg'
+
+const FEATURED_HANDLES = [
+  'sage-professional-soil-moisture-meter',
+  'gropoint-profile',
+  'smart-pt',
+  'van-essen-td-diver',
+  'van-essen-instruments-ctd-diver',
+  'stevens-satcomm',
+  'sdx',
+  'digital-temperature-sensor',
+]
 
 const IMPACT_CARDS = [
   {
@@ -40,35 +55,29 @@ const ECOSYSTEM = [
     desc: 'Secure, reliable data transmission from any field site.',
     cta: 'Explore M2M Connectivity',
     slug: 'm2m',
-    icon: 'M4 18V9m5 9V5m5 13v-7m5 7V3',
+    icon: iconM2M,
   },
   {
     name: 'The Cloud™',
     desc: 'Your centralized platform to store, analyze, visualize, and share environmental data.',
     cta: 'Learn About The Cloud™',
     slug: 'm2m',
-    icon: 'M6 18a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 16 8.5a4.5 4.5 0 0 1 .5 8.98',
+    icon: iconCloud,
   },
   {
     name: 'Turfpro',
     desc: 'Your centralized platform to store, analyze, visualize, and share environmental data.',
     cta: 'Learn About The Cloud™',
     slug: 'products/pogo',
-    icon: 'M6 18a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 16 8.5a4.5 4.5 0 0 1 .5 8.98',
+    icon: iconCloud,
   },
   {
     name: 'Dyacon Live',
     desc: 'Your centralized platform to store, analyze, visualize, and share environmental data.',
     cta: 'Learn About The Cloud™',
     slug: 'products/dyacon-weather-stations',
-    icon: 'M6 18a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 16 8.5a4.5 4.5 0 0 1 .5 8.98',
+    icon: iconCloud,
   },
-]
-
-const INSIGHTS = [
-  { title: 'Title Here', desc: 'Lorem ipsum dolor sit amet, ConnectEDU advising elite. Curator scelerisque tempor lore in facilisis.' },
-  { title: 'Title Here', desc: 'Lorem ipsum dolor sit amet, ConnectEDU advising elite. Curator scelerisque tempor lore in facilisis.' },
-  { title: 'Title Here', desc: 'Lorem ipsum dolor sit amet, ConnectEDU advising elite. Curator scelerisque tempor lore in facilisis.' },
 ]
 
 export default function Home() {
@@ -77,6 +86,7 @@ export default function Home() {
     const id = setInterval(() => setDot((d) => (d + 1) % 5), 3200)
     return () => clearInterval(id)
   }, [])
+  const featured = FEATURED_HANDLES.map((h) => catalog.find((p) => p.handle === h)).filter(Boolean)
 
   return (
     <>
@@ -127,7 +137,7 @@ export default function Home() {
                   <div className="impact-card-body">
                     <h3>{c.title}</h3>
                     <p>{c.desc}</p>
-                    <span className="btn btn-navy btn-sm">{c.cta}</span>
+                    <span className="btn btn-white-outline btn-sm">{c.cta}</span>
                   </div>
                 </Link>
               </Reveal>
@@ -157,7 +167,7 @@ export default function Home() {
               <Reveal delay={i * 90} key={e.name}>
                 <div className="eco-item">
                   <div className="eco-icon">
-                    <svg viewBox="0 0 24 24"><path d={e.icon} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    <img src={e.icon} alt="" />
                   </div>
                   <h3>{e.name}</h3>
                   <p>{e.desc}</p>
@@ -169,23 +179,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== INSIGHTS ===== */}
+      {/* ===== FEATURED PRODUCTS ===== */}
       <section className="section insights">
         <div className="container">
           <Reveal>
-            <div className="section-head center">
-              <h2>The Latest Insights & Environmental Knowledge</h2>
-              <p>Explore new research, real-world case studies, and industry insights—curated to help environmental professionals stay informed and make smarter decisions.</p>
+            <div className="section-head split">
+              <div>
+                <h2>The Latest Insights & Environmental Knowledge</h2>
+                <p>A selection from our full catalog — every order is confirmed by our sales team by email within one business day.</p>
+              </div>
+              <Link to="/shop" className="btn btn-navy">View all {catalog.length} products <i>↗</i></Link>
             </div>
           </Reveal>
-          <div className="insight-grid">
-            {INSIGHTS.map((n, i) => (
-              <Reveal delay={i * 100} key={i}>
-                <Link to="/page/video-library" className="insight-card">
-                  <div className="insight-img"><img src={IMG.insight} alt="" loading="lazy" /></div>
-                  <h3>{n.title} <i>↗</i></h3>
-                  <p>{n.desc}</p>
-                </Link>
+          <div className="product-grid">
+            {featured.map((p, i) => (
+              <Reveal delay={(i % 4) * 90} key={p.sku}>
+                <ProductCard p={p} />
               </Reveal>
             ))}
           </div>
