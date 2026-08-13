@@ -137,6 +137,7 @@ export default function Header() {
 
   return (
     <header className={`site-header ${solid ? 'scrolled' : ''}`}>
+      <div className={`mega-scrim ${openDesktop ? 'mega-scrim-open' : ''}`} aria-hidden="true" />
       <div className="header-main">
         <div className="container header-inner">
           <Logo />
@@ -168,8 +169,6 @@ export default function Header() {
               ),
             )}
           </nav>
-
-          <div className={`mega-scrim ${openDesktop ? 'mega-scrim-open' : ''}`} aria-hidden="true" />
 
           <div className="header-actions">
             <form className="header-search" onSubmit={onSearch}>
