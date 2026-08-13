@@ -10,6 +10,9 @@ import CartPage from './pages/CartPage.jsx'
 import Contact from './pages/Contact.jsx'
 import AboutUs from './pages/AboutUs.jsx'
 import History from './pages/History.jsx'
+import Distributors from './pages/Distributors.jsx'
+import JoinOurTeam from './pages/JoinOurTeam.jsx'
+import ClientProfiles from './pages/ClientProfiles.jsx'
 import InfoPage from './pages/InfoPage.jsx'
 
 function ScrollToTop() {
@@ -35,6 +38,9 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/page/about-us" element={<AboutUs />} />
           <Route path="/page/history" element={<History />} />
+          <Route path="/page/distributors" element={<Distributors />} />
+          <Route path="/page/employment-opportunities" element={<JoinOurTeam />} />
+          <Route path="/page/client-profiles" element={<ClientProfiles />} />
           <Route path="/page/*" element={<InfoPage />} />
           <Route path="*" element={<InfoPage />} />
         </Routes>
