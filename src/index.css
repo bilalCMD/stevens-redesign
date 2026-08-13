@@ -463,6 +463,20 @@ a.topbar-item:hover { color: var(--cyan); }
 .location-card a { color: var(--ink); }
 .location-card a:hover { color: var(--teal); }
 
+/* ===== History timeline ===== */
+.firsts-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+.firsts-item { text-align: center; font-family: var(--font-head); font-weight: 700; color: var(--ink); font-size: 1rem; padding: 0 20px; border-left: 1px solid var(--line); }
+.firsts-item:first-child { border-left: none; }
+.timeline { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
+.timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--line); transform: translateX(-50%); }
+.timeline-item { position: relative; display: flex; margin-bottom: 24px; }
+.timeline-item.left { justify-content: flex-start; padding-right: calc(50% + 20px); }
+.timeline-item.right { justify-content: flex-end; padding-left: calc(50% + 20px); }
+.timeline-dot { position: absolute; left: 50%; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--teal); transform: translateX(-50%); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--teal); }
+.timeline-card { background: #fff; border-radius: 10px; padding: 18px 22px; }
+.timeline-card strong { display: block; color: var(--teal); font-family: var(--font-head); font-size: 1.1rem; margin-bottom: 6px; }
+.timeline-card p { color: var(--ink); font-size: 0.88rem; line-height: 1.6; }
+
 /* ===== Page hero (inner pages) ===== */
 .page-hero {
   position: relative; padding: 170px 0 64px; overflow: hidden;
@@ -686,6 +700,12 @@ a.topbar-item:hover { color: var(--cyan); }
   .cart-summary { position: static; }
   .au-story-grid { grid-template-columns: 1fr; }
   .contact-form-figma .form-row { grid-template-columns: 1fr; }
+  .firsts-row { grid-template-columns: 1fr; gap: 16px; }
+  .firsts-item { border-left: none; border-top: 1px solid var(--line); padding: 16px 0 0; }
+  .firsts-item:first-child { border-top: none; }
+  .timeline-item.left, .timeline-item.right { padding: 0 0 0 40px; justify-content: flex-start; }
+  .timeline::before { left: 12px; }
+  .timeline-dot { left: 12px; }
   .locations-grid { grid-template-columns: 1fr; }
   .location-card { flex-direction: column; text-align: center; }
   .au-focus-inner { grid-template-columns: 1fr; }

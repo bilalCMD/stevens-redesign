@@ -9,6 +9,7 @@ import ProductDetail from './pages/ProductDetail.jsx'
 import CartPage from './pages/CartPage.jsx'
 import Contact from './pages/Contact.jsx'
 import AboutUs from './pages/AboutUs.jsx'
+import History from './pages/History.jsx'
 import InfoPage from './pages/InfoPage.jsx'
 
 function ScrollToTop() {
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/page/about-us" element={<AboutUs />} />
+          <Route path="/page/history" element={<History />} />
           <Route path="/page/*" element={<InfoPage />} />
           <Route path="*" element={<InfoPage />} />
         </Routes>
