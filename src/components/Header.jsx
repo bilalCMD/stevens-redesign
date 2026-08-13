@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { MENU } from '../data/menu.js'
 import { PRODUCTS_TABS } from '../data/productsMenu.js'
@@ -24,11 +24,11 @@ export function Logo() {
   )
 }
 
-function TabbedPanel({ onNavigate }) {
+function TabbedPanel({ onNavigate, onMouseEnter, onMouseLeave }) {
   const [tab, setTab] = useState(0)
   const active = PRODUCTS_TABS[tab]
   return (
-    <div className="mega-panel mega-wide mega-tabbed">
+    <div className="mega-panel mega-wide mega-tabbed" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <div className="mega-tabs">
         {PRODUCTS_TABS.map((t, i) => (
           <button
@@ -66,10 +66,10 @@ function TabbedPanel({ onNavigate }) {
   )
 }
 
-function MegaPanel({ item, onNavigate }) {
-  if (item.tabbed) return <TabbedPanel onNavigate={onNavigate} />
+function MegaPanel({ item, onNavigate, onMouseEnter, onMouseLeave }) {
+  if (item.tabbed) return <TabbedPanel onNavigate={onNavigate} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} />
   return (
-    <div className={`mega-panel ${item.wide ? 'mega-wide' : ''}`}>
+    <div className={`mega-panel ${item.wide ? 'mega-wide' : ''}`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <div className="mega-glow" aria-hidden="true" />
       <div className="mega-cols">
         {item.columns.map((col, ci) => (
@@ -103,6 +103,16 @@ export default function Header() {
     if (!searchQ.trim()) return
     navigate(`/shop?q=${encodeURIComponent(searchQ.trim())}`)
     setSearchQ('')
+  }
+
+  const hoverTimer = useRef(null)
+  const openHover = (label) => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current)
+    setOpenDesktop(label)
+  }
+  const closeHover = () => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current)
+    hoverTimer.current = setTimeout(() => setOpenDesktop(null), 180)
   }
 
   useEffect(() => {
@@ -152,8 +162,8 @@ export default function Header() {
                 <div
                   className={`nav-item ${openDesktop === item.label ? 'nav-item-open' : ''}`}
                   key={item.label}
-                  onMouseEnter={() => setOpenDesktop(item.label)}
-                  onMouseLeave={() => setOpenDesktop((cur) => (cur === item.label ? null : cur))}
+                  onMouseEnter={() => openHover(item.label)}
+                  onMouseLeave={closeHover}
                 >
                   <button
                     type="button"
@@ -164,7 +174,12 @@ export default function Header() {
                     {item.label}
                     <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
                   </button>
-                  <MegaPanel item={item} onNavigate={() => setOpenDesktop(null)} />
+                  <MegaPanel
+                    item={item}
+                    onNavigate={() => setOpenDesktop(null)}
+                    onMouseEnter={() => openHover(item.label)}
+                    onMouseLeave={closeHover}
+                  />
                 </div>
               ),
             )}

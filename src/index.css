@@ -315,10 +315,10 @@ a.topbar-item:hover { color: var(--cyan); }
   position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(0deg, rgba(3, 10, 20, 0.92) 0%, rgba(3, 10, 20, 0.75) 30%, rgba(3, 10, 20, 0.4) 55%, rgba(3, 10, 20, 0.08) 78%, rgba(3, 10, 20, 0) 100%);
 }
-.hero-inner-simple { max-width: 900px; padding-bottom: 40px; }
+.hero-inner-simple { padding-bottom: 40px; }
 .hero h1 {
   color: #fff; font-size: clamp(1.9rem, 3.8vw, 3.1rem); margin-bottom: 20px; letter-spacing: -0.02em; font-weight: 700;
-  line-height: 1.15; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+  line-height: 1.15; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35); max-width: 900px;
 }
 .hero-inner-simple > p { color: rgba(255, 255, 255, 0.9); font-size: 1.02rem; max-width: 600px; margin-bottom: 30px; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4); }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
