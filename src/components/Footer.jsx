@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { SOCIALS, ORDER_EMAIL } from '../data/site.js'
 import { SocialIcon } from './Header.jsx'
-import tagLogo from '../assets/figma/logo-footer.png'
+import tagLogo from '../assets/figma/logo-header.png'
 
 const FOOTER_COLS = [
   {
