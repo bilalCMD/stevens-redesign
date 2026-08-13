@@ -122,7 +122,12 @@ a.topbar-item:hover { color: var(--cyan); }
 .site-header.scrolled .header-main {
   box-shadow: 0 6px 26px rgba(11, 37, 64, 0.14); padding: 8px 0;
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  width: 100%; max-width: none; margin: 0;
+  padding-left: max(24px, calc((100vw - 1180px) / 2 + 24px));
+  padding-right: max(24px, calc((100vw - 1180px) / 2 + 24px));
+}
 
 .logo { display: inline-flex; align-items: center; }
 .logo-plate { display: inline-flex; align-items: center; transition: transform 0.2s ease; }
@@ -315,7 +320,11 @@ a.topbar-item:hover { color: var(--cyan); }
   position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(0deg, rgba(3, 10, 20, 0.92) 0%, rgba(3, 10, 20, 0.75) 30%, rgba(3, 10, 20, 0.4) 55%, rgba(3, 10, 20, 0.08) 78%, rgba(3, 10, 20, 0) 100%);
 }
-.hero-inner-simple { padding-bottom: 40px; }
+.hero-inner-simple {
+  padding-bottom: 40px; width: 100%; max-width: none; margin: 0;
+  padding-left: max(24px, calc((100vw - 1180px) / 2 + 24px));
+  padding-right: max(24px, calc((100vw - 1180px) / 2 + 24px));
+}
 .hero h1 {
   color: #fff; font-size: clamp(1.9rem, 3.8vw, 3.1rem); margin-bottom: 20px; letter-spacing: -0.02em; font-weight: 700;
   line-height: 1.15; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35); max-width: 900px;
