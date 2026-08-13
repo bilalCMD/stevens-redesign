@@ -9,7 +9,7 @@ const FOOTER_COLS = [
     links: [
       { title: 'Home', to: '/' },
       { title: 'About Us', to: '/page/about-us' },
-      { title: 'History', to: '/page/about-us' },
+      { title: 'History', to: '/page/history' },
       { title: 'Conferences & Events', to: '/page/conferences-events' },
       { title: 'Distributors', to: '/page/distributors' },
       { title: 'Join our Team', to: '/page/employment-opportunities' },

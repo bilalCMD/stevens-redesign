@@ -42,7 +42,7 @@ export const MENU = [
       },
       {
         heading: 'Get in Touch',
-        links: [p('Contact', 'contact')],
+        links: [{ title: 'Contact Us', to: '/contact' }],
       },
     ],
   },
