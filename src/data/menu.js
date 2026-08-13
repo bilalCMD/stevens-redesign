@@ -6,22 +6,7 @@ export const MENU = [
   {
     label: 'Products',
     wide: true,
-    hasImage: true,
-    columns: [
-      {
-        heading: 'Shop by Category',
-        links: [
-          { title: 'Soil Monitoring', to: '/shop?cat=Soil%20Monitoring' },
-          { title: 'Water Level', to: '/shop?cat=Water%20Level' },
-          { title: 'Weather', to: '/shop?cat=Weather' },
-          { title: 'Telemetry', to: '/shop?cat=Telemetry' },
-          { title: 'Chart Recorders', to: '/shop?cat=Chart%20Recorders' },
-          { title: 'Power & Accessories', to: '/shop?cat=Power%20%26%20Accessories' },
-          { title: 'Accessories', to: '/shop?cat=Accessories' },
-          { title: 'View All Products', to: '/shop' },
-        ],
-      },
-    ],
+    tabbed: true,
   },
   {
     label: 'Applications',

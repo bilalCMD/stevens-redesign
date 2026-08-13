@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { MENU } from '../data/menu.js'
+import { PRODUCTS_TABS } from '../data/productsMenu.js'
 import { SOCIALS } from '../data/site.js'
 import { useCart } from '../context/CartContext.jsx'
 import logoImg from '../assets/figma/logo-header.png'
-
-const PRODUCTS_IMG = 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=700&q=75&auto=format&fit=crop'
 
 export function SocialIcon({ s }) {
   return (
@@ -25,9 +24,52 @@ export function Logo() {
   )
 }
 
-function MegaPanel({ item, onNavigate }) {
+function TabbedPanel({ onNavigate }) {
+  const [tab, setTab] = useState(0)
+  const active = PRODUCTS_TABS[tab]
   return (
-    <div className={`mega-panel ${item.wide ? 'mega-wide' : ''} ${item.hasImage ? 'mega-with-image' : ''}`}>
+    <div className="mega-panel mega-wide mega-tabbed">
+      <div className="mega-tabs">
+        {PRODUCTS_TABS.map((t, i) => (
+          <button
+            key={t.tab}
+            type="button"
+            className={`mega-tab ${i === tab ? 'active' : ''}`}
+            onMouseEnter={() => setTab(i)}
+            onClick={() => setTab(i)}
+          >
+            {t.tab}
+          </button>
+        ))}
+      </div>
+      <div className="mega-tab-cols">
+        {active.columns.map((col) => (
+          <div className="mega-tab-col" key={col.heading}>
+            {col.to ? (
+              <Link to={col.to} onClick={onNavigate} className="mega-tab-heading-link">{col.heading}</Link>
+            ) : (
+              <h5 className="mega-tab-heading">{col.heading}</h5>
+            )}
+            {col.desc && <p className="mega-tab-desc">{col.desc}</p>}
+            {col.groups && col.groups.map((g, gi) => (
+              <div className="mega-tab-group" key={g.title || gi}>
+                {g.title && <h6>{g.title}</h6>}
+                {g.links.map((link) => (
+                  <Link key={link.title} to={link.to} onClick={onNavigate}>{link.title}</Link>
+                ))}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function MegaPanel({ item, onNavigate }) {
+  if (item.tabbed) return <TabbedPanel onNavigate={onNavigate} />
+  return (
+    <div className={`mega-panel ${item.wide ? 'mega-wide' : ''}`}>
       <div className="mega-glow" aria-hidden="true" />
       <div className="mega-cols">
         {item.columns.map((col, ci) => (
@@ -41,27 +83,7 @@ function MegaPanel({ item, onNavigate }) {
             ))}
           </div>
         ))}
-        {item.hasImage && (
-          <Link to="/shop" onClick={onNavigate} className="mega-img-card">
-            <img src={PRODUCTS_IMG} alt="Stevens field instrument" loading="lazy" />
-            <span>
-              <strong>102 instruments in stock</strong>
-              <em>Browse the full catalog →</em>
-            </span>
-          </Link>
-        )}
       </div>
-      {item.wide && !item.hasImage && (
-        <div className="mega-foot">
-          <Link to="/shop" onClick={onNavigate} className="mega-foot-link">
-            <span>
-              <strong>Shop the full catalog</strong>
-              <em>102 in-stock instruments with live pricing</em>
-            </span>
-            <i>→</i>
-          </Link>
-        </div>
-      )}
     </div>
   )
 }
@@ -183,14 +205,36 @@ export default function Header() {
                   <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </button>
                 <div className={`mobile-sub ${openSection === item.label ? 'open' : ''}`}>
-                  {item.columns.map((col) => (
-                    <div key={col.heading}>
-                      <h5>{col.heading}</h5>
-                      {col.links.map((l) => (
-                        <Link key={l.to || l.slug} to={l.to || `/page/${l.slug}`} onClick={close}>{l.title}</Link>
+                  {item.tabbed ? (
+                    <div className="mobile-tabbed">
+                      {PRODUCTS_TABS.map((t) => (
+                        <div key={t.tab} className="mobile-tab-group">
+                          <h5>{t.tab}</h5>
+                          {t.columns.map((col) => (
+                            <div key={col.heading}>
+                              {col.to ? (
+                                <Link to={col.to} onClick={close}>{col.heading}</Link>
+                              ) : (
+                                <span className="mobile-tab-subhead">{col.heading}</span>
+                              )}
+                              {col.groups && col.groups.flatMap((g) => g.links).map((link) => (
+                                <Link key={link.title} to={link.to} onClick={close}>{link.title}</Link>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
                       ))}
                     </div>
-                  ))}
+                  ) : (
+                    item.columns.map((col) => (
+                      <div key={col.heading}>
+                        <h5>{col.heading}</h5>
+                        {col.links.map((l) => (
+                          <Link key={l.to || l.slug} to={l.to || `/page/${l.slug}`} onClick={close}>{l.title}</Link>
+                        ))}
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
             ),
