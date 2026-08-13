@@ -38,7 +38,7 @@ export default function CartPage() {
   return (
     <section className="section cart" style={{ paddingTop: 150 }}>
       <div className="container">
-        <h1 className="cart-title">Your Cart <span>({count} item{count === 1 ? '' : 's'})</span></h1>
+        <h1 className="cart-title">My Cart <span>({count} item{count === 1 ? '' : 's'})</span></h1>
         <div className="cart-grid">
           <div className="cart-items">
             {items.map((i) => (
@@ -69,7 +69,7 @@ export default function CartPage() {
             <div className="sum-row"><span>Subtotal</span><strong>{fmtPrice(subtotal)}</strong></div>
             <div className="sum-row"><span>Shipping</span><em>confirmed by email</em></div>
             <div className="sum-row total"><span>Estimated Total</span><strong>{fmtPrice(subtotal)}</strong></div>
-            <a href={mailto} className="btn btn-primary btn-lg btn-full">Place Order via Email</a>
+            <a href={mailto} className="btn btn-navy btn-lg btn-full">Place Order via Email</a>
             <p className="sum-note">
               Checkout opens a pre-filled order email to our sales team ({ORDER_EMAIL}).
               We confirm pricing, availability, freight and payment options within one business day.
