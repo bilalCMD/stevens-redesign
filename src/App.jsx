@@ -13,6 +13,7 @@ import History from './pages/History.jsx'
 import Distributors from './pages/Distributors.jsx'
 import JoinOurTeam from './pages/JoinOurTeam.jsx'
 import ClientProfiles from './pages/ClientProfiles.jsx'
+import Conferences from './pages/Conferences.jsx'
 import InfoPage from './pages/InfoPage.jsx'
 
 function ScrollToTop() {
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/page/distributors" element={<Distributors />} />
           <Route path="/page/employment-opportunities" element={<JoinOurTeam />} />
           <Route path="/page/client-profiles" element={<ClientProfiles />} />
+          <Route path="/page/conferences-events" element={<Conferences />} />
           <Route path="/page/*" element={<InfoPage />} />
           <Route path="*" element={<InfoPage />} />
         </Routes>

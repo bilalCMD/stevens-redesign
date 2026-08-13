@@ -536,6 +536,27 @@ a.topbar-item:hover { color: var(--cyan); }
 .case-body h3 { font-size: 1.6rem; margin-bottom: 14px; }
 .case-body p { color: var(--muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 20px; }
 
+/* ===== Conferences & Events ===== */
+.conf-panel { background: var(--lavender); border-radius: 20px; padding: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+.conf-side-img { width: 100%; border-radius: 20px; aspect-ratio: 1 / 0.9; object-fit: cover; }
+.conf-cal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.conf-cal-head span { font-size: 1.3rem; color: var(--ink); }
+.conf-cal-nav { display: flex; gap: 8px; }
+.conf-cal-nav button {
+  width: 32px; height: 32px; border-radius: 8px; border: none; background: #fff; cursor: pointer;
+  font-size: 1.1rem; color: var(--navy);
+}
+.conf-cal-nav button:hover { background: var(--teal); color: #fff; }
+.conf-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+.conf-cal-label, .conf-cal-day {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  border-radius: 10px; font-size: 0.95rem;
+}
+.conf-cal-label { background: var(--cyan); color: #fff; font-weight: 600; }
+.conf-cal-day { background: #fff; color: var(--ink); }
+.conf-cal-day.muted { background: var(--lavender); color: #9a9a9a; }
+.conf-no-events { margin-top: 24px; color: var(--ink); font-size: 1rem; }
+
 /* ===== Page hero (inner pages) ===== */
 .page-hero {
   position: relative; padding: 170px 0 64px; overflow: hidden;
@@ -771,6 +792,7 @@ a.topbar-item:hover { color: var(--cyan); }
   .dist-companies { justify-content: center; }
   .case-row, .case-row.reverse { grid-template-columns: 1fr; }
   .case-row.reverse .case-img, .case-row.reverse .case-body { order: 0; }
+  .conf-panel { grid-template-columns: 1fr; padding: 30px; }
   .locations-grid { grid-template-columns: 1fr; }
   .location-card { flex-direction: column; text-align: center; }
   .au-focus-inner { grid-template-columns: 1fr; }
