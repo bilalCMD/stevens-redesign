@@ -29,6 +29,9 @@ export default function ProductDetail() {
     `Product: ${p.title}\nSKU: ${p.sku}\nUnit price: ${fmtPrice(p.price)}\nQuantity: ${qty}\n\nName:\nCompany:\nPhone:\nShipping address:\n`,
   )}`
 
+  const dataSheetHref = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(`Data Sheet Request: ${p.title}`)}`
+  const supportHref = '/contact'
+
   return (
     <>
       <section className="pd">
@@ -50,33 +53,57 @@ export default function ProductDetail() {
                   {fmtPrice(p.price)}
                   <em>SKU {p.sku}</em>
                 </div>
-                <ul className="pd-ticks">
-                  <li>Confirmed by email within 1 business day</li>
-                  <li>1-year limited warranty</li>
-                  <li>Ships worldwide from Portland, OR</li>
-                </ul>
-                <div className="pd-buy">
-                  <div className="qty-stepper">
-                    <button onClick={() => setQty(Math.max(1, qty - 1))} aria-label="Decrease">−</button>
-                    <span>{qty}</span>
-                    <button onClick={() => setQty(qty + 1)} aria-label="Increase">+</button>
-                  </div>
-                  <button className="btn btn-primary btn-lg" onClick={() => add(p, qty)}>
-                    Add to Cart
-                  </button>
-                  <a className="btn btn-outline btn-lg" href={mailto}>Order Now via Email</a>
+                {p.body && <div className="pd-desc" dangerouslySetInnerHTML={{ __html: p.body }} />}
+                <div className="pd-cta-row">
+                  <a className="btn btn-navy" href="#buy">Order Online <i>↗</i></a>
+                  <a className="btn btn-navy" href={dataSheetHref}>Download Data Sheet <i>↗</i></a>
+                  <Link className="btn btn-navy" to={supportHref}>Support Services <i>↗</i></Link>
                 </div>
-                {p.body && (
-                  <div className="pd-desc">
-                    <h3>About this instrument</h3>
-                    <div dangerouslySetInnerHTML={{ __html: p.body }} />
-                  </div>
-                )}
               </div>
             </Reveal>
           </div>
         </div>
       </section>
+
+      <section className="section pd-buy-section" id="buy">
+        <div className="container">
+          <h2 className="center-title">Shop Online / Inquire</h2>
+          <div className="pd-buy-panel">
+            <div className="pd-buy-img">
+              <img src={p.img} alt={p.title} />
+            </div>
+            <div className="pd-buy-info">
+              <span>{p.title}</span>
+              <div className="pd-price">{fmtPrice(p.price)}</div>
+              <ul className="pd-ticks">
+                <li>Confirmed by email within 1 business day</li>
+                <li>1-year limited warranty</li>
+                <li>Ships worldwide from Portland, OR</li>
+              </ul>
+              <div className="pd-buy">
+                <div className="qty-stepper">
+                  <button onClick={() => setQty(Math.max(1, qty - 1))} aria-label="Decrease">−</button>
+                  <span>{qty}</span>
+                  <button onClick={() => setQty(qty + 1)} aria-label="Increase">+</button>
+                </div>
+                <button className="btn btn-navy btn-lg" onClick={() => add(p, qty)}>
+                  Add to Cart
+                </button>
+                <a className="btn btn-outline btn-lg" href={mailto}>Order Now via Email</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section pd-help">
+        <div className="container">
+          <h2 className="center-title">Need more information? We&rsquo;re here to help!</h2>
+          <p className="pd-help-sub">Tell us a bit about yourself and your question, and we&rsquo;ll get back to you ASAP.</p>
+          <Link to="/contact" className="btn btn-navy" style={{ marginTop: 20 }}>Contact Us <i>↗</i></Link>
+        </div>
+      </section>
+
       {related.length > 0 && (
         <section className="section related">
           <div className="container">

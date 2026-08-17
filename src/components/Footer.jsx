@@ -15,7 +15,7 @@ const FOOTER_COLS = [
       { title: 'Join our Team', to: '/page/employment-opportunities' },
       { title: 'Client Profiles', to: '/page/client-profiles' },
       { title: 'Contact Us', to: '/contact' },
-      { title: 'Blogs / Articles', to: '/page/video-library' },
+      { title: 'Blogs / Articles', to: '/page/articles' },
     ],
   },
   {

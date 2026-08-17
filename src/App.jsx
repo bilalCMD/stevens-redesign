@@ -20,6 +20,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import VideoLibrary from './pages/VideoLibrary.jsx'
 import Glossary from './pages/Glossary.jsx'
 import Tradeshow from './pages/Tradeshow.jsx'
+import Articles from './pages/Articles.jsx'
+import ArticleDetail from './pages/ArticleDetail.jsx'
 import InfoPage from './pages/InfoPage.jsx'
 
 function ScrollToTop() {
@@ -56,6 +58,8 @@ export default function App() {
           <Route path="/page/video-library" element={<VideoLibrary />} />
           <Route path="/page/glossary" element={<Glossary />} />
           <Route path="/page/tradeshow" element={<Tradeshow />} />
+          <Route path="/page/articles" element={<Articles />} />
+          <Route path="/page/articles/:slug" element={<ArticleDetail />} />
           <Route path="/page/*" element={<InfoPage />} />
           <Route path="*" element={<InfoPage />} />
         </Routes>

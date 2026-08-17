@@ -52,6 +52,7 @@ export const MENU = [
       {
         heading: 'Learn',
         links: [
+          p('Blogs / Articles', 'articles'),
           p('Video Library', 'video-library'),
           p('Glossary', 'glossary'),
           p('Client Profiles', 'client-profiles'),

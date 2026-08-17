@@ -4,8 +4,11 @@ import Reveal from '../components/Reveal.jsx'
 import ProductCard from '../components/ProductCard.jsx'
 import catalog from '../data/catalog.json'
 import { IMG } from '../data/site.js'
+import { ARTICLES } from '../data/articles.js'
 import iconM2M from '../assets/figma/icon-m2m.svg'
 import iconCloud from '../assets/figma/icon-cloud.svg'
+
+const LATEST_INSIGHTS = ARTICLES.slice(0, 3)
 
 const FEATURED_HANDLES = [
   'sage-professional-soil-moisture-meter',
@@ -185,7 +188,7 @@ export default function Home() {
           <Reveal>
             <div className="section-head split">
               <div>
-                <h2>The Latest Insights & Environmental Knowledge</h2>
+                <h2>Featured Products</h2>
                 <p>A selection from our full catalog — every order is confirmed by our sales team by email within one business day.</p>
               </div>
               <Link to="/shop" className="btn btn-navy">View all {catalog.length} products <i>↗</i></Link>
@@ -195,6 +198,32 @@ export default function Home() {
             {featured.map((p, i) => (
               <Reveal delay={(i % 4) * 90} key={p.sku}>
                 <ProductCard p={p} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== LATEST INSIGHTS ===== */}
+      <section className="section insights" style={{ background: 'var(--bg-soft)' }}>
+        <div className="container">
+          <Reveal>
+            <div className="section-head split">
+              <div>
+                <h2>The Latest Insights &amp; Environmental Knowledge</h2>
+                <p>Explore new research, real-world case studies, and industry insights — curated to help environmental professionals stay informed and make smarter decisions.</p>
+              </div>
+              <Link to="/page/articles" className="btn btn-navy">View All Articles <i>↗</i></Link>
+            </div>
+          </Reveal>
+          <div className="insight-grid">
+            {LATEST_INSIGHTS.map((a, i) => (
+              <Reveal delay={i * 90} key={a.slug}>
+                <Link to={`/page/articles/${a.slug}`} className="insight-card">
+                  <div className="insight-img"><img src={a.img} alt={a.title} /></div>
+                  <h3>{a.title}</h3>
+                  <p>{a.excerpt}</p>
+                </Link>
               </Reveal>
             ))}
           </div>
