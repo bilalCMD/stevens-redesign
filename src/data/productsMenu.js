@@ -22,7 +22,7 @@ export const PRODUCTS_TABS = [
           },
           {
             title: 'Non-Contact',
-            links: [l('IRU-2420', search('IRU-2420')), l('HSI Radar Sensor', search('HSI Radar'))],
+            links: [l('IRU-2420', '/product/iru-2420'), l('HSI Radar Sensor', search('HSI Radar'))],
           },
           { title: 'Shaft Encoder', links: [l('PAT (Position Analog Transmitter)', '/product/pat-position-analog-transmitter')] },
         ],
@@ -45,10 +45,10 @@ export const PRODUCTS_TABS = [
         groups: [
           {
             title: 'Permanent Installations',
-            links: [l('HydraProbe', search('HydraProbe')), l('GroPoint Profiling (up to 8 segments)', '/product/gropoint-profile')],
+            links: [l('HydraProbe', '/product/stevens-hydraprobe'), l('GroPoint Profiling (up to 8 segments)', '/product/gropoint-profile')],
           },
-          { title: 'Portable', links: [l('HydraGo', search('Hydra Go')), l('HydraGo Flex', search('Hydra Go Flex'))] },
-          { title: 'Turf Management', links: [l('POGO', search('Pogo'))] },
+          { title: 'Portable', links: [l('HydraGo', search('HydraGO')), l('HydraGo Flex', search('HydraGO'))] },
+          { title: 'Turf Management', links: [l('POGO', cat('Soil Monitoring'))] },
         ],
       },
       {
@@ -56,22 +56,22 @@ export const PRODUCTS_TABS = [
         groups: [{
           links: [
             l('SAGE', cat('Soil Monitoring')),
-            l('Matric Potential Sensor', search('Matric Potential')),
-            l('Tensiometers', search('Tensiometer')),
-            l('Soil Water Samplers', search('Soil Water Sampler')),
+            l('Matric Potential Sensor', search('pF Sensor')),
+            l('Tensiometers', search('Tensiomark')),
+            l('Soil Water Samplers', cat('Soil Monitoring')),
           ],
         }],
       },
       {
         heading: 'Soil Water Infiltration',
-        groups: [{ links: [l('Permeameters', search('Permeameter')), l('Infiltrometers', search('Infiltrometer'))] }],
+        groups: [{ links: [l('Permeameters', cat('Soil Monitoring')), l('Infiltrometers', cat('Soil Monitoring'))] }],
       },
       {
         heading: 'Water Retention Analysis',
         groups: [{
           links: [
-            l('Lab Extractors', search('Extractor')),
-            l('Hanging Water Column', search('Hanging Water Column')),
+            l('Lab Extractors', cat('Soil Monitoring')),
+            l('Hanging Water Column', cat('Soil Monitoring')),
             l('Tempe Cell', search('Tempe Cell')),
           ],
         }],
@@ -80,9 +80,9 @@ export const PRODUCTS_TABS = [
         heading: 'Plant Physiology',
         groups: [{
           links: [
-            l('Lysimeters', search('Lysimeter')),
-            l('Plant Water Console', search('Plant Water Console')),
-            l('ICT Sap Flow', search('Sap Flow')),
+            l('Lysimeters', cat('Soil Monitoring')),
+            l('Plant Water Console', cat('Soil Monitoring')),
+            l('ICT Sap Flow', cat('Soil Monitoring')),
           ],
         }],
       },
@@ -99,10 +99,10 @@ export const PRODUCTS_TABS = [
         heading: 'Wind',
         groups: [{
           links: [
-            l('Dyacon WSD1™ Wind Speed / Wind Direction', search('Dyacon')),
-            l('Met One 010C Wind Speed', search('Met One')),
-            l('Met One 020D Wind Direction', search('Met One')),
-            l('Met One 034E Wind Speed / Wind Direction', search('Met One')),
+            l('Dyacon WSD1™ Wind Speed / Wind Direction', search('Wind Monitor')),
+            l('Met One 010C Wind Speed', search('wind speed')),
+            l('Met One 020D Wind Direction', search('024A')),
+            l('Met One 034E Wind Speed / Wind Direction', search('034B')),
           ],
         }],
       },
@@ -110,9 +110,9 @@ export const PRODUCTS_TABS = [
         heading: 'Precipitation',
         groups: [{
           links: [
-            l('Stevens Tipping Bucket Rain Gauge', search('Rain Gauge')),
-            l('Met One 360', search('Met One 360')),
-            l('Met One 370/375/380 Rain Gauge', search('Met One')),
+            l('Stevens Tipping Bucket Rain Gauge', search('Tipping Bucket')),
+            l('Met One 360', search('375')),
+            l('Met One 370/375/380 Rain Gauge', search('370')),
           ],
         }],
       },
@@ -120,8 +120,8 @@ export const PRODUCTS_TABS = [
         heading: 'Solar Radiation',
         groups: [{
           links: [
-            l('Apogee Silicon-cell Pyranometer', search('Apogee')),
-            l('Apogee Full-spectrum Quantum PAR Meter', search('Apogee')),
+            l('Apogee Silicon-cell Pyranometer', search('Pyranometer')),
+            l('Apogee Full-spectrum Quantum PAR Meter', search('LI-200')),
           ],
         }],
       },
@@ -129,18 +129,18 @@ export const PRODUCTS_TABS = [
         heading: 'Pressure, Humidity & Temperature',
         groups: [{
           links: [
-            l('Dyacon Barometric pressure, Relative Humidity, Temperature', search('Dyacon')),
+            l('Dyacon Barometric pressure, Relative Humidity, Temperature', '/product/met-one-092-barometric-pressure-sensor'),
             l('Smart-Fan™ aspiration kit', '/product/digital-temperature-sensor'),
             l('Globe Temperature Sensor', '/product/digital-temperature-sensor'),
-            l('Met One 083F Relative Humidity', search('Met One')),
-            l('Met One 085A Relative Humidity / Temperature', search('Met One')),
-            l('Met One 092 Barometric Pressure', search('Met One')),
+            l('Met One 083F Relative Humidity', search('083E')),
+            l('Met One 085A Relative Humidity / Temperature', search('Humicap')),
+            l('Met One 092 Barometric Pressure', '/product/met-one-092-barometric-pressure-sensor'),
           ],
         }],
       },
       {
         heading: 'All-in-one Multiparameter',
-        groups: [{ links: [l('Met One AIO 2 Sonic', search('Met One'))] }],
+        groups: [{ links: [l('Met One AIO 2 Sonic', search('MSO'))] }],
       },
     ],
   },
@@ -194,7 +194,7 @@ export const PRODUCTS_TABS = [
         heading: 'Diver Accessories',
         groups: [{
           links: [
-            l('Diver-SDI', search('Diver')),
+            l('Diver-SDI', '/product/diver-dcx'),
             l('Diver-Mate', '/product/diver-mate'),
             l('Diver USB reading unit', '/product/diver-usb-reader'),
             l('Diver USB interface cable', '/product/diver-usb-interface-cable'),
@@ -215,9 +215,9 @@ export const PRODUCTS_TABS = [
         heading: 'Miscellaneous',
         groups: [{
           links: [
-            l('Evaporation pan', search('Evaporation Pan')),
+            l('Evaporation pan', cat('Chart Recorders')),
             l('Misc chart recorder parts & accessories', cat('Chart Recorders')),
-            l('Paper charts', search('Paper Charts')),
+            l('Paper charts', '/product/paper-charts-roll-for-61r-recorder'),
             l('Pens and ink', search('Ink')),
             l('Stevens Tempe Cell System', search('Tempe Cell')),
           ],
