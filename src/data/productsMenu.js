@@ -1,5 +1,9 @@
 // Tabbed Products mega-menu structure, matching the Figma reference exactly.
-const l = (title, to = '/shop') => ({ title, to })
+// Each product links to its real product page when it exists in the catalog;
+// otherwise it links to a filtered shop search for its category so results are always relevant.
+const l = (title, to) => ({ title, to })
+const cat = (name) => `/shop?cat=${encodeURIComponent(name)}`
+const search = (q) => `/shop?q=${encodeURIComponent(q)}`
 
 export const PRODUCTS_TABS = [
   {
@@ -8,18 +12,28 @@ export const PRODUCTS_TABS = [
       {
         heading: 'Water Levels',
         groups: [
-          { title: 'Pressure Transducers', links: [l('Smart PT'), l('SDX'), l('Divers, with integrating logging')] },
-          { title: 'Non-Contact', links: [l('IRU-2420'), l('HSI Radar Sensor')] },
-          { title: 'Shaft Encoder', links: [l('PAT (Position Analog Transmitter)')] },
+          {
+            title: 'Pressure Transducers',
+            links: [
+              l('Smart PT', '/product/smart-pt'),
+              l('SDX', '/product/sdx'),
+              l('Divers, with integrating logging', search('Diver')),
+            ],
+          },
+          {
+            title: 'Non-Contact',
+            links: [l('IRU-2420', search('IRU-2420')), l('HSI Radar Sensor', search('HSI Radar'))],
+          },
+          { title: 'Shaft Encoder', links: [l('PAT (Position Analog Transmitter)', '/product/pat-position-analog-transmitter')] },
         ],
       },
       {
         heading: 'Water Flow Discharge',
-        groups: [{ links: [l('Surface Velocity Radar (SVR) Sensor')] }],
+        groups: [{ links: [l('Surface Velocity Radar (SVR) Sensor', search('Surface Velocity Radar'))] }],
       },
       {
         heading: 'Water Quality',
-        groups: [{ links: [l('Multi-parameters sondes')] }],
+        groups: [{ links: [l('Multi-parameters sondes', search('sondes'))] }],
       },
     ],
   },
@@ -29,26 +43,48 @@ export const PRODUCTS_TABS = [
       {
         heading: 'Soil Hydrology',
         groups: [
-          { title: 'Permanent Installations', links: [l('HydraProbe'), l('GroPoint Profiling (up to 8 segments)')] },
-          { title: 'Portable', links: [l('HydraGo'), l('HydraGo Flex')] },
-          { title: 'Turf Management', links: [l('POGO')] },
+          {
+            title: 'Permanent Installations',
+            links: [l('HydraProbe', search('HydraProbe')), l('GroPoint Profiling (up to 8 segments)', '/product/gropoint-profile')],
+          },
+          { title: 'Portable', links: [l('HydraGo', search('Hydra Go')), l('HydraGo Flex', search('Hydra Go Flex'))] },
+          { title: 'Turf Management', links: [l('POGO', search('Pogo'))] },
         ],
       },
       {
         heading: 'Water Tension/Matric Potential Sensors',
-        groups: [{ links: [l('SAGE'), l('Matric Potential Sensor'), l('Tensiometers'), l('Soil Water Samplers')] }],
+        groups: [{
+          links: [
+            l('SAGE', cat('Soil Monitoring')),
+            l('Matric Potential Sensor', search('Matric Potential')),
+            l('Tensiometers', search('Tensiometer')),
+            l('Soil Water Samplers', search('Soil Water Sampler')),
+          ],
+        }],
       },
       {
         heading: 'Soil Water Infiltration',
-        groups: [{ links: [l('Permeameters'), l('Infiltrometers')] }],
+        groups: [{ links: [l('Permeameters', search('Permeameter')), l('Infiltrometers', search('Infiltrometer'))] }],
       },
       {
         heading: 'Water Retention Analysis',
-        groups: [{ links: [l('Lab Extractors'), l('Hanging Water Column'), l('Tempe Cell')] }],
+        groups: [{
+          links: [
+            l('Lab Extractors', search('Extractor')),
+            l('Hanging Water Column', search('Hanging Water Column')),
+            l('Tempe Cell', search('Tempe Cell')),
+          ],
+        }],
       },
       {
         heading: 'Plant Physiology',
-        groups: [{ links: [l('Lysimeters'), l('Plant Water Console'), l('ICT Sap Flow')] }],
+        groups: [{
+          links: [
+            l('Lysimeters', search('Lysimeter')),
+            l('Plant Water Console', search('Plant Water Console')),
+            l('ICT Sap Flow', search('Sap Flow')),
+          ],
+        }],
       },
     ],
   },
@@ -57,34 +93,54 @@ export const PRODUCTS_TABS = [
     columns: [
       {
         heading: 'Meteorology',
-        groups: [{ links: [l('Complete Weather Station Systems'), l('Tri-Pods'), l('Accessories')] }],
+        groups: [{ links: [l('Complete Weather Station Systems', cat('Weather')), l('Tri-Pods', cat('Weather')), l('Accessories', cat('Weather'))] }],
       },
       {
         heading: 'Wind',
-        groups: [{ links: [l('Dyacon WSD1™ Wind Speed / Wind Direction'), l('Met One 010C Wind Speed'), l('Met One 020D Wind Direction'), l('Met One 034E Wind Speed / Wind Direction')] }],
+        groups: [{
+          links: [
+            l('Dyacon WSD1™ Wind Speed / Wind Direction', search('Dyacon')),
+            l('Met One 010C Wind Speed', search('Met One')),
+            l('Met One 020D Wind Direction', search('Met One')),
+            l('Met One 034E Wind Speed / Wind Direction', search('Met One')),
+          ],
+        }],
       },
       {
         heading: 'Precipitation',
-        groups: [{ links: [l('Stevens Tipping Bucket Rain Gauge'), l('Met One 360'), l('Met One 370/375/380 Rain Gauge')] }],
+        groups: [{
+          links: [
+            l('Stevens Tipping Bucket Rain Gauge', search('Rain Gauge')),
+            l('Met One 360', search('Met One 360')),
+            l('Met One 370/375/380 Rain Gauge', search('Met One')),
+          ],
+        }],
       },
       {
         heading: 'Solar Radiation',
-        groups: [{ links: [l('Apogee Silicon-cell Pyranometer'), l('Apogee Full-spectrum Quantum PAR Meter')] }],
+        groups: [{
+          links: [
+            l('Apogee Silicon-cell Pyranometer', search('Apogee')),
+            l('Apogee Full-spectrum Quantum PAR Meter', search('Apogee')),
+          ],
+        }],
       },
       {
         heading: 'Pressure, Humidity & Temperature',
-        groups: [{ links: [
-          l('Dyacon Barometric pressure, Relative Humidity, Temperature'),
-          l('Smart-Fan™ aspiration kit'),
-          l('Globe Temperature Sensor'),
-          l('Met One 083F Relative Humidity'),
-          l('Met One 085A Relative Humidity / Temperature'),
-          l('Met One 092 Barometric Pressure'),
-        ] }],
+        groups: [{
+          links: [
+            l('Dyacon Barometric pressure, Relative Humidity, Temperature', search('Dyacon')),
+            l('Smart-Fan™ aspiration kit', '/product/digital-temperature-sensor'),
+            l('Globe Temperature Sensor', '/product/digital-temperature-sensor'),
+            l('Met One 083F Relative Humidity', search('Met One')),
+            l('Met One 085A Relative Humidity / Temperature', search('Met One')),
+            l('Met One 092 Barometric Pressure', search('Met One')),
+          ],
+        }],
       },
       {
         heading: 'All-in-one Multiparameter',
-        groups: [{ links: [l('Met One AIO 2 Sonic')] }],
+        groups: [{ links: [l('Met One AIO 2 Sonic', search('Met One'))] }],
       },
     ],
   },
@@ -99,12 +155,12 @@ export const PRODUCTS_TABS = [
   {
     tab: 'Staff Gage',
     columns: [
-      { heading: 'Style A', to: '/shop?cat=Chart%20Recorders' },
-      { heading: 'Style C', to: '/shop?cat=Chart%20Recorders' },
-      { heading: 'Style E', to: '/shop?cat=Chart%20Recorders' },
-      { heading: 'Style I', to: '/shop?cat=Chart%20Recorders' },
-      { heading: 'Style M', to: '/shop?cat=Chart%20Recorders' },
-      { heading: 'Figure Plates', to: '/shop?cat=Chart%20Recorders' },
+      { heading: 'Style A', to: search('Style A Staff Gage') },
+      { heading: 'Style C', to: search('Style C Staff Gage') },
+      { heading: 'Style E', to: search('Style E Staff Gage') },
+      { heading: 'Style I', to: search('Style I Staff Gage') },
+      { heading: 'Style M', to: search('Style M Staff Gage') },
+      { heading: 'Figure Plates', to: '/product/figure-plates' },
     ],
   },
   {
@@ -112,27 +168,60 @@ export const PRODUCTS_TABS = [
     columns: [
       {
         heading: 'Telemetry / Radios',
-        groups: [{ links: [l('E-Tracker'), l('Stevens SatComm')] }],
+        groups: [{ links: [l('E-Tracker', cat('Telemetry')), l('Stevens SatComm', '/product/stevens-satcomm')] }],
       },
       {
         heading: 'Antennas',
-        groups: [{ links: [l('V2TH Rugged GOES Antenna'), l('GOES Yagi Antenna'), l('Miscellaneous Antennas')] }],
+        groups: [{
+          links: [
+            l('V2TH Rugged GOES Antenna', '/product/stevens-v2th-goes-antenna'),
+            l('GOES Yagi Antenna', '/product/goes-yagi-antenna'),
+            l('Miscellaneous Antennas', cat('Telemetry')),
+          ],
+        }],
       },
       {
         heading: 'Power Systems',
-        groups: [{ links: [l('Batteries'), l('Power supplies'), l('Solar panels')] }],
+        groups: [{
+          links: [
+            l('Batteries', search('Battery')),
+            l('Power supplies', cat('Power & Accessories')),
+            l('Solar panels', '/product/solar-panel'),
+          ],
+        }],
       },
       {
         heading: 'Diver Accessories',
-        groups: [{ links: [l('Diver-SDI'), l('Diver-Mate'), l('Diver USB reading unit'), l('Diver USB interface cable')] }],
+        groups: [{
+          links: [
+            l('Diver-SDI', search('Diver')),
+            l('Diver-Mate', '/product/diver-mate'),
+            l('Diver USB reading unit', '/product/diver-usb-reader'),
+            l('Diver USB interface cable', '/product/diver-usb-interface-cable'),
+          ],
+        }],
       },
       {
         heading: 'Float Accessories',
-        groups: [{ links: [l('Pulleys'), l('Float Line / Beaded float line'), l('Copper/PVC Floats & Counterweights')] }],
+        groups: [{
+          links: [
+            l('Pulleys', search('Pulley')),
+            l('Float Line / Beaded float line', '/product/beaded-float-line'),
+            l('Copper/PVC Floats & Counterweights', search('Float')),
+          ],
+        }],
       },
       {
         heading: 'Miscellaneous',
-        groups: [{ links: [l('Evaporation pan'), l('Misc chart recorder parts & accessories'), l('Paper charts'), l('Pens and ink'), l('Stevens Tempe Cell System')] }],
+        groups: [{
+          links: [
+            l('Evaporation pan', search('Evaporation Pan')),
+            l('Misc chart recorder parts & accessories', cat('Chart Recorders')),
+            l('Paper charts', search('Paper Charts')),
+            l('Pens and ink', search('Ink')),
+            l('Stevens Tempe Cell System', search('Tempe Cell')),
+          ],
+        }],
       },
     ],
   },
