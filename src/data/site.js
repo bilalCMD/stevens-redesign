@@ -8,6 +8,13 @@ import insightPlaceholder from '../assets/figma/insight-placeholder.jpg'
 
 export const ORDER_EMAIL = 'sales@stevenswater.com'
 
+// Fill these in once created in the Stripe / PayPal dashboards — leave blank to hide the button.
+// Stripe: create a "Payment Link" with "Customer chooses price" enabled, paste its URL below.
+// PayPal: your PayPal.me handle only (no URL) — e.g. 'stevenswater' for paypal.me/stevenswater — the
+// exact cart total is appended automatically as /<amount>USD when the buyer clicks Pay.
+export const STRIPE_PAYMENT_LINK = ''
+export const PAYPAL_ME_HANDLE = ''
+
 export const IMG = {
   hero: heroBg,
   soil: impactSoil,

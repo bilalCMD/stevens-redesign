@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { fmtPrice } from '../components/ProductCard.jsx'
 import { useCart } from '../context/CartContext.jsx'
-import { ORDER_EMAIL } from '../data/site.js'
+import { ORDER_EMAIL, STRIPE_PAYMENT_LINK, PAYPAL_ME_HANDLE } from '../data/site.js'
 
 export default function CartPage() {
   const { items, setQty, remove, clear, subtotal, count } = useCart()
@@ -21,6 +21,7 @@ export default function CartPage() {
     'Notes:',
   ].join('\n')
   const mailto = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(`Order Request — ${count} item${count === 1 ? '' : 's'} — ${fmtPrice(subtotal)}`)}&body=${encodeURIComponent(orderBody)}`
+  const paypalHref = PAYPAL_ME_HANDLE ? `https://paypal.me/${PAYPAL_ME_HANDLE}/${subtotal.toFixed(2)}USD` : null
 
   if (items.length === 0) {
     return (
@@ -69,6 +70,20 @@ export default function CartPage() {
             <div className="sum-row"><span>Subtotal</span><strong>{fmtPrice(subtotal)}</strong></div>
             <div className="sum-row"><span>Shipping</span><em>confirmed by email</em></div>
             <div className="sum-row total"><span>Estimated Total</span><strong>{fmtPrice(subtotal)}</strong></div>
+            {(STRIPE_PAYMENT_LINK || paypalHref) && (
+              <div className="cart-pay-options">
+                {STRIPE_PAYMENT_LINK && (
+                  <a href={STRIPE_PAYMENT_LINK} target="_blank" rel="noreferrer" className="btn btn-outline btn-lg btn-full">
+                    Pay with Card (Stripe)
+                  </a>
+                )}
+                {paypalHref && (
+                  <a href={paypalHref} target="_blank" rel="noreferrer" className="btn btn-outline btn-lg btn-full">
+                    Pay with PayPal
+                  </a>
+                )}
+              </div>
+            )}
             <a href={mailto} className="btn btn-navy btn-lg btn-full">Place Order via Email</a>
             <p className="sum-note">
               Checkout opens a pre-filled order email to our sales team ({ORDER_EMAIL}).
