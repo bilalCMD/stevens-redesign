@@ -84,7 +84,8 @@ export default function CartPage() {
                 )}
               </div>
             )}
-            <a href={mailto} className="btn btn-navy btn-lg btn-full">Place Order via Email</a>
+            <Link to="/checkout" className="btn btn-navy btn-lg btn-full">Proceed to Checkout</Link>
+            <a href={mailto} className="btn btn-outline btn-full" style={{ marginTop: 10 }}>Or order via email</a>
             <p className="sum-note">
               Checkout opens a pre-filled order email to our sales team ({ORDER_EMAIL}).
               We confirm pricing, availability, freight and payment options within one business day.

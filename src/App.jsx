@@ -23,6 +23,8 @@ import Tradeshow from './pages/Tradeshow.jsx'
 import Articles from './pages/Articles.jsx'
 import ArticleDetail from './pages/ArticleDetail.jsx'
 import ProductCategory from './pages/ProductCategory.jsx'
+import Search from './pages/Search.jsx'
+import Checkout from './pages/Checkout.jsx'
 import InfoPage from './pages/InfoPage.jsx'
 
 function ScrollToTop() {
@@ -43,8 +45,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/product/:handle" element={<ProductDetail />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/page/about-us" element={<AboutUs />} />
           <Route path="/page/history" element={<History />} />

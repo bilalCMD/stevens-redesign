@@ -101,7 +101,7 @@ export default function Header() {
   const onSearch = (e) => {
     e.preventDefault()
     if (!searchQ.trim()) return
-    navigate(`/shop?q=${encodeURIComponent(searchQ.trim())}`)
+    navigate(`/search?q=${encodeURIComponent(searchQ.trim())}`)
     setSearchQ('')
   }
 
