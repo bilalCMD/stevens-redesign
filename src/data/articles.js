@@ -53,7 +53,7 @@ export const ARTICLES = [
     "title": "Senior Embedded Systems IoT Hardware Design Engineer",
     "category": "Career",
     "categorySlug": "career",
-    "excerpt": "Employer: Stevens Water Monitoring Systems, Inc.Job Location: Portland, OregonTitle: Senior Embedded Systems IoT Hardware Design Engineer Duties: Requirements: Bachelor’s degree or equivalent in Electrical Engineering, Electronics Engineering, Electrical and Computer Engineering, or a closely related field and 5 years of experience as a Hardware Design Engineer, Electronics Design Engineer, or closely related occupation. Experience must […]",
+    "excerpt": "Employer: Stevens Water Monitoring Systems, Inc. Job Location: Portland, Oregon Title: Senior Embedded Systems IoT Hardware Design Engineer Duties: Requirements: Bachelor’s degree or…",
     "img": "/articles/career/senior-embedded-systems-iot-hardware-design-engineer.jpg",
     "blocks": [
       {
@@ -87,7 +87,7 @@ export const ARTICLES = [
     "title": "Improved Water Supply Forecasts Using Soil Moisture Data",
     "category": "Case Studies",
     "categorySlug": "case-studies",
-    "excerpt": "HydraProbe used to improve water supply forecast from 3 SNOTEL sites in Idaho over traditional antecedent conditions using the principle component forecast model Much of the water in the Western United States used for irrigation, municipal supplies and hydro-electric production originates as winter snow pack at higher elevations...",
+    "excerpt": "HydraProbe used to improve water supply forecast from 3 SNOTEL sites in Idaho over traditional antecedent conditions using the principle component forecast model Much of the water in the…",
     "img": "/articles/case-studies/improved-water-supply-forecasts-using-soil-moisture-data.jpg",
     "blocks": [
       {
@@ -113,7 +113,7 @@ export const ARTICLES = [
     "title": "Jalapeño Farm Benefits from Stevens Expertise",
     "category": "Case Studies",
     "categorySlug": "case-studies",
-    "excerpt": "“The Stevens installation is like a second set of eyes for me providing deeper visual insights as to what is going on in the soil and around the crop, so we can optimize our practices and manage the allocation of water”-Hector Rochin is a talented man with a breadth of experience stretching over […]",
+    "excerpt": "“The Stevens installation is like a second set of eyes for me providing deeper visual insights as to what is going on in the soil and around the crop, so we can optimize our practices and…",
     "img": "/articles/case-studies/jalape-o-farm-benefits-from-stevens-expertise.jpg",
     "blocks": [
       {
@@ -189,7 +189,7 @@ export const ARTICLES = [
     "title": "Stevens Enhances Groundwater Remediation Effectiveness",
     "category": "Case Studies",
     "categorySlug": "case-studies",
-    "excerpt": "The Stevens HydraProbe is now being used to monitor the progress of a new groundwater pollution clean up method called phytoremediation. Phytoremediation is the method by which trees are used to pull contamination out of groundwater. Remediation of contaminated aquifers can take many years to complete. The need for clean, healthy rivers...",
+    "excerpt": "The Stevens HydraProbe is now being used to monitor the progress of a new groundwater pollution clean up method called phytoremediation.",
     "img": "/articles/case-studies/stevens-enhances-groundwater-remediation-effectiveness.jpg",
     "blocks": [
       {
@@ -215,7 +215,7 @@ export const ARTICLES = [
     "title": "Stevens Equipment Records Historical Information During Tsunami",
     "category": "Case Studies",
     "categorySlug": "case-studies",
-    "excerpt": "On the eve of the discontinuation of Stevens chart recorders, we are republishing the following article about the highest profile contribution that our products have made in their 116 year history. This article was originally published in the Stevens Water Monitor newsletter in 2007. One of the longest lived products in water resource monitoring has...",
+    "excerpt": "On the eve of the discontinuation of Stevens chart recorders, we are republishing the following article about the highest profile contribution that our products have made in their 116 year…",
     "img": "/articles/case-studies/stevens-equipment-records-historical-information-during-tsunami.jpg",
     "blocks": [
       {
@@ -241,7 +241,7 @@ export const ARTICLES = [
     "title": "Stevens HydraProbe Helps in Landslide Research",
     "category": "Case Studies",
     "categorySlug": "case-studies",
-    "excerpt": "Each year during the wet season we hear news reports about landslides in America and abroad. Sometimes these events happen in unpopulated areas but unfortunately they also occur in areas where people live, causing property damage and taking lives. But what causes these events and what can be done about them? That’s what Dr. Burns...",
+    "excerpt": "Each year during the wet season we hear news reports about landslides in America and abroad. Sometimes these events happen in unpopulated areas but unfortunately they also occur in areas…",
     "img": "/articles/case-studies/stevens-hydraprobe-helps-in-landslide-research.jpg",
     "blocks": [
       {
@@ -293,7 +293,7 @@ export const ARTICLES = [
     "title": "Using the HydraProbe Soil Sensor for Determination of Flood Risk in the New York State Mesonet",
     "category": "Case Studies",
     "categorySlug": "case-studies",
-    "excerpt": "In January 2014, the Department of Homeland Security established the New York State Early Warning Weather Detection System. The centerpiece of the system is the New York State Mesonet, a network of 125 weather stations across the state, with at least one site in every...",
+    "excerpt": "In January 2014, the Department of Homeland Security established the New York State Early Warning Weather Detection System.",
     "img": "/articles/case-studies/using-the-hydraprobe-soil-sensor-for-determination-of-flood-risk-in-th.jpg",
     "blocks": [
       {
@@ -319,7 +319,7 @@ export const ARTICLES = [
     "title": "The Role of Soil Moisture on our Climate, Weather and Global Warming",
     "category": "Climate Change",
     "categorySlug": "climate-change",
-    "excerpt": "Global warming is a topic that has received much attention in the media, especially during the hot days of summer. The process by which carbon dioxide (CO2) in the atmosphere prevents the escape of thermal energy into outer space is known as the greenhouse effect. The higher the carbon dioxide levels in the atmosphere the […]",
+    "excerpt": "Global warming is a topic that has received much attention in the media, especially during the hot days of summer.",
     "img": "/articles/climate-change/the-role-of-soil-moisture-on-our-climate-weather-and-global-warming.jpg",
     "blocks": [
       {
@@ -345,7 +345,7 @@ export const ARTICLES = [
     "title": "HydraProbe FAQs",
     "category": "FAQs",
     "categorySlug": "faqs",
-    "excerpt": "Here are 7 questions and answers about using the Stevens HydraProbe. Q: What is the difference between the terms “real dielectric constant” (RDC) and the “real dielectric permittivity”? A: The terms real dielectric constant and real dielectric permittivity are often times used interchangeably and in a matter of speaking, are synonyms to one another. The […]",
+    "excerpt": "Here are 7 questions and answers about using the Stevens HydraProbe. Q: What is the difference between the terms “real dielectric constant” (RDC) and the “real dielectric permittivity”?",
     "img": "/articles/faqs/hydraprobe-faqs.jpg",
     "blocks": [
       {
@@ -399,7 +399,7 @@ export const ARTICLES = [
     "title": "A Brief History of Stevens’ 116 Year Chart Recorder Legacy",
     "category": "History",
     "categorySlug": "history",
-    "excerpt": "The legendary mechanical chart recorder for environmental monitoring dates back to 1911, when John C. Stevens invented the Type A chart recorder. In 1906, J.C. Stevens was the Hydrographer for the USGS out of Portland, Oregon, and was soon promoted to District Engineer. While with the USGS, he realized that hiring local citizens to observe […]",
+    "excerpt": "The legendary mechanical chart recorder for environmental monitoring dates back to 1911, when John C. Stevens invented the Type A chart recorder. In 1906, J.C.",
     "img": "/articles/history/a-brief-history-of-stevens-116-year-chart-recorder-legacy.jpg",
     "blocks": [
       {
@@ -443,7 +443,7 @@ export const ARTICLES = [
     "title": "Protecting Remote Monitoring Sites from Lightning Damage",
     "category": "How-To Guides",
     "categorySlug": "how-to-guides",
-    "excerpt": "Protecting monitoring sites from lightning damage is an important consideration for monitoring equipment and stations that are deployed in areas that are prone to lightning strikes. Even lightning that does not directly strike a site may cause damage by traveling through the ground and into buried sensors or cable. Proper planning for such events can […]",
+    "excerpt": "Protecting monitoring sites from lightning damage is an important consideration for monitoring equipment and stations that are deployed in areas that are prone to lightning strikes.",
     "img": "/articles/how-to-guides/protecting-remote-monitoring-sites-from-lightning-damage.jpg",
     "blocks": [
       {
@@ -511,7 +511,7 @@ export const ARTICLES = [
     "title": "Dial-up, Push, Pull, Scheduled or On-Demand: The flexibility of M2M",
     "category": "M2M",
     "categorySlug": "m2m",
-    "excerpt": "Stevens M2M remote communications products (Cell-Net and eTracker) offer lots of flexibility for getting your data from a remote site. And don’t forget that reconfiguring how and when data is sent can be done anytime, from any device using the web-based interface. Multiple ways to trigger a transmission: transmit data based on schedule, or triggered",
+    "excerpt": "Stevens M2M remote communications products (Cell-Net and eTracker) offer lots of flexibility for getting your data from a remote site.",
     "img": "/articles/m2m/dial-up-push-pull-scheduled-or-on-demand-the-flexibility-of-m2m.jpg",
     "blocks": [
       {
@@ -537,7 +537,7 @@ export const ARTICLES = [
     "title": "Introducing AVO",
     "category": "M2M",
     "categorySlug": "m2m",
-    "excerpt": "Avo is a complete monitoring station platform. It includes all hardware, software and services needed for data acquisition, cloud-based data storage, viewing and analysis. It makes any sensor data easily accessible and the station remotely configurable. Watch the two-minute video: https://youtu.be/ZwEVrE3fggg",
+    "excerpt": "Avo is a complete monitoring station platform. It includes all hardware, software and services needed for data acquisition, cloud-based data storage, viewing and analysis.",
     "img": "/articles/m2m/introducing-avo.jpg",
     "blocks": [
       {
@@ -589,7 +589,7 @@ export const ARTICLES = [
     "title": "Stevens-Connect Now Includes Support for Campbell Scientific Data Loggers",
     "category": "M2M",
     "categorySlug": "m2m",
-    "excerpt": "Stevens-Connect recently received a huge makeover, and in the process received a new, refined interface and became more powerful and flexible. Part of the new power we’ve introduced is the ability to utilize data from various 3rd-party sources, such as USGS, NCRS, Advanced Hydrological Prediction Service, mesonets and more. Data from these feeds can be",
+    "excerpt": "Stevens-Connect recently received a huge makeover, and in the process received a new, refined interface and became more powerful and flexible.",
     "img": "/articles/m2m/stevens-connect-now-includes-support-for-campbell-scientific-data-logg.jpg",
     "blocks": [
       {
@@ -615,7 +615,7 @@ export const ARTICLES = [
     "title": "The Instant Hydromet Station: Just Add Water",
     "category": "M2M",
     "categorySlug": "m2m",
-    "excerpt": "If: you’re looking to get a few sensors up and running quickly and painlessly you’d love to expand your network to have more spatial coverage you need one or more temporary stations for a specific project …then eTracker is a great option.",
+    "excerpt": "If: you’re looking to get a few sensors up and running quickly and painlessly you’d love to expand your network to have more spatial coverage you need one or more temporary stations for a…",
     "img": "/articles/m2m/the-instant-hydromet-station-just-add-water.jpg",
     "blocks": [
       {
@@ -645,7 +645,7 @@ export const ARTICLES = [
     "title": "Flow Analysis – Meteorological Technology International Magazine Published Article",
     "category": "Meteorology",
     "categorySlug": "meteorology",
-    "excerpt": "One of the world’s largest meteorological networks, SNOTEL, is employing soil moisture sensors to monitor the impact of soil water content on stream flow forecasts By Keith Bellingham, Soil Scientist & Geochemist / Certified Professional Hydrologist Download a PDF of this article Many complex political, social, environmental and scientific challenges […]",
+    "excerpt": "One of the world’s largest meteorological networks, SNOTEL, is employing soil moisture sensors to monitor the impact of soil water content on stream flow forecasts By Keith Bellingham, Soil…",
     "img": "/articles/meteorology/flow-analysis-meteorological-technology-international-magazine-publish.jpg",
     "blocks": [
       {
@@ -691,7 +691,7 @@ export const ARTICLES = [
     "title": "Meteorology Sensors Overview",
     "category": "Meteorology",
     "categorySlug": "meteorology",
-    "excerpt": "Weather conditions are often an integral element in water resource and irrigation management applications. Weather parameters are frequently used in understanding and modeling environmental applications that are dependent on water resources. Stevens provides top quality and industry leading weather sensors that are easily deployed into an integrated...",
+    "excerpt": "Weather conditions are often an integral element in water resource and irrigation management applications.",
     "img": "/articles/meteorology/meteorology-sensors-overview.jpg",
     "blocks": [
       {
@@ -793,7 +793,7 @@ export const ARTICLES = [
     "title": "The Basics of Evapotranspiration",
     "category": "Meteorology",
     "categorySlug": "meteorology",
-    "excerpt": "Evapotranspiration (ET) represents the loss of water from the Earth’s surface from the combination of direct evaporation and plant transpiration. ET is usually expressed as a rate such as inches per day. Knowledge of ET is important for irrigation scheduling but it is also an important factor for other land use applications such as septic",
+    "excerpt": "Evapotranspiration (ET) represents the loss of water from the Earth’s surface from the combination of direct evaporation and plant transpiration.",
     "img": "/articles/meteorology/the-basics-of-evapotranspiration.jpg",
     "blocks": [
       {
@@ -851,7 +851,7 @@ export const ARTICLES = [
     "title": "Stevens Introduces New SMART SDI-12/RS-485 Sensors Featuring Integrated Programming to Simplify the Analysis of Data",
     "category": "New Product Announcement",
     "categorySlug": "new-product-announcement",
-    "excerpt": "Stevens introduces two new digital sensors with a smart mix of unique features and an attractive price point. The first in a line-up of rugged digital sensors, they offer built-in […]",
+    "excerpt": "Stevens introduces two new digital sensors with a smart mix of unique features and an attractive price point. The first in a line-up of rugged digital sensors, they offer built-in",
     "img": "/articles/new-product-announcement/stevens-introduces-new-smart-sdi-12-rs-485-sensors-featuring-integrate.jpg",
     "blocks": [
       {
@@ -877,7 +877,7 @@ export const ARTICLES = [
     "title": "12 Reasons Why Portable Soil Probes / Sensors Should be Incorporated in Optimizing Crop Health",
     "category": "Newsletters",
     "categorySlug": "newsletters",
-    "excerpt": "Soil moisture monitoring installations have gained significant attention in recent years and for a good reason. These installations are essential for effectively managing irrigation scheduling and optimizing those areas with limited water resources to meet a crop’s needs.",
+    "excerpt": "Soil moisture monitoring installations have gained significant attention in recent years and for a good reason.",
     "img": "/articles/newsletters/12-reasons-why-portable-soil-probes-sensors-should-be-incorporated-in-.jpg",
     "blocks": [
       {
@@ -903,7 +903,7 @@ export const ARTICLES = [
     "title": "Newsletter: The Dirt on Soil Monitoring in 2018",
     "category": "Newsletters",
     "categorySlug": "newsletters",
-    "excerpt": "Our new newsletter announces the new Tempe Cell and HydraGO, shows you how to properly install Stevens GroPoint Profile and talks about how HydraProve has entered the space race! Read the newsletter here.",
+    "excerpt": "Our new newsletter announces the new Tempe Cell and HydraGO, shows you how to properly install Stevens GroPoint Profile and talks about how HydraProve has entered the space race!",
     "img": "/articles/newsletters/newsletter-the-dirt-on-soil-monitoring-in-2018.jpg",
     "blocks": [
       {
@@ -981,7 +981,7 @@ export const ARTICLES = [
     "title": "User Spotlight",
     "category": "Newsletters",
     "categorySlug": "newsletters",
-    "excerpt": "Meet Dr. Daniel Hirmas, a professor and B.L. Allen Chair of Pedology at Texas Tech University who researches the mechanistic linkages between soil structure, climate, distribution of coarse fragments, fire frequency, dust, and subsurface boundary conditions on the development of soil hydraulic properties.",
+    "excerpt": "Meet Dr. Daniel Hirmas, a professor and B.L. Allen Chair of Pedology at Texas Tech University who researches the mechanistic linkages between soil structure, climate, distribution of coarse…",
     "img": "/articles/newsletters/user-spotlight.jpg",
     "blocks": [
       {
@@ -1031,7 +1031,7 @@ export const ARTICLES = [
     "title": "Stevens Water Monitoring Expands Portfolio with Dyacon Acquisition",
     "category": "Press Release",
     "categorySlug": "press-release",
-    "excerpt": "With expertise in environmental data acquisition technologies and software platforms for water resources, soil sciences, and agronomy management, Stevens is pleased to welcome Dyacon into its portfolio.",
+    "excerpt": "With expertise in environmental data acquisition technologies and software platforms for water resources, soil sciences, and agronomy management, Stevens is pleased to welcome Dyacon into…",
     "img": "/articles/press-release/stevens-water-monitoring-expands-portfolio-with-dyacon-acquisition.jpg",
     "blocks": [
       {
@@ -1057,7 +1057,7 @@ export const ARTICLES = [
     "title": "Calibration of a Capacitance Soil Sensor Required to Achieve the Level of Accuracy Required for Satellite Ground Truthing",
     "category": "Published studies",
     "categorySlug": "published-studies",
-    "excerpt": "This study published in American Meteorological Society’s BAMS journal demonstrates the extent of variability in readings one can expect with a soil moisture sensor based on capacitance technology. To obtain the highest level of accuracy that is required for remote",
+    "excerpt": "This study published in American Meteorological Society’s BAMS journal demonstrates the extent of variability in readings one can expect with a soil moisture sensor based on capacitance…",
     "img": "/articles/published-studies/calibration-of-a-capacitance-soil-sensor-required-to-achieve-the-level.jpg",
     "blocks": [
       {
@@ -1083,7 +1083,7 @@ export const ARTICLES = [
     "title": "Featured Research Using the HydraProbe Field Portable",
     "category": "Published studies",
     "categorySlug": "published-studies",
-    "excerpt": "A new study “Investigating the backscatter contrast anomaly in synthetic aperture radar (SAR) imagery of the dunes along the Israel–Egypt border” will appear in the International Journal of Applied Earth Observation and Geoinformation, Volume 46, April 2016, Pages 13-21.",
+    "excerpt": "A new study “Investigating the backscatter contrast anomaly in synthetic aperture radar (SAR) imagery of the dunes along the Israel–Egypt border” will appear in the International Journal of…",
     "img": "/articles/published-studies/featured-research-using-the-hydraprobe-field-portable.jpg",
     "blocks": [
       {
@@ -1139,7 +1139,7 @@ export const ARTICLES = [
     "title": "HydraProbe selected to be used in Canada’s RISMA Network for Agricultural Monitoring",
     "category": "Published studies",
     "categorySlug": "published-studies",
-    "excerpt": "A new study published in the Soil Science Society of America Journal investigated the field performance of 5 soil moisture instruments in heavy clay soils. The HydraProbe outperformed TDR and capacitance-based soil sensors in terms of stability and accuracy in Manitoba’s",
+    "excerpt": "A new study published in the Soil Science Society of America Journal investigated the field performance of 5 soil moisture instruments in heavy clay soils.",
     "img": "/articles/published-studies/hydraprobe-selected-to-be-used-in-canada-s-risma-network-for-agricultu.jpg",
     "blocks": [
       {
@@ -1165,7 +1165,7 @@ export const ARTICLES = [
     "title": "Free Software Lets You Use HydraProbe to Determine Soil Water Retention Curve",
     "category": "Software",
     "categorySlug": "software",
-    "excerpt": "The Soil Water Characteristics software is a hydraulic properties calculator, developed by the US Department of Agriculture and Washington State University. It estimates soil water tension, conductivity and water holding capability based on the soil texture, organic matter, gravel content, salinity, and compaction. The Soil Water Characteristics software is a hydraulic properties calculator, developed by",
+    "excerpt": "The Soil Water Characteristics software is a hydraulic properties calculator, developed by the US Department of Agriculture and Washington State University.",
     "img": "/articles/software/free-software-lets-you-use-hydraprobe-to-determine-soil-water-retentio.jpg",
     "blocks": [
       {
@@ -1183,7 +1183,7 @@ export const ARTICLES = [
     "title": "New Features Available in HydraMon v.1.3",
     "category": "Software",
     "categorySlug": "software",
-    "excerpt": "We’ve updated our HydraMon app for iOS and Android devices. HydraMon allows users to configure and download data from the HydraProbe soil sensor through the HydraProbe Field Portable. Here’s what’s new in v.1.3: Ability to log the location of the sample using your smartphone’s GPS Add a memo to the data set Add an image […]",
+    "excerpt": "We’ve updated our HydraMon app for iOS and Android devices. HydraMon allows users to configure and download data from the HydraProbe soil sensor through the HydraProbe Field Portable.",
     "img": "/articles/software/new-features-available-in-hydramon-v-1-3.jpg",
     "blocks": [
       {
@@ -1205,7 +1205,7 @@ export const ARTICLES = [
     "title": "Enhancements in Meteorological and Hydrological Models Using Soil Moisture Data",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "It has long been known that there is a strong relationship between soil water content and the health and yield of crops. But only in the past few decades has science quantified the specifics of these relationships. This research has expanded to develop a relationship between soil moisture levels and the impact on meteorological and",
+    "excerpt": "It has long been known that there is a strong relationship between soil water content and the health and yield of crops.",
     "img": "/articles/soil/enhancements-in-meteorological-and-hydrological-models-using-soil-mois.jpg",
     "blocks": [
       {
@@ -1231,7 +1231,7 @@ export const ARTICLES = [
     "title": "HydraProbe and Stevens-Connect Aids in Understanding Drought Tolerant Crops",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "In the summer of 2019, Stevens Water Monitoring Systems and the Oregon State University (OSU) Hermiston Agricultural Research and Extension Center (HAREC) partnered to evaluate watermelon water-use efficiency through advanced sensor-based, sub-surface drip irrigation. The project at OSU was located at the HAREC Horticulture program in Hermiston, home of the famous watermelons we all love.",
+    "excerpt": "In the summer of 2019, Stevens Water Monitoring Systems and the Oregon State University (OSU) Hermiston Agricultural Research and Extension Center (HAREC) partnered to evaluate watermelon…",
     "img": "/articles/soil/hydraprobe-and-stevens-connect-aids-in-understanding-drought-tolerant-.jpg",
     "blocks": [
       {
@@ -1257,7 +1257,7 @@ export const ARTICLES = [
     "title": "HydraProbe used in Mars Rover Challenge by Manipal University in India",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "UPDATE: The talented team of engineers ended up placing 7th overall out of 95 entries. Congratulations guys and gals! The original article continues below. The University Rover Challenge has been held every summer in Utah by the Mars Society. It’s a competition open to universities worldwide that encourages students to develop skills in robotics, improve the state-of-the-art",
+    "excerpt": "UPDATE: The talented team of engineers ended up placing 7th overall out of 95 entries. Congratulations guys and gals! The original article continues below.",
     "img": "/articles/soil/hydraprobe-used-in-mars-rover-challenge-by-manipal-university-in-india.jpg",
     "blocks": [
       {
@@ -1283,7 +1283,7 @@ export const ARTICLES = [
     "title": "Introduction to Soil Surveys for Agronomic Use",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "The USDA’s Introduction to Soil Surveys for Agronomic Use, entitled “From the Surface Down”, is an introduction to soil types, horizons, and how they are measured. The intent of this publication is to increase user understanding of soils and acquaint them with the contents of a soil survey and supplemental interpretations that are important to",
+    "excerpt": "The USDA’s Introduction to Soil Surveys for Agronomic Use, entitled “From the Surface Down”, is an introduction to soil types, horizons, and how they are measured.",
     "img": "/articles/soil/introduction-to-soil-surveys-for-agronomic-use.jpg",
     "blocks": [
       {
@@ -1309,7 +1309,7 @@ export const ARTICLES = [
     "title": "New Download – Soil Geomorphology: A Pedological Guide to Soil Moisture Sensors",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "Developed by B. K. Bellingham, Soil Scientist at Stevens, this is an excellent resource for anyone installing soil moisture sensors and interpreting soil moisture data. Here’s what’s inside: Soil Geomorphology and Properties Soil Development Soil Texture and Components Soil Horizons Soil Orders and Taxonomy Soil pH Soil Bulk Density Shrink/Swell Clays Soil Ped Structure and […]",
+    "excerpt": "Developed by B. K. Bellingham, Soil Scientist at Stevens, this is an excellent resource for anyone installing soil moisture sensors and interpreting soil moisture data.",
     "img": "/articles/soil/new-download-soil-geomorphology-a-pedological-guide-to-soil-moisture-s.jpg",
     "blocks": [
       {
@@ -1339,7 +1339,7 @@ export const ARTICLES = [
     "title": "NRCS Urban Soil Primer",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "The Urban Soil Primer is intended to give planning officials and people who live in urban areas an introduction to soils. It provides information important in planning and managing land resources in a manner that helps to prevent or mitigate problems associated with sedimentation, contamination, runoff, and structural failure. In non-technical language, this publication describes",
+    "excerpt": "The Urban Soil Primer is intended to give planning officials and people who live in urban areas an introduction to soils.",
     "img": "/articles/soil/nrcs-urban-soil-primer.jpg",
     "blocks": [
       {
@@ -1365,7 +1365,7 @@ export const ARTICLES = [
     "title": "Soil Geomorphology and Identification",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "When working with or studying the soil, it’s important to know what type of soil is being examined. Each type of soil has different characteristics, and will have different effects on water infiltration rates, water holding capacity, evapotranspiration rate, and other soil characteristics. Soil sensors are one popular way of measuring soil moisture, salinity, temperature […]",
+    "excerpt": "When working with or studying the soil, it’s important to know what type of soil is being examined.",
     "img": "/articles/soil/soil-geomorphology-and-identification.jpg",
     "blocks": [
       {
@@ -1407,7 +1407,7 @@ export const ARTICLES = [
     "title": "Soil Physics Workshop – Syllabus",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "This year at the Meteorological Technology World Expo 2018 event in Amsterdam Stevens is excited to present a 2-hour Soil Physics Workshop. The interactive lecture will be hosted by Steven’s own Soil Scientist & Geochemist / Certified Professional Hydrologist Keith Bellingham.",
+    "excerpt": "This year at the Meteorological Technology World Expo 2018 event in Amsterdam Stevens is excited to present a 2-hour Soil Physics Workshop.",
     "img": "/articles/soil/soil-physics-workshop-syllabus.jpg",
     "blocks": [
       {
@@ -1477,7 +1477,7 @@ export const ARTICLES = [
     "title": "Soil Sensors Overview",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "As a leader in soil monitoring instrumentation, Stevens offers portable and in-situ sensors to measure moisture, EC (salinity), temperature and matric potential. Moisture, EC and Temperature – In-Situ Used in more water supply forecast and climatological networks than any other soil sensor. The most scientifically researched soil sensor available. RELIABLE: Continual, long-term data without calibration.",
+    "excerpt": "As a leader in soil monitoring instrumentation, Stevens offers portable and in-situ sensors to measure moisture, EC (salinity), temperature and matric potential.",
     "img": "/articles/soil/soil-sensors-overview.jpg",
     "blocks": [
       {
@@ -1519,7 +1519,7 @@ export const ARTICLES = [
     "title": "Summary of 2018 MOISST Workshop",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "Stevens recently sponsored the 2018 MOISST Workshop: From Soil Moisture Observations to Actionable Decisions, which was held June 4-7 in Lincoln, Nebraska. This workshop provided a unique opportunity for leaders in soil moisture research and development to come together in an interactive workshop format to exchange ideas and develop collaborations. This was the eighth consecutive",
+    "excerpt": "Stevens recently sponsored the 2018 MOISST Workshop: From Soil Moisture Observations to Actionable Decisions, which was held June 4-7 in Lincoln, Nebraska.",
     "img": "/articles/soil/summary-of-2018-moisst-workshop.jpg",
     "blocks": [
       {
@@ -1549,7 +1549,7 @@ export const ARTICLES = [
     "title": "The Stevens Soil Resource Guide",
     "category": "Soil",
     "categorySlug": "soil",
-    "excerpt": "We’re happy to announce the publication of our Soil Resource Guide. Written by the soil experts at Stevens, it contains a wealth of information and will benefit anyone involved with soil. Whether you’re a soil scientist, a farmer or a soil researcher, this 52 page book is a fantastic reference and source of up-to-date theories, practices",
+    "excerpt": "We’re happy to announce the publication of our Soil Resource Guide. Written by the soil experts at Stevens, it contains a wealth of information and will benefit anyone involved with soil.",
     "img": "/articles/soil/the-stevens-soil-resource-guide.jpg",
     "blocks": [
       {
@@ -1579,7 +1579,7 @@ export const ARTICLES = [
     "title": "How to Add a Secondary Telemetry to Your GOES Station",
     "category": "Telemetry",
     "categorySlug": "telemetry",
-    "excerpt": "GOES, for all it’s no-cost, reliable virtues, has some drawbacks. First, it’s a one-way transmission—there’s no way of sending any data to your station. This means there’s no way to reprogram a data logger or reboot a stuck data logger or purge a bubbler without (an unplanned) visit to the site. The Stevens SatCom GOES",
+    "excerpt": "GOES, for all it’s no-cost, reliable virtues, has some drawbacks. First, it’s a one-way transmission—there’s no way of sending any data to your station.",
     "img": "/articles/telemetry/how-to-add-a-secondary-telemetry-to-your-goes-station.jpg",
     "blocks": [
       {
@@ -1601,7 +1601,7 @@ export const ARTICLES = [
     "title": "SatComm",
     "category": "Telemetry",
     "categorySlug": "telemetry",
-    "excerpt": "Developed by B. K. Bellingham, Soil Scientist at Stevens, this is an excellent resource for anyone installing soil moisture sensors and interpreting soil moisture data. Here’s what’s inside: Soil Geomorphology and Properties Soil Development Soil Texture and Components Soil Horizons Soil Orders and Taxonomy Soil pH Soil Bulk Density Shrink/Swell Clays Soil Ped Structure and […]",
+    "excerpt": "Developed by B. K. Bellingham, Soil Scientist at Stevens, this is an excellent resource for anyone installing soil moisture sensors and interpreting soil moisture data.",
     "img": "/articles/telemetry/satcomm.jpg",
     "blocks": [
       {
@@ -1619,7 +1619,7 @@ export const ARTICLES = [
     "title": "Top 9 specs to consider in a GOES transmitter in 2016",
     "category": "Telemetry",
     "categorySlug": "telemetry",
-    "excerpt": "If you haven’t considered these specs before, you should—and here’s why. Option to easily add 2-way telemetry. The reasons for having 2-way redundant telemetry are explained in the above article…a dual-telemetry system can always be cobbled together, but when the GOES transmitter is designed with this capability built-in, things are so much easier. TCXO frequency",
+    "excerpt": "If you haven’t considered these specs before, you should—and here’s why. Option to easily add 2-way telemetry.",
     "img": "/articles/telemetry/top-9-specs-to-consider-in-a-goes-transmitter-in-2016.jpg",
     "blocks": [
       {
@@ -1641,7 +1641,7 @@ export const ARTICLES = [
     "title": "Staff Gages Overview",
     "category": "Water Level",
     "categorySlug": "water-level",
-    "excerpt": "Stevens’ environmentally rugged staff gages provide a quick and easy visual indicator of water level and flow. Every water level monitoring station should include a staff gage from which the height of the water may be visually and easily compared to any data logger’s reported measurement. Enamelled iron gages are preferred over other type gages […]",
+    "excerpt": "Stevens’ environmentally rugged staff gages provide a quick and easy visual indicator of water level and flow.",
     "img": "/articles/water-level/staff-gages-overview.jpg",
     "blocks": [
       {
@@ -1687,7 +1687,7 @@ export const ARTICLES = [
     "title": "Water Level Sensors Overview",
     "category": "Water Level",
     "categorySlug": "water-level",
-    "excerpt": "Stevens is the original water level measurement instrumentation company with the introduction of the widely known chart recorders introduced in 1911. Today, Stevens offers a wide selection of water level measurement sensors including robust ceramic pressure sensors, shaft encoders, acoustical sensors, and visual reference staff gages. Stevens still offers the low-powered, mechanical chart recorders for",
+    "excerpt": "Stevens is the original water level measurement instrumentation company with the introduction of the widely known chart recorders introduced in 1911.",
     "img": "/articles/water-level/water-level-sensors-overview.jpg",
     "blocks": [
       {
@@ -1733,7 +1733,7 @@ export const ARTICLES = [
     "title": "Webinar Recording – Soil Sensors Field installation, Management Practices and Troubleshooting",
     "category": "Webinars",
     "categorySlug": "webinars",
-    "excerpt": "On April 20, 2017 we hosted the first in a series of soil physics training webinars. Here is the recording of the session as well as the slide deck we used. The webinar covered the following: Installation of soil sensors and things you should consider before going into the field. Best management practices and recommendations […]",
+    "excerpt": "On April 20, 2017 we hosted the first in a series of soil physics training webinars. Here is the recording of the session as well as the slide deck we used.",
     "img": "/articles/webinars/webinar-recording-soil-sensors-field-installation-management-practices.jpg",
     "blocks": [
       {
