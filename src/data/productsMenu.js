@@ -10,7 +10,7 @@ export const PRODUCTS_TABS = [
     tab: 'Water Sensors',
     columns: [
       {
-        heading: 'Water Levels',
+        heading: 'Water Levels', to: '/page/products/water-levels',
         groups: [
           {
             title: 'Pressure Transducers',
@@ -28,7 +28,7 @@ export const PRODUCTS_TABS = [
         ],
       },
       {
-        heading: 'Water Flow Discharge',
+        heading: 'Water Flow Discharge', to: '/page/products/water-flow-discharge',
         groups: [{ links: [l('Surface Velocity Radar (SVR) Sensor', search('Surface Velocity Radar'))] }],
       },
       {
@@ -41,7 +41,7 @@ export const PRODUCTS_TABS = [
     tab: 'Soil Sensors & Measurements',
     columns: [
       {
-        heading: 'Soil Hydrology',
+        heading: 'Soil Hydrology', to: '/page/products/soil-sensors',
         groups: [
           {
             title: 'Permanent Installations',
@@ -52,7 +52,7 @@ export const PRODUCTS_TABS = [
         ],
       },
       {
-        heading: 'Water Tension/Matric Potential Sensors',
+        heading: 'Water Tension/Matric Potential Sensors', to: '/page/products/soil-hydrology',
         groups: [{
           links: [
             l('SAGE', cat('Soil Monitoring')),
@@ -63,11 +63,11 @@ export const PRODUCTS_TABS = [
         }],
       },
       {
-        heading: 'Soil Water Infiltration',
+        heading: 'Soil Water Infiltration', to: '/page/products/soil-hydrology',
         groups: [{ links: [l('Permeameters', cat('Soil Monitoring')), l('Infiltrometers', cat('Soil Monitoring'))] }],
       },
       {
-        heading: 'Water Retention Analysis',
+        heading: 'Water Retention Analysis', to: '/page/products/soil-hydrology',
         groups: [{
           links: [
             l('Lab Extractors', cat('Soil Monitoring')),
@@ -77,7 +77,7 @@ export const PRODUCTS_TABS = [
         }],
       },
       {
-        heading: 'Plant Physiology',
+        heading: 'Plant Physiology', to: '/page/products/soil-hydrology',
         groups: [{
           links: [
             l('Lysimeters', cat('Soil Monitoring')),
@@ -92,11 +92,11 @@ export const PRODUCTS_TABS = [
     tab: 'Weather Sensors',
     columns: [
       {
-        heading: 'Meteorology',
+        heading: 'Meteorology', to: '/page/products/weather-stations',
         groups: [{ links: [l('Complete Weather Station Systems', cat('Weather')), l('Tri-Pods', cat('Weather')), l('Accessories', cat('Weather'))] }],
       },
       {
-        heading: 'Wind',
+        heading: 'Wind', to: '/page/products/wind-precipitation',
         groups: [{
           links: [
             l('Dyacon WSD1™ Wind Speed / Wind Direction', search('Wind Monitor')),
@@ -107,7 +107,7 @@ export const PRODUCTS_TABS = [
         }],
       },
       {
-        heading: 'Precipitation',
+        heading: 'Precipitation', to: '/page/products/wind-precipitation',
         groups: [{
           links: [
             l('Stevens Tipping Bucket Rain Gauge', search('Tipping Bucket')),
@@ -117,7 +117,7 @@ export const PRODUCTS_TABS = [
         }],
       },
       {
-        heading: 'Solar Radiation',
+        heading: 'Solar Radiation', to: '/page/products/solar-atmospheric',
         groups: [{
           links: [
             l('Apogee Silicon-cell Pyranometer', search('Pyranometer')),
@@ -126,7 +126,7 @@ export const PRODUCTS_TABS = [
         }],
       },
       {
-        heading: 'Pressure, Humidity & Temperature',
+        heading: 'Pressure, Humidity & Temperature', to: '/page/products/solar-atmospheric',
         groups: [{
           links: [
             l('Dyacon Barometric pressure, Relative Humidity, Temperature', '/product/met-one-092-barometric-pressure-sensor'),
@@ -139,7 +139,7 @@ export const PRODUCTS_TABS = [
         }],
       },
       {
-        heading: 'All-in-one Multiparameter',
+        heading: 'All-in-one Multiparameter', to: '/page/products/weather-stations',
         groups: [{ links: [l('Met One AIO 2 Sonic', search('MSO'))] }],
       },
     ],
@@ -155,10 +155,11 @@ export const PRODUCTS_TABS = [
   {
     tab: 'Staff Gage',
     columns: [
-      { heading: 'Style A', to: search('Style A Staff Gage') },
-      { heading: 'Style C', to: search('Style C Staff Gage') },
-      { heading: 'Style E', to: search('Style E Staff Gage') },
-      { heading: 'Style I', to: search('Style I Staff Gage') },
+      { heading: 'All Staff Gages', to: '/page/products/staff-gages' },
+      { heading: 'Style A', to: '/product/staff-gage-style-a' },
+      { heading: 'Style C', to: '/product/staff-gage-style-c' },
+      { heading: 'Style E', to: '/product/staff-gage-style-e' },
+      { heading: 'Style I', to: '/product/staff-gage-style-i' },
       { heading: 'Style M', to: search('Style M Staff Gage') },
       { heading: 'Figure Plates', to: '/product/figure-plates' },
     ],
@@ -167,11 +168,11 @@ export const PRODUCTS_TABS = [
     tab: 'Power & Accessories',
     columns: [
       {
-        heading: 'Telemetry / Radios',
+        heading: 'Telemetry / Radios', to: '/page/products/telemetry',
         groups: [{ links: [l('E-Tracker', cat('Telemetry')), l('Stevens SatComm', '/product/stevens-satcomm')] }],
       },
       {
-        heading: 'Antennas',
+        heading: 'Antennas', to: '/page/products/telemetry',
         groups: [{
           links: [
             l('V2TH Rugged GOES Antenna', '/product/stevens-v2th-goes-antenna'),
@@ -181,7 +182,7 @@ export const PRODUCTS_TABS = [
         }],
       },
       {
-        heading: 'Power Systems',
+        heading: 'Power Systems', to: '/page/products/power',
         groups: [{
           links: [
             l('Batteries', search('Battery')),
@@ -191,7 +192,7 @@ export const PRODUCTS_TABS = [
         }],
       },
       {
-        heading: 'Diver Accessories',
+        heading: 'Diver Accessories', to: '/page/products/accessories',
         groups: [{
           links: [
             l('Diver-SDI', '/product/diver-dcx'),
@@ -202,7 +203,7 @@ export const PRODUCTS_TABS = [
         }],
       },
       {
-        heading: 'Float Accessories',
+        heading: 'Float Accessories', to: '/page/products/accessories',
         groups: [{
           links: [
             l('Pulleys', search('Pulley')),
@@ -212,7 +213,7 @@ export const PRODUCTS_TABS = [
         }],
       },
       {
-        heading: 'Miscellaneous',
+        heading: 'Miscellaneous', to: '/page/products/accessories',
         groups: [{
           links: [
             l('Evaporation pan', cat('Chart Recorders')),

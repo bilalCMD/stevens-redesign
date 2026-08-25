@@ -22,6 +22,7 @@ import Glossary from './pages/Glossary.jsx'
 import Tradeshow from './pages/Tradeshow.jsx'
 import Articles from './pages/Articles.jsx'
 import ArticleDetail from './pages/ArticleDetail.jsx'
+import ProductCategory from './pages/ProductCategory.jsx'
 import InfoPage from './pages/InfoPage.jsx'
 
 function ScrollToTop() {
@@ -60,6 +61,8 @@ export default function App() {
           <Route path="/page/tradeshow" element={<Tradeshow />} />
           <Route path="/page/articles" element={<Articles />} />
           <Route path="/page/articles/:slug" element={<ArticleDetail />} />
+          <Route path="/page/products" element={<ProductCategory />} />
+          <Route path="/page/products/:slug" element={<ProductCategory />} />
           <Route path="/page/*" element={<InfoPage />} />
           <Route path="*" element={<InfoPage />} />
         </Routes>

@@ -367,6 +367,16 @@ a.topbar-item:hover { color: var(--cyan); }
 .eco-item:hover .eco-icon img { transform: scale(1.12) rotate(-4deg); }
 .eco-icon img { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
 
+/* ===== Product category pages ===== */
+.cat-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+.cat-hub-card {
+  display: flex; flex-direction: column; gap: 6px; background: #fff; border: 1px solid var(--line);
+  border-radius: 15px; padding: 26px 24px; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.cat-hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--teal); }
+.cat-hub-card h3 { font-size: 1.15rem; color: var(--navy); }
+.cat-hub-card em { font-style: normal; font-size: 0.82rem; color: var(--muted); }
+
 /* ===== Applications ===== */
 .app-section { margin-bottom: 44px; }
 .app-section h2 { font-size: clamp(1.4rem, 2.6vw, 2rem); color: var(--navy); margin-bottom: 16px; }
