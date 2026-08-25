@@ -6,6 +6,7 @@ import Reveal from '../components/Reveal.jsx'
 import { useCart } from '../context/CartContext.jsx'
 import { ORDER_EMAIL } from '../data/site.js'
 import { contentForProduct } from '../data/productContent.js'
+import { specsForHandle } from '../data/productSpecs.js'
 
 // Splits an HTML product body into (a) a plain-text description with the <ul> removed,
 // and (b) the bullet list items, if the body contains one — used to build the Figma-style
@@ -28,6 +29,7 @@ export default function ProductDetail() {
   const p = catalog.find((x) => x.handle === handle)
   const { description, features } = useMemo(() => splitBody(p?.body), [p])
   const fig = useMemo(() => contentForProduct(p), [p])
+  const live = useMemo(() => specsForHandle(handle), [handle])
 
   // The chosen variant (if this product is sold in several sizes/lengths).
   const variant = p?.variants?.find((v) => v.sku === variantSku) || p?.variants?.[0] || null
@@ -54,10 +56,11 @@ export default function ProductDetail() {
   )}`
   const dataSheetHref = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(`Data Sheet Request: ${fullName}`)}`
 
-  // Prefer the real specification table from the approved design; fall back to
-  // the catalogue facts we always have when a product has no designed spec sheet.
-  const specs = fig?.specs?.length
-    ? fig.specs.map((s) => [s.label, s.value])
+  // Specifications, best source first: the approved design, then Stevens' own live
+  // site (which they confirmed is accurate), then the catalogue facts we always have.
+  const specSource = fig?.specs?.length ? fig.specs : live?.specs?.length ? live.specs : null
+  const specs = specSource
+    ? specSource.map((s) => [s.label, s.value])
     : [
         ['SKU', sku],
         ['Category', p.category],
@@ -67,7 +70,11 @@ export default function ProductDetail() {
         ['Lead time', 'Confirmed by email within 1 business day'],
       ]
 
-  const featureList = fig?.features?.length ? fig.features : features
+  const featureList = fig?.features?.length
+    ? fig.features
+    : live?.features?.length
+      ? live.features
+      : features
 
   // The enquiry form always names the product (and chosen option) being asked about.
   const submitHelp = (e) => {
