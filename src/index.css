@@ -739,8 +739,28 @@ a.topbar-item:hover { color: var(--cyan); }
 .pd-specs-key { font-weight: 700; border-right: 1px solid var(--navy); background: var(--bg-soft); }
 
 .pd-buy-section { background: var(--lavender); }
-.pd-buy-grid { margin-top: 40px; }
-.pd-buy-cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: center; margin-top: 36px; }
+.pd-buy-grid { margin-top: 44px; }
+.pd-buy-cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: center; }
+
+.price-quote { color: var(--teal); font-size: 0.95em; }
+.pd-order-panel {
+  background: #fff; border-radius: 20px; padding: 30px; margin: 36px auto 0;
+  max-width: 720px; display: flex; flex-direction: column; gap: 20px; align-items: center;
+}
+.pd-variant { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 460px; }
+.pd-variant > span { font-weight: 700; color: var(--navy); font-size: 0.9rem; }
+.pd-variant select {
+  padding: 14px 16px; border-radius: 10px; border: 1.5px solid var(--line);
+  font-family: var(--font-body); font-size: 0.95rem; color: var(--ink); background: #fff; cursor: pointer;
+}
+.pd-variant select:focus { outline: none; border-color: var(--teal); }
+.pd-quote-note { color: var(--muted); text-align: center; max-width: 520px; line-height: 1.7; }
+.pd-enquiry-about {
+  background: var(--bg-soft); border-radius: 10px; padding: 12px 18px;
+  color: var(--muted); font-size: 0.9rem; margin-bottom: 4px;
+}
+.pd-enquiry-about strong { color: var(--navy); }
+.pd-enquiry-about em { font-style: normal; font-size: 0.85em; }
 
 .pd-help { text-align: center; }
 .pd-help-sub { color: var(--muted); max-width: 520px; margin: 0 auto 30px; }

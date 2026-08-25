@@ -24,9 +24,16 @@ export default function ProductDetail() {
   const { handle } = useParams()
   const { add } = useCart()
   const [qty, setQty] = useState(1)
+  const [variantSku, setVariantSku] = useState('')
   const p = catalog.find((x) => x.handle === handle)
   const { description, features } = useMemo(() => splitBody(p?.body), [p])
   const fig = useMemo(() => contentForProduct(p), [p])
+
+  // The chosen variant (if this product is sold in several sizes/lengths).
+  const variant = p?.variants?.find((v) => v.sku === variantSku) || p?.variants?.[0] || null
+  const price = variant ? variant.price : p?.price
+  const sku = variant ? variant.sku : p?.sku
+  const isQuote = variant ? variant.quoteOnly : p?.quoteOnly
 
   if (!p) {
     return (
@@ -41,19 +48,20 @@ export default function ProductDetail() {
   }
 
   const related = catalog.filter((x) => x.category === p.category && x.handle !== p.handle).slice(0, 3)
-  const mailto = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(`Order Request: ${p.title} (SKU ${p.sku})`)}&body=${encodeURIComponent(
-    `Product: ${p.title}\nSKU: ${p.sku}\nUnit price: ${fmtPrice(p.price)}\nQuantity: ${qty}\n\nName:\nCompany:\nPhone:\nShipping address:\n`,
+  const fullName = variant ? `${p.title} — ${variant.label}` : p.title
+  const mailto = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(`Order Request: ${fullName} (SKU ${sku})`)}&body=${encodeURIComponent(
+    `Product: ${fullName}\nSKU: ${sku}\nUnit price: ${fmtPrice(price)}\nQuantity: ${qty}\n\nName:\nCompany:\nPhone:\nShipping address:\n`,
   )}`
-  const dataSheetHref = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(`Data Sheet Request: ${p.title}`)}`
+  const dataSheetHref = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(`Data Sheet Request: ${fullName}`)}`
 
   // Prefer the real specification table from the approved design; fall back to
   // the catalogue facts we always have when a product has no designed spec sheet.
   const specs = fig?.specs?.length
     ? fig.specs.map((s) => [s.label, s.value])
     : [
-        ['SKU', p.sku],
+        ['SKU', sku],
         ['Category', p.category],
-        ['Price', fmtPrice(p.price)],
+        ...(isQuote ? [] : [['Price', fmtPrice(price)]]),
         ['Warranty', '1-year limited warranty'],
         ['Ships from', 'Portland, Oregon, USA'],
         ['Lead time', 'Confirmed by email within 1 business day'],
@@ -61,11 +69,24 @@ export default function ProductDetail() {
 
   const featureList = fig?.features?.length ? fig.features : features
 
+  // The enquiry form always names the product (and chosen option) being asked about.
   const submitHelp = (e) => {
     e.preventDefault()
     const f = new FormData(e.target)
-    const body = ['Name: ' + f.get('name'), 'Organization: ' + f.get('company'), 'Phone: ' + f.get('phone'), 'Email: ' + f.get('email'), '', f.get('message')].join('\n')
-    window.location.href = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(`Product question — ${p.title}`)}&body=${encodeURIComponent(body)}`
+    const body = [
+      `Product: ${fullName}`,
+      `SKU: ${sku}`,
+      isQuote ? 'Request type: Quote request' : '',
+      '',
+      'Name: ' + f.get('name'),
+      'Organization: ' + f.get('company'),
+      'Phone: ' + f.get('phone'),
+      'Email: ' + f.get('email'),
+      '',
+      f.get('message'),
+    ].filter(Boolean).join('\n')
+    const subject = isQuote ? `Quote request — ${fullName}` : `Product question — ${fullName}`
+    window.location.href = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   return (
@@ -87,8 +108,8 @@ export default function ProductDetail() {
                 <h1>{p.title}</h1>
                 {fig?.subtitle && <p className="pd-subtitle">{fig.subtitle}</p>}
                 <div className="pd-price">
-                  {fmtPrice(p.price)}
-                  <em>SKU {p.sku}</em>
+                  {isQuote ? <span className="price-quote">Price on request</span> : fmtPrice(price)}
+                  <em>SKU {sku}</em>
                 </div>
                 {fig?.body ? (
                   <div className="pd-desc"><p>{fig.body}</p></div>
@@ -96,7 +117,9 @@ export default function ProductDetail() {
                   description && <div className="pd-desc" dangerouslySetInnerHTML={{ __html: description }} />
                 )}
                 <div className="pd-cta-row">
-                  <a className="btn btn-navy" href="#buy">Order Online <i>↗</i></a>
+                  <a className="btn btn-navy" href={isQuote ? '#enquire' : '#buy'}>
+                    {isQuote ? 'Request a Quote' : 'Order Online'} <i>↗</i>
+                  </a>
                   <a className="btn btn-navy" href={dataSheetHref}>Download Data Sheet <i>↗</i></a>
                   <Link className="btn btn-navy" to="/contact">Support Services <i>↗</i></Link>
                 </div>
@@ -147,8 +170,8 @@ export default function ProductDetail() {
         <div className="container">
           <h2 className="center-title">Technical Specifications</h2>
           <div className="pd-specs-table">
-            {specs.map(([k, v]) => (
-              <div className="pd-specs-row" key={k}>
+            {specs.map(([k, v], i) => (
+              <div className="pd-specs-row" key={k + i}>
                 <div className="pd-specs-key">{k}</div>
                 <div className="pd-specs-val">{v}</div>
               </div>
@@ -159,27 +182,62 @@ export default function ProductDetail() {
 
       <section className="section pd-buy-section" id="buy">
         <div className="container">
-          <h2 className="center-title">Shop Online / Inquire</h2>
-          <div className="product-grid pd-buy-grid">
-            <ProductCard p={p} />
-            {related.map((r) => <ProductCard p={r} key={r.handle} />)}
+          <h2 className="center-title">{isQuote ? 'Request a Quote' : 'Shop Online / Inquire'}</h2>
+
+          <div className="pd-order-panel">
+            {p.variants && (
+              <label className="pd-variant">
+                <span>Choose an option</span>
+                <select value={variant?.sku || ''} onChange={(e) => setVariantSku(e.target.value)}>
+                  {p.variants.map((v) => (
+                    <option key={v.sku} value={v.sku}>
+                      {v.label}{v.quoteOnly ? ' — price on request' : ` — ${fmtPrice(v.price)}`}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
+
+            {isQuote ? (
+              <p className="pd-quote-note">
+                This item is supplied to order. Tell us what you need below and our team will send
+                you a quote — the form already knows which product you&rsquo;re asking about.
+              </p>
+            ) : (
+              <div className="pd-buy-cta">
+                <div className="qty-stepper">
+                  <button onClick={() => setQty(Math.max(1, qty - 1))} aria-label="Decrease">−</button>
+                  <span>{qty}</span>
+                  <button onClick={() => setQty(qty + 1)} aria-label="Increase">+</button>
+                </div>
+                <button
+                  className="btn btn-navy btn-lg"
+                  onClick={() => add({ ...p, sku, price, title: fullName }, qty)}
+                >
+                  Add to Cart
+                </button>
+                <a className="btn btn-outline btn-lg" href={mailto}>Order Now via Email</a>
+              </div>
+            )}
           </div>
-          <div className="pd-buy-cta">
-            <div className="qty-stepper">
-              <button onClick={() => setQty(Math.max(1, qty - 1))} aria-label="Decrease">−</button>
-              <span>{qty}</span>
-              <button onClick={() => setQty(qty + 1)} aria-label="Increase">+</button>
-            </div>
-            <button className="btn btn-navy btn-lg" onClick={() => add(p, qty)}>Add {p.title} to Cart</button>
-            <a className="btn btn-outline btn-lg" href={mailto}>Order Now via Email</a>
+
+          <div className="product-grid pd-buy-grid">
+            {related.map((r) => <ProductCard p={r} key={r.handle} />)}
           </div>
         </div>
       </section>
 
-      <section className="section pd-help">
+      <section className="section pd-help" id="enquire">
         <div className="container contact-hero-inner">
-          <h2 className="center-title">Need more information? We&rsquo;re here to help!</h2>
-          <p className="pd-help-sub">Tell us a bit about yourself and your question, and we&rsquo;ll get back to you ASAP.</p>
+          <h2 className="center-title">
+            {isQuote ? `Request a quote for ${p.title}` : 'Need more information? We’re here to help!'}
+          </h2>
+          <p className="pd-help-sub">
+            Tell us a bit about yourself and your question, and we&rsquo;ll get back to you ASAP.
+          </p>
+          <p className="pd-enquiry-about">
+            Enquiry about: <strong>{fullName}</strong> <em>(SKU {sku})</em>
+          </p>
           <form className="contact-form-figma" onSubmit={submitHelp}>
             <div className="form-row">
               <label>Name*<input name="name" required placeholder="Your Name" /></label>

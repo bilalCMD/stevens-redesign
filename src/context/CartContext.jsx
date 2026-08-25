@@ -17,6 +17,9 @@ export function CartProvider({ children }) {
   }, [items])
 
   const add = (product, qty = 1) => {
+    // Quote-request items have no price, so they never enter the cart —
+    // they go through the product enquiry form instead.
+    if (product.quoteOnly) return
     setItems((prev) => {
       const found = prev.find((i) => i.sku === product.sku)
       if (found) return prev.map((i) => (i.sku === product.sku ? { ...i, qty: i.qty + qty } : i))

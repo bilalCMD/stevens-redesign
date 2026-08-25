@@ -16,12 +16,23 @@ export default function ProductCard({ p }) {
         <h3><Link to={`/product/${p.handle}`}>{p.title}</Link></h3>
         <div className="product-foot">
           <div className="price">
-            <span>{fmtPrice(p.price)}</span>
-            <em>SKU {p.sku}</em>
+            {p.quoteOnly ? (
+              <span className="price-quote">Price on request</span>
+            ) : (
+              <span>{p.priceFrom ? `From ${fmtPrice(p.price)}` : fmtPrice(p.price)}</span>
+            )}
+            {!p.variants && <em>SKU {p.sku}</em>}
+            {p.variants && <em>{p.variants.length} options</em>}
           </div>
-          <button className="btn btn-primary btn-sm" onClick={() => add(p)}>
-            Add to Cart
-          </button>
+          {p.quoteOnly || p.variants ? (
+            <Link to={`/product/${p.handle}`} className="btn btn-primary btn-sm">
+              {p.quoteOnly ? 'Request a Quote' : 'Choose Options'}
+            </Link>
+          ) : (
+            <button className="btn btn-primary btn-sm" onClick={() => add(p)}>
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </article>
