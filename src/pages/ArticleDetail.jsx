@@ -38,12 +38,15 @@ export default function ArticleDetail() {
           </Reveal>
           <Reveal delay={80}>
             <span className="eyebrow">{a.category}</span>
-            {a.body.map((p, i) => (
-              <p key={i} className="intro-lead" style={{ marginTop: i === 0 ? 12 : 16 }}>{p}</p>
-            ))}
-            {a.cta && (
-              <Link to={a.cta.to} className="btn btn-navy" style={{ marginTop: 20 }}>{a.cta.label} <i>↗</i></Link>
-            )}
+            <div className="article-body">
+              {a.blocks.map((b, i) => (
+                <div key={i}>
+                  {b.heading && <h2>{b.heading}</h2>}
+                  {b.body && b.body.split('\n').filter(Boolean).map((p, j) => <p key={j}>{p}</p>)}
+                </div>
+              ))}
+            </div>
+            <Link to="/contact" className="btn btn-navy" style={{ marginTop: 28 }}>Talk To Our Team <i>↗</i></Link>
           </Reveal>
         </div>
       </section>

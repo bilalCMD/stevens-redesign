@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import Reveal from '../components/Reveal.jsx'
 import { IMG } from '../data/site.js'
+import { APPLICATIONS } from '../data/applicationsContent.js'
 
 const APPS = {
   'soil-monitoring': {
@@ -79,10 +80,11 @@ function ApplicationsHub() {
 }
 
 function ApplicationDetail({ data, slug }) {
+  const real = APPLICATIONS.find((a) => a.slug === slug)
   return (
     <>
       <section className="page-hero has-img">
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${data.img})` }} aria-hidden="true" />
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${real?.hero || data.img})` }} aria-hidden="true" />
         <div className="container">
           <nav className="crumbs light">
             <Link to="/">Home</Link> <i>/</i> <Link to="/page/applications">Applications</Link> <i>/</i> <span>{data.title}</span>
@@ -92,22 +94,45 @@ function ApplicationDetail({ data, slug }) {
         </div>
       </section>
       <section className="section">
-        <div className="container intro-split">
-          <Reveal>
-            <div>
-              {data.body.map((p, i) => <p className="intro-lead" key={i}>{p}</p>)}
-              <h3>Common use cases</h3>
-              <ul className="goal-list">
-                {data.useCases.map((u) => <li key={u}>{u}</li>)}
-              </ul>
-              <div className="hero-actions" style={{ marginTop: 24 }}>
-                <Link to={data.shop} className="btn btn-navy">Shop Related Products <i>↗</i></Link>
-                <Link to="/contact" className="btn btn-outline">Talk To Us <i>↗</i></Link>
+        <div className="container">
+          {(real?.sections || []).map((s, i) => (
+            <Reveal delay={i * 60} key={i}>
+              <div className="app-section">
+                {s.heading && <h2>{s.heading}</h2>}
+                {s.prose.map((p, j) => <p className="intro-lead" key={j}>{p}</p>)}
+                {s.topics.length > 0 && (
+                  <ul className="app-topics">
+                    {s.topics.map((t) => <li key={t}>{t}</li>)}
+                  </ul>
+                )}
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
+          {!real && data.body.map((p, i) => <p className="intro-lead" key={i}>{p}</p>)}
+          <div className="hero-actions" style={{ marginTop: 30 }}>
+            <Link to={data.shop} className="btn btn-navy">Shop Related Products <i>↗</i></Link>
+            <Link to="/contact" className="btn btn-outline">Talk To Us <i>↗</i></Link>
+          </div>
         </div>
       </section>
+
+      {real?.sensors?.tiles?.length > 0 && (
+        <section className="section au-focus">
+          <div className="container">
+            <h2 className="center-title">{real.sensors.heading}</h2>
+            <div className="app-tiles">
+              {real.sensors.tiles.map((t, i) => (
+                <Reveal delay={i * 60} key={t.title}>
+                  <div className="app-tile" style={{ background: t.colour }}>
+                    <h3>{t.title}</h3>
+                    {t.body && <p>{t.body}</p>}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   )
 }

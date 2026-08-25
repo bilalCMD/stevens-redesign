@@ -5,6 +5,7 @@ import ProductCard, { fmtPrice } from '../components/ProductCard.jsx'
 import Reveal from '../components/Reveal.jsx'
 import { useCart } from '../context/CartContext.jsx'
 import { ORDER_EMAIL } from '../data/site.js'
+import { contentForProduct } from '../data/productContent.js'
 
 // Splits an HTML product body into (a) a plain-text description with the <ul> removed,
 // and (b) the bullet list items, if the body contains one — used to build the Figma-style
@@ -25,6 +26,7 @@ export default function ProductDetail() {
   const [qty, setQty] = useState(1)
   const p = catalog.find((x) => x.handle === handle)
   const { description, features } = useMemo(() => splitBody(p?.body), [p])
+  const fig = useMemo(() => contentForProduct(p), [p])
 
   if (!p) {
     return (
@@ -44,14 +46,20 @@ export default function ProductDetail() {
   )}`
   const dataSheetHref = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(`Data Sheet Request: ${p.title}`)}`
 
-  const specs = [
-    ['SKU', p.sku],
-    ['Category', p.category],
-    ['Price', fmtPrice(p.price)],
-    ['Warranty', '1-year limited warranty'],
-    ['Ships from', 'Portland, Oregon, USA'],
-    ['Lead time', 'Confirmed by email within 1 business day'],
-  ]
+  // Prefer the real specification table from the approved design; fall back to
+  // the catalogue facts we always have when a product has no designed spec sheet.
+  const specs = fig?.specs?.length
+    ? fig.specs.map((s) => [s.label, s.value])
+    : [
+        ['SKU', p.sku],
+        ['Category', p.category],
+        ['Price', fmtPrice(p.price)],
+        ['Warranty', '1-year limited warranty'],
+        ['Ships from', 'Portland, Oregon, USA'],
+        ['Lead time', 'Confirmed by email within 1 business day'],
+      ]
+
+  const featureList = fig?.features?.length ? fig.features : features
 
   const submitHelp = (e) => {
     e.preventDefault()
@@ -77,11 +85,16 @@ export default function ProductDetail() {
               <div className="pd-info">
                 <span className="pd-cat">{p.category}</span>
                 <h1>{p.title}</h1>
+                {fig?.subtitle && <p className="pd-subtitle">{fig.subtitle}</p>}
                 <div className="pd-price">
                   {fmtPrice(p.price)}
                   <em>SKU {p.sku}</em>
                 </div>
-                {description && <div className="pd-desc" dangerouslySetInnerHTML={{ __html: description }} />}
+                {fig?.body ? (
+                  <div className="pd-desc"><p>{fig.body}</p></div>
+                ) : (
+                  description && <div className="pd-desc" dangerouslySetInnerHTML={{ __html: description }} />
+                )}
                 <div className="pd-cta-row">
                   <a className="btn btn-navy" href="#buy">Order Online <i>↗</i></a>
                   <a className="btn btn-navy" href={dataSheetHref}>Download Data Sheet <i>↗</i></a>
@@ -100,7 +113,7 @@ export default function ProductDetail() {
               <div>
                 <h2>Features</h2>
                 <ul className="pd-feature-list">
-                  {(features.length ? features : [
+                  {(featureList.length ? featureList : [
                     'Rugged, field-proven construction',
                     'Compatible with standard Stevens data loggers and telemetry',
                     'Low power consumption for long-term unattended deployment',
@@ -111,12 +124,18 @@ export default function ProductDetail() {
             </Reveal>
             <Reveal delay={100}>
               <div>
-                <h2>Support &amp; Service</h2>
+                <h2>{fig?.uniqueAbilities?.length ? 'Unique Abilities' : 'Support & Service'}</h2>
                 <ul className="pd-feature-list">
+                  {fig?.uniqueAbilities?.length ? (
+                    fig.uniqueAbilities.map((u, i) => <li key={i}>{u}</li>)
+                  ) : (
+                    <>
                   <li>Orders confirmed by our sales team via email within 1 business day</li>
                   <li>Technical support available for setup, wiring, and configuration</li>
                   <li>Data sheets and wiring diagrams available on request</li>
                   <li>Ships worldwide from Portland, Oregon</li>
+                    </>
+                  )}
                 </ul>
               </div>
             </Reveal>
