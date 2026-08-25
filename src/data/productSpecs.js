@@ -88,6 +88,89 @@ export const PRODUCT_SPECS = {
       "Replaceable sensor board for rapid recalibration replacement."
     ]
   },
+  "gropoint-profile": {
+    "sourceUrl": "https://stevenswater.com/products/gropoint-profiling/",
+    "specs": [
+      {
+        "label": "Measurement range",
+        "value": "8% to 40% of VWC"
+      },
+      {
+        "label": "Accuracy",
+        "value": "2% to 5% for most soils, accuracy depends on soil"
+      },
+      {
+        "label": "Repeatability",
+        "value": "<0.2%"
+      },
+      {
+        "label": "Measurement range",
+        "value": "-20°C to +70°C (-4°F to 158°F)"
+      },
+      {
+        "label": "Accuracy",
+        "value": "±0.5°C"
+      },
+      {
+        "label": "Output",
+        "value": "SDI-12 V1.3 (RS485 optional)"
+      },
+      {
+        "label": "Connection",
+        "value": "Bare wire (optional 4 pin, IP66/IP68 rated environmental connector)"
+      },
+      {
+        "label": "Input voltage",
+        "value": "6 to 14 VDC max. 18 VDC"
+      },
+      {
+        "label": "Current consumption",
+        "value": "Quiescent: <0.5mA Active: 15-20 mA (depending on number of segments) for 100 mS"
+      },
+      {
+        "label": "Warm-up time on power up",
+        "value": "<1 second"
+      },
+      {
+        "label": "Operating temperature",
+        "value": "-20°C to 70°C (-4°F to 158°F)"
+      },
+      {
+        "label": "Storage temperature",
+        "value": "-40°C to 85°C (-40°F to 185°F)"
+      },
+      {
+        "label": "Length",
+        "value": "Each segment is approximately 15 cm (5.9\") long. Total length is the number of segments multiplied by 15 cm. For example, a 3-segment probe is about 45cm long."
+      },
+      {
+        "label": "Probe weight",
+        "value": "2 segments: 292 g (10.3 oz.) 3 segments: 351 g (12.4 oz.) 4 segments: 408 g (14.4 oz.) 5 segments: 468 g (16.5 oz.) 6 segments: 526 g (18.6 oz.) 8 segments: 642 g (22.6 oz.)"
+      },
+      {
+        "label": "Cable weight",
+        "value": "38 g per m (0.42 oz. per foot)"
+      },
+      {
+        "label": "Standard cable",
+        "value": "5 m (16.3 ft.) 4xAWG22 dual-shielded, twisted pair, rated for direct burial"
+      },
+      {
+        "label": "Warranty",
+        "value": "1-year limited parts and labor"
+      }
+    ],
+    "features": [
+      "Eliminates need for multiple sensors and cabling systems.",
+      "Measures across the entire length of the probe, averaging the soil moisture and temperature in each segment",
+      "Installs quickly and easily without excavating.",
+      "One SDI-12 address is used to read all segments, providing for simplified installations. Optional RS-485 output.",
+      "Moisture readings can be user-calibrated with 3rd-order polynomials to meet custom requirements.",
+      "Low power requirements—suitable for remote, autonomous applications.",
+      "Patented TDT5 technology for scientific-grade accuracy and excellent long-term stability of measurements.",
+      "Fully potted electronics for excellent durability."
+    ]
+  },
   "goes-yagi-antenna": {
     "sourceUrl": "https://stevenswater.com/products/goes-yagi-antenna/",
     "specs": [
@@ -169,6 +252,88 @@ export const PRODUCT_SPECS = {
       "Drought, flooding and climate modeling",
       "Use a HydraProbe to measure matric potential eliminating the need of tensiometers"
     ]
+  },
+  "stevens-svr-surface-velocity-radar-quote-request": {
+    "sourceUrl": "https://stevenswater.com/products/surface-velocity-radar-svr-sensor/",
+    "specs": [
+      {
+        "label": "Measurement Range",
+        "value": "0.05 to 15 m/s. Depending on flow conditions"
+      },
+      {
+        "label": "Speed Selection",
+        "value": "Default is meters / second. Feet / second is an option"
+      },
+      {
+        "label": "Flow Direction",
+        "value": "Bi-directional | Measures backwater situations."
+      },
+      {
+        "label": "Measurement interval",
+        "value": "Up to 1 measurement per second"
+      },
+      {
+        "label": "Resolution",
+        "value": "0.1 mm/s (0.0001 ft)"
+      },
+      {
+        "label": "Accuracy",
+        "value": "+- 2% of measured value"
+      },
+      {
+        "label": "Radar frequency",
+        "value": "24 GHz (K-band)"
+      },
+      {
+        "label": "Radar opening angle",
+        "value": "12 degrees Azimuth 24 degrees Elevation"
+      },
+      {
+        "label": "Power supply",
+        "value": "4-20 mA 600 ohms @ 24 VDC 150 ohms @ 12 VDC 4-20 mA with (2) NPN outputs"
+      },
+      {
+        "label": "Power /current consumption active",
+        "value": "Typical 112 mA at 12 VDC ~ 5 second warmup. 30 to 60 seconds for measurement output (depending on flow conditions)"
+      },
+      {
+        "label": "Maximum current",
+        "value": "250 mA"
+      },
+      {
+        "label": "Serial interface",
+        "value": "RS-485"
+      },
+      {
+        "label": "Protocol",
+        "value": "MODBUS"
+      },
+      {
+        "label": "Vertical distance to water surface",
+        "value": "0.5 to 15 m (1.64 to 82 feet) minimum depending on wave height"
+      },
+      {
+        "label": "Operating temperature",
+        "value": "-40°C to 85°C (-40°F to 185°F). Battery charging protected below 0°C."
+      },
+      {
+        "label": "Housing",
+        "value": "IP 68"
+      },
+      {
+        "label": "Lightning protection",
+        "value": "Gas Discharge Tubes on sensor inputs"
+      },
+      {
+        "label": "Dimensions (L x W x H)",
+        "value": "134.5 mm (5.3 in) x 114.5 mm (4.5 in) x 80 mm (3.2 in) [without mounting bracket]"
+      },
+      {
+        "label": "Weight",
+        "value": "0.756 kg (1.67 lbs)"
+      }
+    ],
+    "features": []
   },
   "iru-2420": {
     "sourceUrl": "https://stevenswater.com/products/apg-iru/",
