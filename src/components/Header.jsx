@@ -8,7 +8,14 @@ import logoImg from '../assets/figma/logo-header.png'
 
 export function SocialIcon({ s }) {
   return (
-    <a href="#" className="social-icon" aria-label={s.name} title={s.name}>
+    <a
+      href={s.url || 'https://stevenswater.com'}
+      target="_blank"
+      rel="noreferrer"
+      className="social-icon"
+      aria-label={s.name}
+      title={s.name}
+    >
       <svg viewBox="0 0 24 24"><path d={s.d} /></svg>
     </a>
   )

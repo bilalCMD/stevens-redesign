@@ -8,6 +8,13 @@ import { ORDER_EMAIL } from '../data/site.js'
 import { contentForProduct } from '../data/productContent.js'
 import { specsForHandle } from '../data/productSpecs.js'
 
+// The app uses a hash router, so a plain "#id" link would be read as a route change.
+// Scroll to the section directly instead, leaving the URL alone.
+function scrollToSection(id) {
+  const el = document.getElementById(id)
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
 // Splits an HTML product body into (a) a plain-text description with the <ul> removed,
 // and (b) the bullet list items, if the body contains one — used to build the Figma-style
 // Features section only when the underlying data actually has bullets to show.
@@ -124,9 +131,9 @@ export default function ProductDetail() {
                   description && <div className="pd-desc" dangerouslySetInnerHTML={{ __html: description }} />
                 )}
                 <div className="pd-cta-row">
-                  <a className="btn btn-navy" href={isQuote ? '#enquire' : '#buy'}>
+                  <button type="button" className="btn btn-navy" onClick={() => scrollToSection(isQuote ? 'enquire' : 'buy')}>
                     {isQuote ? 'Request a Quote' : 'Order Online'} <i>↗</i>
-                  </a>
+                  </button>
                   <a className="btn btn-navy" href={dataSheetHref}>Download Data Sheet <i>↗</i></a>
                   <Link className="btn btn-navy" to="/contact">Support Services <i>↗</i></Link>
                 </div>

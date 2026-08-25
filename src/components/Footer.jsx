@@ -88,7 +88,12 @@ export default function Footer() {
           <ul className="footer-socials-list">
             {SOCIALS.map((s) => (
               <li key={s.name}>
-                <a href="#" className="footer-social-link">
+                <a
+                  href={s.url || 'https://stevenswater.com'}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer-social-link"
+                >
                   <SocialIcon s={s} />
                   {s.name}
                 </a>
