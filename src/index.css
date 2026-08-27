@@ -359,8 +359,30 @@ a.topbar-item:hover { color: var(--cyan); }
 .eco-item { text-align: center; display: flex; flex-direction: column; align-items: center; }
 .eco-icon { width: 70px; height: 70px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; }
 .eco-icon img { width: 100%; height: 100%; object-fit: contain; }
-.eco-item h3 { font-size: 1.4rem; margin-bottom: 4px; color: var(--teal); min-height: 2.6em; display: flex; align-items: center; }
-.eco-item p { color: var(--muted); font-size: 0.9rem; margin-bottom: 18px; min-height: 4.2em; }
+/* Cards are wrapped in Reveal for the scroll animation, which makes the wrapper —
+   not the card — the grid item. Pass the row height through so cards in a row
+   match, and anything pinned with margin-top:auto lands on the same line. */
+.eco-grid > .reveal,
+.product-grid > .reveal,
+.impact-grid > .reveal,
+.jobs-grid > .reveal,
+.au-story-grid > .reveal,
+.cat-hub-grid > .reveal,
+.app-tiles > .reveal,
+.insight-grid > .reveal { height: 100%; }
+.eco-grid > .reveal > *,
+.product-grid > .reveal > *,
+.impact-grid > .reveal > *,
+.jobs-grid > .reveal > *,
+.au-story-grid > .reveal > *,
+.cat-hub-grid > .reveal > *,
+.app-tiles > .reveal > *,
+.insight-grid > .reveal > * { height: 100%; }
+.eco-item h3 {
+  font-size: 1.4rem; margin-bottom: 6px; color: var(--teal);
+  min-height: 2.6em; display: flex; align-items: center; line-height: 1.25;
+}
+.eco-item p { color: var(--muted); font-size: 0.9rem; margin-bottom: 18px; line-height: 1.6; }
 .eco-item .btn { margin-top: auto; }
 .eco-item { transition: transform 0.25s ease; }
 .eco-item:hover { transform: translateY(-6px); }
@@ -507,9 +529,6 @@ a.topbar-item:hover { color: var(--cyan); }
 /* ===== Insights ===== */
 .insights { background: var(--bg); }
 .insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 40px; align-items: start; }
-/* Reveal wraps each card, so the stretch has to pass through it to reach the card. */
-.insight-grid > .reveal { height: 100%; }
-.insight-grid > .reveal > .insight-card { height: 100%; }
 .insight-card { display: block; }
 .insight-img { border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 11; margin-bottom: 18px; }
 .insight-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
