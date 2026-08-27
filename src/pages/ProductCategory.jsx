@@ -68,6 +68,30 @@ function FeatureCard({ product }) {
   )
 }
 
+// The design lists each product in a labelled section as a wide bordered card:
+// photograph on the left, name and description on the right, with a More button.
+function WideCard({ product }) {
+  const blurb = String(product.body || '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 320)
+  return (
+    <Link to={`/product/${product.handle}`} className="cat-wide">
+      <div className="cat-wide-img">
+        <img src={product.img} alt={product.title} loading="lazy" />
+      </div>
+      <div className="cat-wide-body">
+        <h3>{product.title}</h3>
+        {blurb && <p>{blurb}{blurb.length >= 320 ? '…' : ''}</p>}
+        <span className="cat-wide-more">
+          {product.quoteOnly ? 'Request a Quote' : 'More'} <i>↗</i>
+        </span>
+      </div>
+    </Link>
+  )
+}
+
 function CategoryHub() {
   return (
     <>
@@ -161,9 +185,7 @@ export default function ProductCategory() {
                   <Reveal delay={i * 40} key={i}>
                     <div className="cat-group">
                       {s.title && <h2>{s.title}</h2>}
-                      <div className="product-grid">
-                        {s.group.map((p) => <ProductCard p={p} key={p.handle} />)}
-                      </div>
+                      {s.group.map((p) => <WideCard product={p} key={p.handle} />)}
                     </div>
                   </Reveal>
                 )

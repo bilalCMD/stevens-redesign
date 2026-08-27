@@ -447,9 +447,34 @@ a.topbar-item:hover { color: var(--cyan); }
 .cat-section-copy p { color: var(--ink); line-height: 1.8; font-size: 0.97rem; }
 
 /* A heading that only labels a group of products, with its products beneath. */
-.cat-group { padding: 40px 0; border-top: 1px solid var(--line); }
-.cat-group:first-child { border-top: none; padding-top: 8px; }
-.cat-group > h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); color: var(--navy); margin-bottom: 26px; }
+.cat-group { padding: 34px 0; }
+.cat-group > h2 {
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem); color: var(--teal);
+  margin-bottom: 20px; text-align: center;
+}
+
+/* Photograph left, copy right — the layout the design uses for these listings. */
+.cat-wide {
+  display: grid; grid-template-columns: 210px 1fr; gap: 30px; align-items: center;
+  border: 1px solid var(--line); border-radius: 16px; padding: 26px 30px;
+  background: #fff; margin-bottom: 18px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.cat-wide:hover { border-color: var(--teal); box-shadow: var(--shadow); transform: translateY(-3px); }
+.cat-wide-img {
+  height: 150px; display: flex; align-items: center; justify-content: center;
+  background: var(--bg-soft); border-radius: 12px; overflow: hidden;
+}
+.cat-wide-img img { width: 100%; height: 100%; object-fit: contain; padding: 14px; }
+.cat-wide-body h3 { font-size: 1.15rem; color: var(--teal); margin-bottom: 8px; }
+.cat-wide-body p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 14px; }
+.cat-wide-more {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 9px 20px;
+  font-size: 0.86rem; font-weight: 600; color: var(--navy); transition: all 0.2s;
+}
+.cat-wide:hover .cat-wide-more { border-color: var(--teal); color: var(--teal); }
+.cat-wide-more i { font-style: normal; }
 
 .cat-feature {
   background: var(--teal); color: #fff; border-radius: 20px; padding: 26px;
@@ -1019,6 +1044,8 @@ a.topbar-item:hover { color: var(--cyan); }
   .contact-grid, .pd-grid, .cart-grid { grid-template-columns: 1fr; }
   .pd-features-grid { grid-template-columns: 1fr; gap: 36px; }
   .cat-section, .cat-section.alt { grid-template-columns: 1fr; gap: 28px; }
+  .cat-wide { grid-template-columns: 1fr; gap: 18px; padding: 22px; }
+  .cat-wide-img { height: 190px; }
   .cat-section.alt .cat-section-copy, .cat-section.alt .cat-feature { order: initial; }
   .cat-feature { position: static; }
   .cat-hero { padding: 150px 0 70px; }
