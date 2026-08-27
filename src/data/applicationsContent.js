@@ -105,32 +105,32 @@ export const APPLICATIONS = [
       "tiles": [
         {
           "title": "Soil Sensors – permanent",
-          "body": "",
+          "body": "Installed in the ground on a long-term basis to continuously monitor conditions such as soil moisture content, electrical conductivity (salinity), temperature, and sometimes soil water tension or matric potential. Helps in making data-driven decisions based on actual subsurface conditions rather than periodic snapshots. More",
           "colour": "#0063A8"
         },
         {
           "title": "Soil Sensors – portable",
-          "body": "",
+          "body": "Handheld instruments used in applications where flexibility and mobility are key to quickly measure soil properties such as moisture content, electrical conductivity (salinity), and temperature at specific locations or depths. Unlike permanent soil sensors, they are designed for flexible spot measurements, field surveys, insights, calibration checks, and trial deployments More",
           "colour": "#192857"
         },
         {
           "title": "Infiltrometers/ Permeameters",
-          "body": "",
+          "body": "Measures how water enters and moves through soil for insight into soil permeability and hydraulic conductivity. Infiltrometers evaluate the rate at which water infiltrates the soil surface, while permeameters measure water flow through soil at or below the surface under controlled conditions. Used to understand runoff potential, soil compaction effects, and subsurface water movement, supporting de",
           "colour": "#0063A8"
         },
         {
           "title": "Soil Retention Labs",
-          "body": "",
+          "body": "Measure how water is held and released by soil under controlled pressure conditions to determine the soil water retention curve. This curve describes the relationship between soil moisture content and matric potential, which governs water availability, drainage, and movement through the soil. Supports irrigation management, unsaturated flow modeling, slope stability analysis, and groundwater recha",
           "colour": "#192857"
         },
         {
           "title": "Soil Water Samplers",
-          "body": "",
+          "body": "Used to collect water from the soil pore space for chemical analysis to evaluate the quality and composition of water moving through the soil, including nutrients, salts, and contaminants, without significantly disturbing the surrounding soil structure. Provides defensible assessments of soil-water interaction of water quality and subsurface transport processes. More",
           "colour": "#0063A8"
         },
         {
           "title": "Tensiometers",
-          "body": "",
+          "body": "Measure soil water tension, also known as matric potential, which indicates how tightly water is held in the soil and how available it is to plants. These measure the energy required for roots to extract water and provide insight into soil–plant–water relationships, and when plants begin to experience water stress. More",
           "colour": "#192857"
         },
         {
@@ -207,27 +207,27 @@ export const APPLICATIONS = [
       "tiles": [
         {
           "title": "Pressure Sensors",
-          "body": "",
+          "body": "Pressure sensors measure the hydrostatic pressure of the water above the sensor's diaphragm to calculate the liquid level. External variables that influence the measurements are atmospheric pressure, temperature, water density, and gravity (all that can be compensated for) More",
           "colour": "#0063A8"
         },
         {
           "title": "Non-contact level sensor",
-          "body": "",
+          "body": "measures the level without physically touching it. Commonly ultrasonic, radar (microwave), or laser faced toward the surface and calculates the level based on the time or phase shift of the reflected signal. More",
           "colour": "#192857"
         },
         {
           "title": "Staff Gages",
-          "body": "",
+          "body": "Staff gages provide quick and easy visual water / liquid levels and are commonly used as reference benchmarks to calibrate water level sensors along a river, channel, reservoir, or structure More",
           "colour": "#0063A8"
         },
         {
           "title": "Chart Recorders",
-          "body": "",
+          "body": "A chart recorder is a mechanical or electromechanical device that provides a continuous, visual record of level over time by marking measurements on a rotating paper chart that offer an immediate historical view of water level trends More",
           "colour": "#192857"
         },
         {
           "title": "Water Quality",
-          "body": "",
+          "body": "Water quality measurements assess the physical, chemical, and sometimes biological characteristics of water to determine its suitability for environmental, agricultural, industrial, and human uses. More",
           "colour": "#0063A8"
         },
         {
@@ -306,47 +306,47 @@ export const APPLICATIONS = [
       "tiles": [
         {
           "title": "Wind Speed",
-          "body": "",
+          "body": "Air moving from high to low pressure, usually due to temperature changes. Wind speed is measured with an anemometer, a cup or propeller movement by wind, or a non-moving part acoustic or ultrasonic sensor.",
           "colour": "#0063A8"
         },
         {
           "title": "Wind Direction",
-          "body": "",
+          "body": "Reporting the compass direction or degrees from which wind originates. Measurement sensors include rotating windvane, ultrasonic measurement of sound waves propagation, to the wet finger in the air.",
           "colour": "#192857"
         },
         {
-          "title": "Temprature",
-          "body": "",
+          "title": "Temperature",
+          "body": "A quantity typically expressed in a cold to hot scale, and often measured at different levels of the Earth's atmosphere. There are many analog and digital temperature sensors with different accuracies.",
           "colour": "#0063A8"
         },
         {
           "title": "Humidity",
-          "body": "",
+          "body": "Water vapor in the air and is an indicator of precipitation, dew, or fog. Measurements include absolute, relative (RH), and specific. RH is a % of absolute humidity relative to a maximum humidity at the same temperature.",
           "colour": "#192857"
         },
         {
-          "title": "Biometric Pressure",
-          "body": "",
+          "title": "Barometric Pressure",
+          "body": "Pressure in the atmosphere. Similar to weight of air over the measuring point. Measurements help forecast weather troughs and frontal boundaries. Measurements are between 940 and 1040 hPa (mbar) at a defined position.",
           "colour": "#0063A8"
         },
         {
           "title": "Solar Radiation / Par Radiation",
-          "body": "",
+          "body": "Electromagnetic radiation emitted by the sun. Sensor measurements for different applications include pyranometers, net radiometers, quantum / photsynthesis (PAR), and pyrheliometers.",
           "colour": "#192857"
         },
         {
           "title": "Global Temperature (GT)",
-          "body": "",
+          "body": "GT absorbs heat from radiation such as the sun, air, and convection. GT measurement is used in Wet Bulb Globe Temperature (WBGT) heat stress index.",
           "colour": "#0063A8"
         },
         {
-          "title": "Tipping Bucket Rain Gage",
-          "body": "",
+          "title": "Tipping Bucket Rain Gauge",
+          "body": "Precipitation units deliver a pre-defined area in a period of time. The tipping bucket funnel design empties the water into a seesaw-like container that tips based on the water weight. Each tip is a units-of-measure.",
           "colour": "#192857"
         },
         {
           "title": "Weighing Rain Gauge",
-          "body": "",
+          "body": "Precipitation units over a predefined area in a period of time. A storage bin container weights the mass of water to calculate the rain fall over a period of time.",
           "colour": "#0063A8"
         }
       ]
