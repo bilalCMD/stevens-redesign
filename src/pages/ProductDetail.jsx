@@ -7,6 +7,7 @@ import { useCart } from '../context/CartContext.jsx'
 import { ORDER_EMAIL } from '../data/site.js'
 import { contentForProduct } from '../data/productContent.js'
 import { specsForHandle } from '../data/productSpecs.js'
+import { quoteProduct } from '../data/quoteProducts.js'
 
 // The app uses a hash router, so a plain "#id" link would be read as a route change.
 // Scroll to the section directly instead, leaving the URL alone.
@@ -36,7 +37,7 @@ export default function ProductDetail() {
   const p = catalog.find((x) => x.handle === handle)
   const { description, features } = useMemo(() => splitBody(p?.body), [p])
   const fig = useMemo(() => contentForProduct(p), [p])
-  const live = useMemo(() => specsForHandle(handle), [handle])
+  const live = useMemo(() => specsForHandle(handle) || quoteProduct(handle), [handle])
 
   // The chosen variant (if this product is sold in several sizes/lengths).
   const variant = p?.variants?.find((v) => v.sku === variantSku) || p?.variants?.[0] || null
