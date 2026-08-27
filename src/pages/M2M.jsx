@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal.jsx'
 import { IMG } from '../data/site.js'
+import { figmaPage } from '../data/figmaPages.js'
 import iconM2M from '../assets/figma/icon-m2m.svg'
 import iconCloud from '../assets/figma/icon-cloud.svg'
 
@@ -25,6 +26,8 @@ const CAPABILITIES = [
   'API access for integration with third-party systems',
   'Role-based access for teams and consultants',
 ]
+
+const SOFTWARE = ['skyview360', 'steelhead', 'viper']
 
 export default function M2M() {
   return (
@@ -53,6 +56,32 @@ export default function M2M() {
           </div>
         </div>
       </section>
+
+      {SOFTWARE.map((slug) => {
+        const page = figmaPage(slug)
+        if (!page) return null
+        return (
+          <section className="section sw-block" id={slug} key={slug}>
+            <div className="container">
+              <h2 className="center-title">{page.title}</h2>
+              {page.sections.map((s, i) => (
+                <Reveal delay={i * 40} key={i}>
+                  <div className="app-section">
+                    {s.heading !== page.title && <h2>{s.heading}</h2>}
+                    {s.body.map((b, j) => <p className="intro-lead" key={j}>{b}</p>)}
+                    {s.bullets.length > 0 && (
+                      <ul className="pd-feature-list">
+                        {s.bullets.map((b) => <li key={b}>{b}</li>)}
+                      </ul>
+                    )}
+                  </div>
+                </Reveal>
+              ))}
+              <Link to="/contact" className="btn btn-navy">Request a Demo <i>↗</i></Link>
+            </div>
+          </section>
+        )
+      })}
 
       <section className="section au-focus">
         <div className="container intro-split">

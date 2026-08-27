@@ -1072,3 +1072,7 @@ a.topbar-item:hover { color: var(--cyan); }
   .mobile-sub { grid-template-columns: 1fr; }
   .pd-buy .btn { flex: 1; }
 }
+
+/* Alternating bands for the software product sections. */
+.sw-block:nth-of-type(even) { background: var(--bg-soft); }
+.sw-block .app-section:last-of-type { margin-bottom: 24px; }
