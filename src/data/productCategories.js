@@ -44,7 +44,7 @@ export const PRODUCT_CATEGORIES = [
     "tab": "Water Sensors",
     "hero": null,
     "title": "Water Flow Discharge Overview",
-    "body": "",
+    "body": "Non-contact radar instruments that measure surface velocity and calculate discharge in open channels, rivers and culverts — without putting hardware in the flow.",
     "sections": [],
     "match": "surface velocity|svr|flow|discharge"
   },
@@ -81,7 +81,7 @@ export const PRODUCT_CATEGORIES = [
     "tab": "Soil Sensors & Measurements",
     "hero": null,
     "title": "Soil Hydrology Overview",
-    "body": "",
+    "body": "Instruments for the physics of water in soil: matric potential, infiltration rate, water retention and plant water use, for both field deployment and laboratory work.",
     "sections": [],
     "match": "tensiomark|pf sensor|matric|tempe cell|permeameter|infiltrometer|lysimeter|sap flow|soil water sampler|extractor"
   },
@@ -91,7 +91,7 @@ export const PRODUCT_CATEGORIES = [
     "tab": "Weather Sensors",
     "hero": "/categories/meteorology/hero.jpg",
     "title": "Meteorology Sensors Overview",
-    "body": "",
+    "body": "Complete weather stations and the sensors that make them up, for agriculture, research, aviation and industrial sites.",
     "sections": [
       {
         "title": "Complete Weather Station Systems",
@@ -130,7 +130,7 @@ export const PRODUCT_CATEGORIES = [
     "tab": "Weather Sensors",
     "hero": null,
     "title": "Wind & Precipitation Overview",
-    "body": "",
+    "body": "Wind speed and direction sensors alongside tipping bucket and weighing rain gauges, for agricultural, hydrological and airfield weather stations.",
     "sections": [],
     "match": "wind|rain gauge|rain gage|tipping bucket|precipitation|pluvio|met one 0(10c|20d|24a|34)|met one instruments 3(70|75|80)"
   },
@@ -140,7 +140,7 @@ export const PRODUCT_CATEGORIES = [
     "tab": "Weather Sensors",
     "hero": null,
     "title": "Solar & Atmospheric Overview",
-    "body": "",
+    "body": "Pyranometers, PAR sensors, and barometric pressure, humidity and temperature probes — the atmospheric half of a complete weather station.",
     "sections": [],
     "match": "pyranometer|apogee|li-?200|solar radiation|barometric|humidity|temp probe|radiation shield|083e|085a|092"
   },
@@ -160,7 +160,7 @@ export const PRODUCT_CATEGORIES = [
     "tab": "Power & Accessories",
     "hero": null,
     "title": "Telemetry Overview",
-    "body": "",
+    "body": "Radios, satellite transmitters and antennas that move data from remote monitoring sites back to your office, over cellular, GOES satellite or licensed radio.",
     "sections": [],
     "match": "antenna|satcomm|telemetry|goes|yagi|etracker|e-tracker|cell-net|modem|sensor interface|teledesign"
   },
@@ -170,7 +170,7 @@ export const PRODUCT_CATEGORIES = [
     "tab": "Power & Accessories",
     "hero": null,
     "title": "Power Overview",
-    "body": "",
+    "body": "Batteries, solar panels and power supplies sized for unattended monitoring stations that need to run for months between site visits.",
     "sections": [],
     "match": "battery|batteries|solar panel|power suppl"
   },
@@ -180,7 +180,7 @@ export const PRODUCT_CATEGORIES = [
     "tab": "Power & Accessories",
     "hero": null,
     "title": "Accessories Overview",
-    "body": "",
+    "body": "Cables, floats, pulleys, counterweights, desiccant, chart paper and the other parts that keep Stevens instruments running in the field.",
     "sections": [],
     "match": "cable|pulley|float|counterweight|paper chart|pen|ink|desiccant|chart recorder|stylus|data book|adapter|hook|clock weight|spring"
   }

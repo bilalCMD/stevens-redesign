@@ -424,6 +424,11 @@ a.topbar-item:hover { color: var(--cyan); }
 .cat-section-copy h2 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); color: var(--navy); margin-bottom: 16px; }
 .cat-section-copy p { color: var(--ink); line-height: 1.8; font-size: 0.97rem; }
 
+/* A heading that only labels a group of products, with its products beneath. */
+.cat-group { padding: 40px 0; border-top: 1px solid var(--line); }
+.cat-group:first-child { border-top: none; padding-top: 8px; }
+.cat-group > h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); color: var(--navy); margin-bottom: 26px; }
+
 .cat-feature {
   background: var(--teal); color: #fff; border-radius: 20px; padding: 26px;
   display: flex; flex-direction: column; gap: 14px; position: sticky; top: 110px;

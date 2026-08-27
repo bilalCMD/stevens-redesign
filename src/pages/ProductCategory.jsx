@@ -9,25 +9,30 @@ import { IMG } from '../data/site.js'
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
 
-// Each overview section is illustrated with the product from this category that
-// best matches its heading — the way the design pairs copy with a featured item.
-function featuredFor(sectionTitle, products, alreadyUsed) {
+// Rank this category's products by how well they match a section heading.
+function rankForSection(sectionTitle, products, alreadyUsed) {
   const words = norm(sectionTitle).split(' ').filter((w) => w.length > 3)
-  let best = null
-  let bestScore = 0
-  for (const p of products) {
-    if (alreadyUsed.has(p.handle)) continue
-    const hay = norm(p.title + ' ' + (p.body || ''))
-    const score = words.filter((w) => hay.includes(w)).length
-    if (score > bestScore) {
-      bestScore = score
-      best = p
-    }
-  }
-  if (best) return best
-  // Nothing matched by name — fall back to the next unused product so the
-  // section still shows something real rather than an empty panel.
-  return products.find((p) => !alreadyUsed.has(p.handle)) || null
+  return products
+    .filter((p) => !alreadyUsed.has(p.handle))
+    .map((p) => {
+      const hay = norm(p.title + ' ' + (p.body || ''))
+      return { p, score: words.filter((w) => hay.includes(w)).length }
+    })
+    .sort((a, b) => b.score - a.score)
+}
+
+// Sections that carry explanatory copy get one featured product beside them.
+function featuredFor(sectionTitle, products, alreadyUsed) {
+  const ranked = rankForSection(sectionTitle, products, alreadyUsed)
+  const best = ranked.find((r) => r.score > 0) || ranked[0]
+  return best ? best.p : null
+}
+
+// Sections that are only a label (no copy) head up a row of their products instead.
+function productsForLabel(sectionTitle, products, alreadyUsed) {
+  const ranked = rankForSection(sectionTitle, products, alreadyUsed)
+  const matched = ranked.filter((r) => r.score > 0).slice(0, 4)
+  return matched.map((r) => r.p)
 }
 
 function FeatureCard({ product }) {
@@ -89,9 +94,16 @@ export default function ProductCategory() {
   const products = productsInCategory(cat, catalog)
   const used = new Set()
   const sections = cat.sections.map((s) => {
-    const product = featuredFor(s.title, products, used)
-    if (product) used.add(product.handle)
-    return { ...s, product }
+    const hasCopy = Boolean(s.intro && s.intro.trim())
+    if (hasCopy) {
+      const product = featuredFor(s.title, products, used)
+      if (product) used.add(product.handle)
+      return { ...s, hasCopy, product }
+    }
+    // A heading on its own is a grouping label in the design — show its products.
+    const group = productsForLabel(s.title, products, used)
+    group.forEach((p) => used.add(p.handle))
+    return { ...s, hasCopy, group }
   })
 
   const catWords = norm(cat.name).split(' ').filter((w) => w.length > 3)
@@ -121,17 +133,30 @@ export default function ProductCategory() {
       {sections.length > 0 ? (
         <section className="section">
           <div className="container">
-            {sections.map((s, i) => (
-              <Reveal delay={i * 40} key={i}>
-                <div className={`cat-section ${i % 2 ? 'alt' : ''}`}>
-                  <div className="cat-section-copy">
-                    {s.title && <h2>{s.title}</h2>}
-                    {s.intro && <p>{s.intro}</p>}
+            {sections.map((s, i) =>
+              s.hasCopy ? (
+                <Reveal delay={i * 40} key={i}>
+                  <div className={`cat-section ${i % 2 ? 'alt' : ''}`}>
+                    <div className="cat-section-copy">
+                      {s.title && <h2>{s.title}</h2>}
+                      <p>{s.intro}</p>
+                    </div>
+                    <FeatureCard product={s.product} />
                   </div>
-                  <FeatureCard product={s.product} />
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ) : (
+                s.group?.length > 0 && (
+                  <Reveal delay={i * 40} key={i}>
+                    <div className="cat-group">
+                      {s.title && <h2>{s.title}</h2>}
+                      <div className="product-grid">
+                        {s.group.map((p) => <ProductCard p={p} key={p.handle} />)}
+                      </div>
+                    </div>
+                  </Reveal>
+                )
+              ),
+            )}
           </div>
         </section>
       ) : (
