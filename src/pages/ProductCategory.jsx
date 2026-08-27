@@ -9,6 +9,18 @@ import { IMG } from '../data/site.js'
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
 
+// Categories the design doesn't give a masthead photograph borrow one that
+// suits the measurement, so every page doesn't open on the same picture.
+const HERO_FALLBACK = {
+  'water-flow-discharge': IMG.water,
+  'soil-hydrology': IMG.soil,
+  'wind-precipitation': IMG.weather,
+  'solar-atmospheric': IMG.energy,
+  telemetry: IMG.about,
+  power: IMG.energy,
+  accessories: IMG.field,
+}
+
 // Rank this category's products by how well they match a section heading.
 function rankForSection(sectionTitle, products, alreadyUsed) {
   const words = norm(sectionTitle).split(' ').filter((w) => w.length > 3)
@@ -117,7 +129,7 @@ export default function ProductCategory() {
       <section className="cat-hero">
         <div
           className="cat-hero-bg"
-          style={{ backgroundImage: `url(${cat.hero || IMG.water})` }}
+          style={{ backgroundImage: `url(${cat.hero || HERO_FALLBACK[cat.slug] || IMG.water})` }}
           aria-hidden="true"
         />
         <div className="cat-hero-overlay" aria-hidden="true" />
@@ -159,15 +171,7 @@ export default function ProductCategory() {
             )}
           </div>
         </section>
-      ) : (
-        cat.body && (
-          <section className="section">
-            <div className="container" style={{ maxWidth: 860 }}>
-              <Reveal><p className="intro-lead">{cat.body}</p></Reveal>
-            </div>
-          </section>
-        )
-      )}
+      ) : null}
 
       <section className="section products">
         <div className="container">
