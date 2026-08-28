@@ -1103,3 +1103,7 @@ a.topbar-item:hover { color: var(--cyan); }
 /* Alternating bands for the software product sections. */
 .sw-block:nth-of-type(even) { background: var(--bg-soft); }
 .sw-block .app-section:last-of-type { margin-bottom: 24px; }
+
+/* Extended product sections taken from the design. */
+.pd-design { background: var(--bg-soft); }
+.pd-design .app-section:last-child { margin-bottom: 0; }

@@ -270,6 +270,176 @@ export const FIGMA_PAGES = {
     ],
     "tiles": [],
     "specs": []
+  },
+  "stevens-hydraprobe": {
+    "title": "HydraProbe",
+    "sections": [
+      {
+        "heading": "Related Articles",
+        "body": [
+          "Lorem ipsum dolor sit amet, ConnectEDU advising elite. Curator scelerisque temper lore in facilities.",
+          "Lorem ipsum dolor sit amet, ConnectEDU advising elite. Curator scelerisque temper lore in facilities.",
+          "Lorem ipsum dolor sit amet, ConnectEDU advising elite. Curator scelerisque temper lore in facilities."
+        ],
+        "bullets": [
+          "Title Here"
+        ]
+      },
+      {
+        "heading": "Download the Stevens Soil Resource Guide",
+        "body": [
+          "Written by the soil experts at Stevens, our soil resource guide contains a wealth of information and will benefit anyone involved with soil. Whether you’re a soil scientist, a farmer or a soil researcher, this 52 page book is a fantastic reference and source of up-to-date theories, practices and advice.",
+          "Meet the HydraProbe®. A rugged soil sensor with patented technology to measure the three most significant soil parameters—moisture, electrical conductivity and temperature. The HydraProbe® is the most scientifically researched soil sensor available and is depended on by the USDA, NOAA, farmers, leading irrigation companies, and universities for over 25 years. It has been engineered to handle the terrain you want to measure and provides data you can trust year after year."
+        ],
+        "bullets": [
+          "Soil Geomorphology",
+          "Soil Properties",
+          "Salinity / Electrical",
+          "Conductivity (EC)",
+          "Dielectric Permittivity",
+          "Soil Moisture & Irrigation",
+          "Soil Monitoring Applications",
+          "Soil Sensor Technologies",
+          "Soil Sensor Calibration",
+          "Sensor Accuracy & much more!",
+          "Reliable Soil Insight",
+          "Download Manual"
+        ]
+      },
+      {
+        "heading": "The Science Behind HydraProbe®",
+        "body": [
+          "Maintains accuracy for years with no calibration.",
+          "Strong, non-bending, non-corrosive stainless steel tines",
+          "Fully potted electronics— immersible in water."
+        ],
+        "bullets": [
+          "the key parameters behind the soil moisture and bulk EC measurement.",
+          "Upto 5 years warranty",
+          "Durable 18 gauge, UV- resistant high-density polyethylene cable can remain buried or be",
+          "exposed to the elements."
+        ]
+      },
+      {
+        "heading": "Patented Sensor Technology",
+        "body": [
+          "HydraProbe uses unique “Coaxial Impedance Dielectric Reflectometry” to provide consistent long-term accuracy of moisture, salinity and temperature in any soil type. This also provides low inter-sensor variability, so every sensor measures the same without the need to calibrate.",
+          "Consistent research-grade accuracy every season, every location.",
+          "Forget calibrating, ignore the soil type. Just set it and forget it.",
+          "Durable stainless steel tines, fully potted components and a 5-year warranty."
+        ],
+        "bullets": [
+          "Real Permittivity",
+          "Salinity (Bulk EC)",
+          "Imaginary Permittivity",
+          "Temprature",
+          "Pore Water EC",
+          "Continual, long-term data without calibration.",
+          "Stable—no sensor drift, ensuring continual accuracy.",
+          "Repeatable accuracy and stability without the need for calibration in most soils.",
+          "Zero maintenance required.",
+          "Can remain in-situ indefinitely, or relocated and redeployed without worry.",
+          "Ideal for remote locations, harsh environments and applications where data is critical.",
+          "Enables measurement of native (undisturbed) soil, even hard-packed clay.",
+          "Industry-leading 5-year warranty.",
+          "For HydraProbe PROFESSIONAL",
+          "VWC (% Moisture)",
+          "Temperature (°C / °F)",
+          "Electrical Conductivity (EC)",
+          "Thermal compensation",
+          "5 standard soil calibrations",
+          "Custom calibrations can be programed into the sensor",
+          "5 year warranty",
+          "Operating temperature: 40°C to 75°C"
+        ]
+      },
+      {
+        "heading": "Technical Specifications",
+        "body": [
+          "1 to 80 where 1 = air, 80 = distilled water",
+          "From completely dry to fully saturated (from 0% to 100% of saturation)",
+          "0 to 5 dS/m: ± 2.0% or 0.2 S/m whichever is typically higher* 5 to 10 dS/m: ± 20% or 2.0 S/m whichever is typically higher*",
+          "Thermal error less than 0.05% / °C. Other errors (not including float lag and line shift errors) are less z",
+          "18 gauge (SDI-12) / 22 gauge (RS-485 and Modbus), UV resistant, direct burial",
+          "Excellent; potted components in PVC housing and 304 grade stainless steel tines",
+          "* Accuracy may vary with some soil textures. ** Temperature Test Certificate from -40°C to 75°C available",
+          "Thermal error less than 0.05% / °C. Other errors (not including float lag and line shift errors) are less z",
+          "7 oz. (200 g) Optional slim housing version available: 6.5 oz. (184 g)"
+        ],
+        "bullets": [
+          "Measurement",
+          "Resolution",
+          "Soil moisture for inorganic & mineral soil",
+          "± 0.01 WFV for most soils",
+          "Bulk electrical conductivity",
+          "0 to 1 S/m (or 0 to 10 dS/m)***",
+          "Pore Water EC",
+          "must have > 0.10 wfv",
+          "Temperature",
+          "-40°C to +75°C",
+          "Inter-sensor variability",
+          "± 0.012 WFV (θ m3 m-3)",
+          "Electrical & Communication",
+          "Power supply",
+          "Power consumption",
+          "1 mA idle / 25 mA active",
+          "2.5 mA idle / 25 mA active",
+          "3-wire: power, ground, data",
+          "4-wire: power, ground, A, B",
+          "Max. cable length",
+          "60 m (197 ft.)",
+          "1,219 m (4,000 ft.)",
+          "Communication protocol",
+          "SDI-12 Standard v. 1.2",
+          "Custom or open spec",
+          "Modbus RTU",
+          "Environmental",
+          "Operating temperature range",
+          "-40°C to +75°C**",
+          "Storage temperature range",
+          "Water resistance",
+          "Vibration and shock resistance",
+          "4.9” (124 mm)",
+          "1.6” (42 mm)",
+          "Cable weight",
+          "0.86 oz/ft (80g/m)",
+          "Sensing volume",
+          "Length: 2.2” (5.7 cm)",
+          "(cylindrical region)",
+          "Diameter: 1.2” (3.0 cm)",
+          "* Accuracy may vary with some soil textures.",
+          "** Temperature Testing Certificate available.",
+          "*** Upper limit depends on moisture content, minerology, and cation"
+        ]
+      },
+      {
+        "heading": "Ordering Infomation",
+        "body": [
+          "HydraProbe ( Professional ) with 25’ (7.62 m) cable, SDI-12 / RS-485 / Modbus",
+          "HydraProbe ( Professional ) with 50’ (15.24 m) of cable, SDI-12 / RS-485 / Modbus",
+          "HydraProbe ( Professional ) with 100’ (30.48 m) of cable, SDI-12 / RS-485 / Modbus"
+        ],
+        "bullets": [
+          "Description",
+          "56012-02 / 56485-02 / 56585-02",
+          "56012-04 / 56485-04 / 56585-04",
+          "56012-06 / 56485-06 / 56585-06",
+          "56000-TST",
+          "Temperature Test Certificate"
+        ]
+      }
+    ],
+    "tiles": [],
+    "specs": [
+      {
+        "label": "Moisture",
+        "value": "Real Permittivity"
+      },
+      {
+        "label": "Salinity (Bulk EC)",
+        "value": "Imaginary Permittivity"
+      }
+    ]
   }
 }
 

@@ -8,6 +8,7 @@ import { ORDER_EMAIL } from '../data/site.js'
 import { contentForProduct } from '../data/productContent.js'
 import { specsForHandle } from '../data/productSpecs.js'
 import { quoteProduct } from '../data/quoteProducts.js'
+import { figmaPage } from '../data/figmaPages.js'
 
 // The app uses a hash router, so a plain "#id" link would be read as a route change.
 // Scroll to the section directly instead, leaving the URL alone.
@@ -38,6 +39,7 @@ export default function ProductDetail() {
   const { description, features } = useMemo(() => splitBody(p?.body), [p])
   const fig = useMemo(() => contentForProduct(p), [p])
   const live = useMemo(() => specsForHandle(handle) || quoteProduct(handle), [handle])
+  const design = useMemo(() => figmaPage(handle), [handle])
 
   // The chosen variant (if this product is sold in several sizes/lengths).
   const variant = p?.variants?.find((v) => v.sku === variantSku) || p?.variants?.[0] || null
@@ -241,6 +243,28 @@ export default function ProductDetail() {
           </div>
         </div>
       </section>
+
+      {design?.sections?.length > 0 && (
+        <section className="section pd-design">
+          <div className="container">
+            {design.sections
+              .filter((s) => !/^(technical specifications|related articles)$/i.test(s.heading))
+              .map((s, i) => (
+                <Reveal delay={i * 40} key={i}>
+                  <div className="app-section">
+                    <h2>{s.heading}</h2>
+                    {s.body.map((b, j) => <p className="intro-lead" key={j}>{b}</p>)}
+                    {s.bullets.length > 0 && (
+                      <ul className="pd-feature-list">
+                        {s.bullets.map((b) => <li key={b}>{b}</li>)}
+                      </ul>
+                    )}
+                  </div>
+                </Reveal>
+              ))}
+          </div>
+        </section>
+      )}
 
       <section className="section pd-help" id="enquire">
         <div className="container contact-hero-inner">
