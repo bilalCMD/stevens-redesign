@@ -84,5 +84,27 @@ export const DESIGN_PRODUCTS = {
   },
 }
 
+// Descriptions for products already in the catalogue whose copy was missing.
+export const DESIGN_DESCRIPTIONS = {
+  'hydraprobe-pogo-mini-request-quote': {
+    subtitle: 'Rugged, accurate and easy-to-use portable soil data collection',
+    description: [
+      'The HydraGO and HydraGO FLEX represent the most advanced portable soil sensor system. Simply insert the probe into the soil, and tap on the “Sample” button in the HydraGO app. Both communicate wirelessly with your smartphone or tablet using Bluetooth, and both feature a rugged Delrin housing containing a rechargeable battery that lasts for long field sessions with repeated and frequent data sampling.',
+      'The HydraGO has a probe on the end of a shaft for easy surface measurements. It includes four segments so the size can be adjusted from 25 to 84 cm (10 to 33 inches). The HydraGO FLEX has the probe on a detachable cable, so it can be lowered into a pit or borehole.',
+      'The HydraGO App works with both units and is available for Android and iOS. The customisable display shows soil moisture content, temperature, conductivity, pore water EC, GPS position and dielectric permittivities on screen for immediate viewing. The GPS location, date and time of each measurement is recorded alongside the soil data, and everything can be saved and emailed as a CSV file for analysis in Excel.',
+      'Both units use HydraProbe soil sensor technology. The HydraProbe is an impedance-based sensor that fully characterises the radio frequency energy distribution of a standing wave in the soil, measuring both the real and “imaginary” dielectric permittivities — giving excellent accuracy and precision across a wide range of soil types.',
+    ],
+  },
+  'diver-usb-reader': {
+    subtitle: 'USB Interface for Diver Sensors',
+    description: [
+      'The Diver USB Reader can be used for programming or reading the Diver. Connect the USB Reader to the USB port of your PC or laptop, insert the Diver into the base of the USB reading unit, and you are ready to communicate with your Diver.',
+      'The USB Reader can be used in the field or the office. Note: Diver-Office or Diver-Pocket must be installed to be able to communicate with the Diver.',
+    ],
+  },
+}
+
+export const designDescription = (slug) => DESIGN_DESCRIPTIONS[slug] || null
+
 export const designProduct = (slug) => DESIGN_PRODUCTS[slug] || null
 export const DESIGN_PRODUCT_LIST = Object.entries(DESIGN_PRODUCTS).map(([slug, p]) => ({ slug, ...p }))
