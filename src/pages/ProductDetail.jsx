@@ -9,6 +9,7 @@ import { contentForProduct } from '../data/productContent.js'
 import { specsForHandle } from '../data/productSpecs.js'
 import { quoteProduct } from '../data/quoteProducts.js'
 import { figmaPage } from '../data/figmaPages.js'
+import { designProduct } from '../data/designProducts.js'
 
 // The app uses a hash router, so a plain "#id" link would be read as a route change.
 // Scroll to the section directly instead, leaving the URL alone.
@@ -39,7 +40,8 @@ export default function ProductDetail() {
   const { description, features } = useMemo(() => splitBody(p?.body), [p])
   const fig = useMemo(() => contentForProduct(p), [p])
   const live = useMemo(() => specsForHandle(handle) || quoteProduct(handle), [handle])
-  const design = useMemo(() => figmaPage(handle), [handle])
+  const dp = useMemo(() => designProduct(handle), [handle])
+  const design = useMemo(() => figmaPage(handle) || dp, [handle, dp])
 
   // The chosen variant (if this product is sold in several sizes/lengths).
   const variant = p?.variants?.find((v) => v.sku === variantSku) || p?.variants?.[0] || null
@@ -80,7 +82,7 @@ export default function ProductDetail() {
         ['Lead time', 'Confirmed by email within 1 business day'],
       ]
 
-  const featureList = fig?.features?.length
+  const featureList = dp?.features?.length ? dp.features : fig?.features?.length
     ? fig.features
     : live?.features?.length
       ? live.features
@@ -123,7 +125,7 @@ export default function ProductDetail() {
               <div className="pd-info">
                 <span className="pd-cat">{p.category}</span>
                 <h1>{p.title}</h1>
-                {fig?.subtitle && <p className="pd-subtitle">{fig.subtitle}</p>}
+                {(fig?.subtitle || dp?.subtitle) && <p className="pd-subtitle">{fig?.subtitle || dp.subtitle}</p>}
                 <div className="pd-price">
                   {isQuote ? <span className="price-quote">Price on request</span> : fmtPrice(price)}
                   <em>SKU {sku}</em>
