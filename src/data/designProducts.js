@@ -82,6 +82,92 @@ export const DESIGN_PRODUCTS = {
       },
     ],
   },
+
+  'apogee-silicon-cell-pyranometer': {
+    title: 'Apogee Silicon-cell Pyranometer',
+    subtitle: 'Accurate and stable global shortwave radiation measurement',
+    category: 'Weather',
+    description: [
+      'Apogee Instruments’ silicon-cell pyranometers feature a silicon-cell detector. The sensors are accurate, stable, durable, and cost-effective, the results of continual refinement of design.',
+    ],
+    features: [],
+    sections: [
+      {
+        heading: 'Accurate Measurements — ISO 9060:2018 Class C',
+        body: [
+          'Calibration in controlled laboratory conditions is traceable to the World Radiometric Reference in Davos, Switzerland. The upward-looking model is cosine corrected, with directional errors less than 20 W m-2 at 80° solar zenith angle. Long-term non-stability determined from multiple replicate pyranometers in accelerated aging tests and field conditions is less than 2 % per year.',
+        ],
+        bullets: [],
+      },
+      {
+        heading: 'Rugged, Self-cleaning Sensor',
+        body: [
+          'Patented domed shaped sensor head (diffuser and body) facilitate runoff of dew and rain to keep the diffuser clean and minimize errors caused by dust blocking the radiation path. Sensors are housed in a rugged anodize aluminum body and electronics are fully potted.',
+        ],
+        bullets: [],
+      },
+      {
+        heading: 'Heated Option',
+        body: [
+          'A heated pyranometer (SP-230 All-season) is available with a 0.2 W heater to keep water (liquid and frozen) off the sensor and minimize errors caused by dew, frost, rain, or snow blocking the optical path.',
+        ],
+        bullets: [],
+      },
+      {
+        heading: 'Typical Applications',
+        body: [
+          'Applications include shortwave radiation measurement in agricultural, ecological, and hydrological weather networks. Sensors are also used to optimize photovoltaic systems.',
+        ],
+        bullets: [],
+      },
+      {
+        heading: 'Mounting',
+        body: [
+          'The AL-120 Solar Mounting Bracket with Leveling Plate facilitates mounting the sensor to a mast or pipe. The AL-100 Solar Sensor Leveling Plate is designed to level the sensor while sitting on a flat surface or mounting to a surface.',
+        ],
+        bullets: [],
+      },
+      {
+        heading: 'Output Options',
+        body: [
+          'Multiple analog and digital output options are available including: 0 to 350 mV, 0 to 2.5 V, 0 to 5 V, and 4 to 20 mA ranges. Digital output options include a digital ‘smart’ sensor that uses USB communication and custom software to interface directly to a computer, SDI-12, and Modbus protocols. The silicon-cell pyranometer is also available attached to a hand-held meter with digital readout. The analog version of this sensor (SP-110) works with our µCache Bluetooth Micro Logger.',
+        ],
+        bullets: [],
+      },
+      {
+        heading: 'High Quality Cable',
+        body: [
+          'Pigtail-lead sensors feature an IP68, marine-grade stainless-steel cable connector approximately 30 cm from the head to simplify sensor removal for maintenance and recalibration. Cable is shielded-twisted pair wire with a TPR jacket for high water resistance, UV stability, and flexibility in cold conditions.',
+        ],
+        bullets: [],
+      },
+      {
+        heading: 'Models',
+        body: [
+          'Available as SP-110-SS, SP-212-SS, SP-214-SS, SP-215-SS, SP-230-SS, SP-420, SP-421-SS and SP-422-SS — all ISO 9060:2018 Class C, with a 180° field of view and a 360 to 1120 nm spectral range. Ask us for the specification sheet covering the full comparison.',
+        ],
+        bullets: [],
+      },
+    ],
+  },
+
+  'van-essen-diver-family': {
+    title: 'Van Essen Diver Family',
+    subtitle: 'Pressure transducers with integrated data logger',
+    category: 'Water Level',
+    description: [
+      'Cost-effective and reliable, these compact groundwater data loggers provide accurate and reliable long-term measurements of water levels, temperature, and conductivity — essential data needed for effective water resource management, environmental remediation, mine dewatering, and slope stability.',
+      'Van Essen Diver logging sensors are submersible pressure transducers and data loggers for long-term uninterrupted, real-time water level monitoring when submerged at a fixed level under the water surface. The pressure sensor measures the equivalent hydrostatic pressure of the water above the sensor diaphragm to calculate the total water depth. The Diver autonomously measures pressure and temperature and records them in its internal memory. The Diver is ideal for ground and surface water level applications.',
+      'In addition to internal data storage, the Divers can be connected to Stevens’ data logger or data telemetry systems with the Diver-SDI SDI-12 output adapter, allowing the Diver to be used for real-time data monitoring applications.',
+      'Manual data download in the field from a Diver’s internal storage can be done by utilizing the optional USB Interface Cable and connecting the diver directly to a desktop or laptop PC.',
+    ],
+    features: [
+      '3-year warranty',
+      'Up to 10 years battery life',
+      'Can be used from 300 m below to 5000 m above sea level',
+    ],
+    sections: [],
+  },
 }
 
 // Descriptions for products already in the catalogue whose copy was missing.
