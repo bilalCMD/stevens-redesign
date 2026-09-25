@@ -1,18 +1,19 @@
 <?php
 // The editing dashboard's API.
 //
-// Everything it owns lives outside the deployed site: accounts and sessions in
-// ~/stevens-admin, the edited content and uploaded pictures in data/ and
-// uploads/ next to this file. Those two are not part of the repository, so a
-// deploy (git reset --hard) leaves them alone.
+// Accounts, the edited content and the uploaded pictures all live in
+// ~/stevens-admin, outside the document root. content.php and file.php serve
+// the last two to the website.
 
 declare(strict_types=1);
 
+// Everything lives outside the deployed site. A deploy replaces the whole
+// document root, so anything kept inside it would be lost on the next one.
 const PRIVATE_DIR  = __DIR__ . '/../../../../stevens-admin';   // ~/stevens-admin
-const CONTENT_FILE = __DIR__ . '/../data/content.json';
-const BACKUP_DIR   = __DIR__ . '/../data/backups';
-const UPLOAD_DIR   = __DIR__ . '/../uploads';
-const UPLOAD_URL   = '/uploads';
+const CONTENT_FILE = PRIVATE_DIR . '/content.json';
+const BACKUP_DIR   = PRIVATE_DIR . '/backups';
+const UPLOAD_DIR   = PRIVATE_DIR . '/uploads';
+const UPLOAD_URL   = '/api/file.php?name=';
 
 const MAX_CONTENT   = 4 * 1024 * 1024;   // 4 MB of JSON
 const MAX_UPLOAD    = 12 * 1024 * 1024;  // 12 MB per picture
@@ -197,7 +198,7 @@ function storePicture(string $tmp, string $original): array {
     imagedestroy($dst);
     if (!$saved) return ['ok' => false, 'error' => 'Could not save the picture'];
 
-    return ['ok' => true, 'url' => UPLOAD_URL . '/' . $name, 'name' => $name, 'width' => $nw, 'height' => $nh];
+    return ['ok' => true, 'url' => UPLOAD_URL . $name, 'name' => $name, 'width' => $nw, 'height' => $nh];
 }
 
 /* ----------------------------------------------------------------- actions */
@@ -314,7 +315,7 @@ switch ($action) {
         $out = [];
         foreach (glob(UPLOAD_DIR . '/*') ?: [] as $f) {
             if (!is_file($f)) continue;
-            $out[] = ['name' => basename($f), 'url' => UPLOAD_URL . '/' . basename($f), 'size' => filesize($f), 'at' => filemtime($f)];
+            $out[] = ['name' => basename($f), 'url' => UPLOAD_URL . basename($f), 'size' => filesize($f), 'at' => filemtime($f)];
         }
         usort($out, fn ($a, $b) => $b['at'] <=> $a['at']);
         reply(200, ['ok' => true, 'files' => array_slice($out, 0, 500)]);
