@@ -18,6 +18,26 @@ function reply(int $status, array $body): void {
     exit;
 }
 
+// One enquiry per line, newest last, kept outside the document root so a
+// deploy cannot remove them. The file is trimmed so it cannot grow forever.
+const INBOX = __DIR__ . '/../../../../stevens-admin/submissions.jsonl';
+const INBOX_MAX = 2000;
+
+function keep(array $row): void {
+    $dir = dirname(INBOX);
+    if (!is_dir($dir)) return;                       // nothing set up yet
+    $row['id'] = bin2hex(random_bytes(6));
+    $line = json_encode($row, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    if ($line === false) return;
+    @file_put_contents(INBOX, $line . "\n", FILE_APPEND | LOCK_EX);
+
+    // Trim occasionally rather than on every message.
+    if (random_int(1, 50) !== 1 || !is_file(INBOX)) return;
+    $lines = file(INBOX, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
+    if (count($lines) <= INBOX_MAX) return;
+    @file_put_contents(INBOX, implode("\n", array_slice($lines, -INBOX_MAX)) . "\n", LOCK_EX);
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     reply(405, ['ok' => false, 'error' => 'POST only']);
 }
@@ -79,5 +99,16 @@ $sent = mail(
     implode("\r\n", $headers),
     '-f' . FROM
 );
+
+// The dashboard shows these as well, so an enquiry is never lost to a mail
+// problem and there is a record to look back through.
+keep([
+    'at'      => time(),
+    'form'    => $form,
+    'subject' => $subject,
+    'replyTo' => $replyTo,
+    'fields'  => $lines,
+    'mailed'  => (bool)$sent,
+]);
 
 reply($sent ? 200 : 502, ['ok' => (bool)$sent]);

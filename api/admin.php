@@ -201,6 +201,26 @@ function storePicture(string $tmp, string $original): array {
     return ['ok' => true, 'url' => UPLOAD_URL . $name, 'name' => $name, 'width' => $nw, 'height' => $nh];
 }
 
+/* ------------------------------------------------------------- enquiries */
+
+function inboxFile(): string { return PRIVATE_DIR . '/submissions.jsonl'; }
+function inboxRead(): string { return PRIVATE_DIR . '/submissions-read.json'; }
+
+// Newest first, with whether each has been marked as read.
+function inboxRows(): array {
+    if (!is_file(inboxFile())) return [];
+    $lines = file(inboxFile(), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
+    $read = readJson(inboxRead());
+    $rows = [];
+    foreach ($lines as $line) {
+        $row = json_decode($line, true);
+        if (!is_array($row) || !isset($row['id'])) continue;
+        $row['read'] = !empty($read[$row['id']]);
+        $rows[] = $row;
+    }
+    return array_reverse($rows);
+}
+
 /* ----------------------------------------------------------------- actions */
 
 $action = (string) ($_GET['action'] ?? '');
@@ -269,6 +289,46 @@ switch ($action) {
             if ($s['user'] === $me['user'] && !hash_equals($t, $token)) unset($live[$t]);
         }
         writeJson(sessionFile(), $live);
+        reply(200, ['ok' => true]);
+    }
+
+    case 'submissions': {
+        requireUser();
+        $rows = inboxRows();
+        $unread = 0;
+        foreach ($rows as $r) { if (empty($r['read'])) $unread++; }
+        reply(200, ['ok' => true, 'submissions' => array_slice($rows, 0, 300), 'unread' => $unread, 'total' => count($rows)]);
+    }
+
+    case 'submission-read': {
+        if ($method !== 'POST') reply(405, ['ok' => false, 'error' => 'POST only']);
+        requireUser();
+        $in = body();
+        $ids = is_array($in['ids'] ?? null) ? $in['ids'] : [];
+        $read = readJson(inboxRead());
+        foreach ($ids as $id) {
+            if (is_string($id) && preg_match('/^[a-f0-9]{12}$/', $id)) $read[$id] = true;
+        }
+        if (count($read) > 5000) $read = array_slice($read, -3000, null, true);
+        writeJson(inboxRead(), $read);
+        reply(200, ['ok' => true]);
+    }
+
+    case 'submission-delete': {
+        if ($method !== 'POST') reply(405, ['ok' => false, 'error' => 'POST only']);
+        requireUser();
+        $in = body();
+        $id = (string) ($in['id'] ?? '');
+        if (!preg_match('/^[a-f0-9]{12}$/', $id)) reply(400, ['ok' => false, 'error' => 'Bad id']);
+        if (!is_file(inboxFile())) reply(200, ['ok' => true]);
+        $lines = file(inboxFile(), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
+        $kept = [];
+        foreach ($lines as $line) {
+            $row = json_decode($line, true);
+            if (is_array($row) && ($row['id'] ?? '') === $id) continue;
+            $kept[] = $line;
+        }
+        @file_put_contents(inboxFile(), $kept ? implode("\n", $kept) . "\n" : '', LOCK_EX);
         reply(200, ['ok' => true]);
     }
 
