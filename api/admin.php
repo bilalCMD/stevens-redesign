@@ -291,6 +291,12 @@ switch ($action) {
             foreach (array_slice($old, 0, max(0, count($old) - 30)) as $f) @unlink($f);
         }
         $doc = $in['content'];
+        // An empty PHP array encodes as [], which is not the map the site expects.
+        foreach (['products', 'articles', 'text'] as $section) {
+            if (isset($doc[$section]) && is_array($doc[$section]) && $doc[$section] === []) {
+                $doc[$section] = new stdClass();
+            }
+        }
         $doc['updatedAt'] = date('c');
         $doc['updatedBy'] = $u['name'] ?? $u['user'];
         if (!writeJson(CONTENT_FILE, $doc)) reply(500, ['ok' => false, 'error' => 'Could not save']);
