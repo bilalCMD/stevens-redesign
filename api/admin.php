@@ -201,6 +201,32 @@ function storePicture(string $tmp, string $original): array {
     return ['ok' => true, 'url' => UPLOAD_URL . $name, 'name' => $name, 'width' => $nw, 'height' => $nh];
 }
 
+/* ---------------------------------------------------------------- people */
+
+// Only an admin may see or change who can sign in.
+function requireAdmin(): array {
+    $me = requireUser();
+    if (($me['role'] ?? '') !== 'admin') reply(403, ['ok' => false, 'error' => 'Only an admin can do that']);
+    return $me;
+}
+
+function publicUser(array $u): array {
+    return [
+        'user' => $u['user'],
+        'name' => $u['name'] ?? $u['user'],
+        'role' => $u['role'] ?? 'editor',
+        'addedAt' => $u['addedAt'] ?? null,
+    ];
+}
+
+function endSessionsFor(string $user): void {
+    $live = sessions();
+    foreach ($live as $t => $s) {
+        if (strtolower((string) $s['user']) === strtolower($user)) unset($live[$t]);
+    }
+    writeJson(sessionFile(), $live);
+}
+
 /* ------------------------------------------------------------- enquiries */
 
 function inboxFile(): string { return PRIVATE_DIR . '/submissions.jsonl'; }
@@ -290,6 +316,98 @@ switch ($action) {
         }
         writeJson(sessionFile(), $live);
         reply(200, ['ok' => true]);
+    }
+
+    case 'users': {
+        requireAdmin();
+        reply(200, ['ok' => true, 'users' => array_map('publicUser', readJson(usersFile()))]);
+    }
+
+    case 'user-add': {
+        if ($method !== 'POST') reply(405, ['ok' => false, 'error' => 'POST only']);
+        requireAdmin();
+        $in = body();
+        $name  = trim((string) ($in['name'] ?? ''));
+        $login = strtolower(trim((string) ($in['user'] ?? '')));
+        $pass  = (string) ($in['pass'] ?? '');
+        $role  = ($in['role'] ?? 'editor') === 'admin' ? 'admin' : 'editor';
+
+        if (!preg_match('/^[a-z0-9._-]{3,32}$/', $login)) {
+            reply(400, ['ok' => false, 'error' => 'A username is 3–32 letters, numbers, dot, dash or underscore']);
+        }
+        if ($name === '') reply(400, ['ok' => false, 'error' => 'Give them a name']);
+        if (strlen($pass) < 10) reply(400, ['ok' => false, 'error' => 'The password needs at least 10 characters']);
+        if (findUser($login)) reply(409, ['ok' => false, 'error' => 'That username is taken']);
+
+        $users = readJson(usersFile());
+        $users[] = [
+            'user' => $login,
+            'name' => $name,
+            'role' => $role,
+            'hash' => password_hash($pass, PASSWORD_DEFAULT),
+            'addedAt' => date('c'),
+        ];
+        if (!writeJson(usersFile(), $users)) reply(500, ['ok' => false, 'error' => 'Could not add them']);
+        @chmod(usersFile(), 0600);
+        reply(200, ['ok' => true, 'users' => array_map('publicUser', $users)]);
+    }
+
+    case 'user-update': {
+        if ($method !== 'POST') reply(405, ['ok' => false, 'error' => 'POST only']);
+        $me = requireAdmin();
+        $in = body();
+        $login = strtolower(trim((string) ($in['user'] ?? '')));
+        $users = readJson(usersFile());
+        $found = false;
+        $admins = 0;
+        foreach ($users as $u) { if (($u['role'] ?? '') === 'admin') $admins++; }
+
+        foreach ($users as &$u) {
+            if (strtolower((string) $u['user']) !== $login) continue;
+            $found = true;
+            if (isset($in['name']) && trim((string) $in['name']) !== '') $u['name'] = trim((string) $in['name']);
+            if (isset($in['role'])) {
+                $role = $in['role'] === 'admin' ? 'admin' : 'editor';
+                // The last admin keeps the keys.
+                if ($role !== 'admin' && ($u['role'] ?? '') === 'admin' && $admins <= 1) {
+                    reply(400, ['ok' => false, 'error' => 'There has to be one admin']);
+                }
+                $u['role'] = $role;
+            }
+            if (isset($in['pass']) && (string) $in['pass'] !== '') {
+                if (strlen((string) $in['pass']) < 10) {
+                    reply(400, ['ok' => false, 'error' => 'The password needs at least 10 characters']);
+                }
+                $u['hash'] = password_hash((string) $in['pass'], PASSWORD_DEFAULT);
+                // Whoever was signed in as them is signed out.
+                if (strtolower((string) $me['user']) !== $login) endSessionsFor($login);
+            }
+        }
+        unset($u);
+        if (!$found) reply(404, ['ok' => false, 'error' => 'No such account']);
+        if (!writeJson(usersFile(), $users)) reply(500, ['ok' => false, 'error' => 'Could not save']);
+        @chmod(usersFile(), 0600);
+        reply(200, ['ok' => true, 'users' => array_map('publicUser', $users)]);
+    }
+
+    case 'user-delete': {
+        if ($method !== 'POST') reply(405, ['ok' => false, 'error' => 'POST only']);
+        $me = requireAdmin();
+        $in = body();
+        $login = strtolower(trim((string) ($in['user'] ?? '')));
+        if ($login === strtolower((string) $me['user'])) {
+            reply(400, ['ok' => false, 'error' => 'You cannot remove your own account']);
+        }
+        $users = readJson(usersFile());
+        $kept = array_values(array_filter($users, fn ($u) => strtolower((string) $u['user']) !== $login));
+        if (count($kept) === count($users)) reply(404, ['ok' => false, 'error' => 'No such account']);
+        $admins = 0;
+        foreach ($kept as $u) { if (($u['role'] ?? '') === 'admin') $admins++; }
+        if ($admins < 1) reply(400, ['ok' => false, 'error' => 'There has to be one admin']);
+        if (!writeJson(usersFile(), $kept)) reply(500, ['ok' => false, 'error' => 'Could not remove them']);
+        @chmod(usersFile(), 0600);
+        endSessionsFor($login);
+        reply(200, ['ok' => true, 'users' => array_map('publicUser', $kept)]);
     }
 
     case 'submissions': {
